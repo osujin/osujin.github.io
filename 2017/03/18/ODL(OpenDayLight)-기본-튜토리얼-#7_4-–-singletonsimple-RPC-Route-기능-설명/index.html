@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>ODL(OpenDayLight) 기본 튜토리얼 #7_4 – singletonsimple RPC Route 기능 설명 | MemoryCalendar</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="" />
+    
+    <meta name="description" content="singletons cluster의 구조는 다음과 같다.  [사진 1] 3개의 docker instance에 singletonsimple 를 배포하고 기동하면 자동으로 cluster 설정이 이루어 지고 Leader Node가 설정되어 진다. Leader Node는 3개의 Node중에 선택되어지고 Leader Node가 죽으면 다른 Node가 Leader가">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ODL(OpenDayLight) 기본 튜토리얼 #7_4 – singletonsimple RPC Route 기능 설명">
+<meta property="og:url" content="https://osujin.github.io/2017/03/18/ODL(OpenDayLight)-기본-튜토리얼-#7_4-–-singletonsimple-RPC-Route-기능-설명/index.html">
+<meta property="og:site_name" content="MemoryCalendar">
+<meta property="og:description" content="singletons cluster의 구조는 다음과 같다.  [사진 1] 3개의 docker instance에 singletonsimple 를 배포하고 기동하면 자동으로 cluster 설정이 이루어 지고 Leader Node가 설정되어 진다. Leader Node는 3개의 Node중에 선택되어지고 Leader Node가 죽으면 다른 Node가 Leader가">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="https://osujin.github.io/image/2017/03/스크린샷-2017-03-13-오후-4.25.10.png">
+<meta property="og:updated_time" content="2018-04-04T05:51:32.862Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ODL(OpenDayLight) 기본 튜토리얼 #7_4 – singletonsimple RPC Route 기능 설명">
+<meta name="twitter:description" content="singletons cluster의 구조는 다음과 같다.  [사진 1] 3개의 docker instance에 singletonsimple 를 배포하고 기동하면 자동으로 cluster 설정이 이루어 지고 Leader Node가 설정되어 진다. Leader Node는 3개의 Node중에 선택되어지고 Leader Node가 죽으면 다른 Node가 Leader가">
+<meta name="twitter:image" content="https://osujin.github.io/image/2017/03/스크린샷-2017-03-13-오후-4.25.10.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-116900069-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">MemoryCalendar</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/OpenDayLight/">OpenDayLight</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/기타/">기타</a></li></ul>
+                                    
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/OpenDayLight/">OpenDayLight</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-ODL(OpenDayLight)-기본-튜토리얼-#7_4-–-singletonsimple-RPC-Route-기능-설명" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        ODL(OpenDayLight) 기본 튜토리얼 #7_4 – singletonsimple RPC Route 기능 설명
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/03/18/ODL(OpenDayLight)-기본-튜토리얼-#7_4-–-singletonsimple-RPC-Route-기능-설명/" class="article-date">
+            <time datetime="2017-03-18T06:08:10.000Z" itemprop="datePublished">2017-03-18</time>
+        </a>
+    </div>
+
+                
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>singletons cluster의 구조는 다음과 같다.</p>
+<p><img src="/image/2017/03/스크린샷-2017-03-13-오후-4.25.10.png" alt=""> [사진 1]</p>
+<p>3개의 docker instance에 singletonsimple 를 배포하고 기동하면 자동으로 cluster 설정이 이루어 지고 Leader Node가 설정되어 진다.</p>
+<p>Leader Node는 3개의 Node중에 선택되어지고 Leader Node가 죽으면 다른 Node가 Leader가 된다.</p>
+<p>singletonsimple 프로젝트의 yang 파일을 보면 총 3개의 RPC가 존재한다.</p>
+<ul>
+<li>global-rpc</li>
+<li>routed.rpc</li>
+<li>local-rpc</li>
+</ul>
+<p>먼저 rpc를 등록해주는 SingletonSimpleProvider.java 파일의 소스코드의 일부분을 살펴보자</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonSimpleProvider</span> <span class="keyword">implements</span> <span class="title">ClusterSingletonService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ClusterSingletonServiceRegistration cssRegistration;</span><br><span class="line"> </span><br><span class="line">... </span><br><span class="line">... </span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">instantiateServiceInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        LOG.info(<span class="string">"We take Leadership"</span>);</span><br><span class="line">        Preconditions.checkState(globalRpcServiceReg == <span class="keyword">null</span>,</span><br><span class="line">                <span class="string">"Unexpected state: we have active GlobalRpcServiceRegistration"</span>);</span><br><span class="line">        Preconditions.checkState(routedRpcServiceReg == <span class="keyword">null</span>,</span><br><span class="line">                <span class="string">"Unexpected state: we have active RoutedRpcServiceRegistration"</span>);</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// Create a new instance of the Global RPC Service and register it with the RPC registry</span></span><br><span class="line">        globalRpcServiceReg = rpcProviderRegistry.addRpcImplementation(GlobalRpcService.class,</span><br><span class="line">                <span class="keyword">new</span> GlobalRpcServiceImpl(hostInfo));</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// Create a new instance of the Routed RPC Service and register it and its path with the RPC registry</span></span><br><span class="line">        routedRpcServiceReg = rpcProviderRegistry.addRoutedRpcImplementation(RoutedRpcService.class,</span><br><span class="line">                <span class="keyword">new</span> RoutedRpcServiceImpl(hostInfo));</span><br><span class="line">        <span class="comment">/* The route identifier for the registered path is as follows:</span></span><br><span class="line"><span class="comment">         * routed-rpc:rpc-member[routed-rpc:name="rpc-key"]</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        routedRpcServiceReg.registerPath(RoutedRpcContext.class,</span><br><span class="line">                InstanceIdentifier.builder(RpcMember.class, <span class="keyword">new</span> RpcMemberKey(<span class="string">"rpc-key"</span>)).build());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>위 클래스는 ClusterSingletonService를 implements 받는데 이 클래스에서 Override 된 instantiateServiceInstance 메소드에 등록된 RPC가 cluster로 묶인 Node들에서 공유가 되는 것이다.</p>
+<p>위에서 말했듯이 자동으로 Leader Node가 설정되어지는데 리더로 설정된 Node에서만 instantiateServiceInstance 가 실행되고 나머지 Node들은 실행되지 않는다.</p>
+<p>공식 문서에 따르면 ClusterSingletonService 에는 EOS(Entity Ownership Service)에대한 복잡한 알고리즘을 처리하는 로직이 포함되어 Leader Node가 죽을 경우 살아있는 다른 Node가 Leader가 되도록 한다.</p>
+<h2 id="RPC-기능-설명"><a href="#RPC-기능-설명" class="headerlink" title="RPC 기능 설명"></a>RPC 기능 설명</h2><p>singletonsimple 프로젝트를 보면 3개의 RPC가 선언 되어 있다고했다. 각 RPC에 대해 자세히 알아보자</p>
+<p>1&#46;local-rpc</p>
+<ul>
+<li>가장 기본적인 RPC 기능을 한다. local-rpc는 Provider class에 init 메소드에 등록이 되어 각 Node에서 karaf를 구동시킬때 자동으로 등록되어져 REST 방식으로 호출하여 사용가능하다.</li>
+</ul>
+<p>2&#46;global-rpc</p>
+<ul>
+<li><p>global-rpc는 Provider class의 instantiateServiceInstance 메소드에서 등록이 되는데 instantiateServiceInstance메소드는 Leader Node에서만 실행이 된다고 하였다. Leader Node 가 instantiateServiceInstance 메소드를 실행하면 global-rpc 가 SAL에 등록이 되고 나머지 두개의 Node에도 광고가 된다. 실제로는 Leader Node에만 global-rpc가 등록되어 진것이지만 다른 두개의 Node에서도 해당 RPC를 사용 할 수 있다.</p>
+</li>
+<li><p>만약 Leader Node가 죽었을 경우 다른 Node가 Leader 가 되고 instantiateServiceInstance 이 실행되어 global-rpc가 등록되어진다.</p>
+</li>
+<li><p>위 사진1 에서는 Node1 이 Leader가 된 경우에 Leader1의 Global RPC만 접근이 가능하여 RESTCONF <---> Global RPC 로 되어있고 Node2,3 는 RESTCONF <-x-> Global RPC 라고 되어진것이 바로 이뜻이다.</-x-></---></p>
+</li>
+</ul>
+<p>global-rpc를 실제로 동작시켜 보면 다음과 같다.</p>
+<p><img src="/image/2017/03/사진2.png" alt=""> [사진2]</p>
+<p><img src="/image/2017/03/사진3.png" alt=""> [사진3]</p>
+<p>사진 2를 보면 2번 Node(172.17.0.3)에서 global-rpc를 호출 하였고 이에 대한 응답으로 다음 결과를 받았다.<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"output"</span>: &#123;</span><br><span class="line">      <span class="attr">"ip-address"</span>: [</span><br><span class="line">        <span class="string">"fe80:0:0:0:42:acff:fe11:2%eth0"</span>,</span><br><span class="line">        <span class="string">"172.17.0.2"</span>,</span><br><span class="line">        <span class="string">"0:0:0:0:0:0:0:1%lo"</span>,</span><br><span class="line">        <span class="string">"127.0.0.1"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"host-name"</span>: <span class="string">"member-1"</span>,</span><br><span class="line">      <span class="attr">"output-param"</span>: <span class="string">"Some input-param"</span>,</span><br><span class="line">      <span class="attr">"invocations"</span>: <span class="number">4</span>,</span><br><span class="line">      <span class="attr">"jvm-uptime"</span>: <span class="number">145673203</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>응답받은 결과를 보면 host-name = member-1 , ip = 172.17.0.2 으로 출력된것을 보아 첫번째 Node의 RPC가 호출된것으로 보인다.</p>
+<p>사진3은 ODL의 로그인데 실제로 2번 Node 에서 Global rpc를 호출 했지만 실제로 응답한것은 1번 Node라는것을 확인 할 수 있다.</p>
+<p>다음으로 1번 Node를 강제로 죽여 Leader Node를 변경하여 보자.</p>
+<p><img src="/image/2017/03/사진4.png" alt=""></p>
+<p>[사진4]</p>
+<p>위 그림4를 보면 1번 Node의 ODL을 죽이면 자동으로 2,3번 Node로 1번 Node가 죽었다는 Notification이 날라가고 Leader 선출 과정을 거쳐 2번 Node가 Leader로 선출 되었음을 알 수 있다.</p>
+<p>3&#46;routed-rpc</p>
+<ul>
+<li><p>routed rpc의 동작방식은 global rpc와 거의 동일하다. 다른점이 있다면 instantiateServiceInstance메소드에서 RPC를 등록할때에 RpcMemberKey를 설정할수 있는데 routed-rpc를 호출할때 여기서 설정한 key 값을 이용해 호출을 할 수 있다.</p>
+</li>
+<li><p>routed-rpc 역시 Leader Node에서만 등록이되어 사용이 가능하고 호출은 어떤 노드에서나 가능하다.</p>
+</li>
+</ul>
+<p><img src="/image/2017/03/사진5.png" alt=""></p>
+<p>[사진5]</p>
+<p>링크 : <a href="https://wiki.opendaylight.org/view/OpenDaylight_OpenFlow_Plugin:Clustering_Singleton" target="_blank" rel="noopener">OpenDaylight OpenFlow Plugin:Clustering Singleton</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://osujin.github.io/2017/03/18/ODL(OpenDayLight)-기본-튜토리얼-#7_4-–-singletonsimple-RPC-Route-기능-설명/" data-id="cjfkqjpoe002yb2r6spu9274u" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/03/28/ODL에서-외부-라이브러리-사용하기/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            ODL에서 외부 라이브러리 사용하기
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/03/17/ODL(OpenDayLight)-기본-튜토리얼-#7_3-–-clustering-설정/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">ODL(OpenDayLight) 기본 튜토리얼 #7_3 – clustering 설정</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/04/04/hello-world/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/04/04/hello-world/" class="title">Hello World</a></p>
+                            <p class="item-date"><time datetime="2018-04-04T00:38:55.427Z" itemprop="datePublished">2018-04-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/01/16/mybatis-foreach를-이용해-insert-batch-처리하기/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/01/16/mybatis-foreach를-이용해-insert-batch-처리하기/" class="title">mybatis foreach를 이용해 insert batch 처리하기</a></p>
+                            <p class="item-date"><time datetime="2018-01-16T08:46:22.000Z" itemprop="datePublished">2018-01-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/13/java-threadpool-example/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2017/11/13/java-threadpool-example/" class="title">Java ThreadPool Example</a></p>
+                            <p class="item-date"><time datetime="2017-11-13T00:22:06.000Z" itemprop="datePublished">2017-11-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/09/20/spring-@Value-Annotation-사용법/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2017/09/20/spring-@Value-Annotation-사용법/" class="title">spring @Value Annotation 사용법</a></p>
+                            <p class="item-date"><time datetime="2017-09-20T02:21:32.000Z" itemprop="datePublished">2017-09-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/09/20/spring-boot-application.yml-column-mapping-사용-예제/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/image/2017/09/스크린샷-2017-09-20-오전-11.13.25.png)" alt="spring-boot application.yml column mapping 사용 예제" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2017/09/20/spring-boot-application.yml-column-mapping-사용-예제/" class="title">spring-boot application.yml column mapping 사용 예제</a></p>
+                            <p class="item-date"><time datetime="2017-09-20T02:14:45.000Z" itemprop="datePublished">2017-09-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IoT/">IoT</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenDayLight/">OpenDayLight</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/기타/">기타</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">4월 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">1월 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">11월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">6월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">5월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">4월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">3월 2017</a><span class="archive-list-count">13</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 sujin Oh</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://osujin.github.io/2017/03/18/ODL(OpenDayLight)-기본-튜토리얼-#7_4-–-singletonsimple-RPC-Route-기능-설명/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

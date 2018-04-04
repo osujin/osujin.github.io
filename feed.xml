@@ -39,8 +39,8 @@
   
   <entry>
     <title>mybatis foreach를 이용해 insert batch 처리하기</title>
-    <link href="https://osujin.github.io/2018/01/16/mybatis-foreach-eb-a5-bc-ec-9d-b4-ec-9a-a9-ed-95-b4-insert-batch-ec-b2-98-eb-a6-ac-ed-95-98-ea-b8-b0/"/>
-    <id>https://osujin.github.io/2018/01/16/mybatis-foreach-eb-a5-bc-ec-9d-b4-ec-9a-a9-ed-95-b4-insert-batch-ec-b2-98-eb-a6-ac-ed-95-98-ea-b8-b0/</id>
+    <link href="https://osujin.github.io/2018/01/16/mybatis-foreach%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-insert-batch-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0/"/>
+    <id>https://osujin.github.io/2018/01/16/mybatis-foreach를-이용해-insert-batch-처리하기/</id>
     <published>2018-01-16T08:46:22.000Z</published>
     <updated>2018-04-04T05:56:15.855Z</updated>
     
@@ -86,8 +86,8 @@
   
   <entry>
     <title>spring @Value Annotation 사용법</title>
-    <link href="https://osujin.github.io/2017/09/20/spring-value-annotation-ec-82-ac-ec-9a-a9-eb-b2-95/"/>
-    <id>https://osujin.github.io/2017/09/20/spring-value-annotation-ec-82-ac-ec-9a-a9-eb-b2-95/</id>
+    <link href="https://osujin.github.io/2017/09/20/spring-@Value-Annotation-%EC%82%AC%EC%9A%A9%EB%B2%95/"/>
+    <id>https://osujin.github.io/2017/09/20/spring-@Value-Annotation-사용법/</id>
     <published>2017-09-20T02:21:32.000Z</published>
     <updated>2018-04-04T05:54:35.119Z</updated>
     
@@ -110,8 +110,8 @@
   
   <entry>
     <title>spring-boot application.yml column mapping 사용 예제</title>
-    <link href="https://osujin.github.io/2017/09/20/spring-boot-application-yml-column-mapping-ec-82-ac-ec-9a-a9-ec-98-88-ec-a0-9c/"/>
-    <id>https://osujin.github.io/2017/09/20/spring-boot-application-yml-column-mapping-ec-82-ac-ec-9a-a9-ec-98-88-ec-a0-9c/</id>
+    <link href="https://osujin.github.io/2017/09/20/spring-boot-application.yml-column-mapping-%EC%82%AC%EC%9A%A9-%EC%98%88%EC%A0%9C/"/>
+    <id>https://osujin.github.io/2017/09/20/spring-boot-application.yml-column-mapping-사용-예제/</id>
     <published>2017-09-20T02:14:45.000Z</published>
     <updated>2018-04-04T05:58:56.858Z</updated>
     
@@ -134,8 +134,8 @@
   
   <entry>
     <title>spring-boot mybatis 연동 주의점</title>
-    <link href="https://osujin.github.io/2017/09/07/spring-boot-mybatis-ec-97-b0-eb-8f-99-ec-a3-bc-ec-9d-98-ec-a0-90/"/>
-    <id>https://osujin.github.io/2017/09/07/spring-boot-mybatis-ec-97-b0-eb-8f-99-ec-a3-bc-ec-9d-98-ec-a0-90/</id>
+    <link href="https://osujin.github.io/2017/09/07/spring-boot-mybatis-%EC%97%B0%EB%8F%99-%EC%A3%BC%EC%9D%98%EC%A0%90/"/>
+    <id>https://osujin.github.io/2017/09/07/spring-boot-mybatis-연동-주의점/</id>
     <published>2017-09-07T06:09:53.000Z</published>
     <updated>2018-04-04T06:01:25.484Z</updated>
     
@@ -159,8 +159,8 @@
   
   <entry>
     <title>Facebook Chatbot 과 Redis 활용</title>
-    <link href="https://osujin.github.io/2017/08/28/facebook-chatbot-ea-b3-bc-redis-ed-99-9c-ec-9a-a9/"/>
-    <id>https://osujin.github.io/2017/08/28/facebook-chatbot-ea-b3-bc-redis-ed-99-9c-ec-9a-a9/</id>
+    <link href="https://osujin.github.io/2017/08/28/Facebook-Chatbot%EA%B3%BC-Redis-%ED%99%9C%EC%9A%A9/"/>
+    <id>https://osujin.github.io/2017/08/28/Facebook-Chatbot과-Redis-활용/</id>
     <published>2017-08-28T05:17:07.000Z</published>
     <updated>2018-04-04T02:14:12.749Z</updated>
     
@@ -183,8 +183,8 @@
   
   <entry>
     <title>gitlab 관리자 비번 초기화 및 project limit 늘리기</title>
-    <link href="https://osujin.github.io/2017/07/18/gitlab-ea-b4-80-eb-a6-ac-ec-9e-90-eb-b9-84-eb-b2-88-ec-b4-88-ea-b8-b0-ed-99-94-eb-b0-8f-project-limit-eb-8a-98-eb-a6-ac-ea-b8-b0/"/>
-    <id>https://osujin.github.io/2017/07/18/gitlab-ea-b4-80-eb-a6-ac-ec-9e-90-eb-b9-84-eb-b2-88-ec-b4-88-ea-b8-b0-ed-99-94-eb-b0-8f-project-limit-eb-8a-98-eb-a6-ac-ea-b8-b0/</id>
+    <link href="https://osujin.github.io/2017/07/18/gitlab-%EA%B4%80%EB%A6%AC%EC%9E%90-%EB%B9%84%EB%B2%88-%EC%B4%88%EA%B8%B0%ED%99%94-%EB%B0%8F-project-limit-%EB%8A%98%EB%A6%AC%EA%B8%B0/"/>
+    <id>https://osujin.github.io/2017/07/18/gitlab-관리자-비번-초기화-및-project-limit-늘리기/</id>
     <published>2017-07-18T04:46:53.000Z</published>
     <updated>2018-04-04T06:11:34.885Z</updated>
     
@@ -210,8 +210,8 @@
   
   <entry>
     <title>Facebook Messenger와 Node js 를 이용하여 아두이노 조작하기</title>
-    <link href="https://osujin.github.io/2017/07/05/facebook-messenger-ec-99-80-node-js-eb-a5-bc-ec-9d-b4-ec-9a-a9-ed-95-98-ec-97-ac-ec-95-84-eb-91-90-ec-9d-b4-eb-85-b8-ec-a1-b0-ec-9e-91-ed-95-98-ea-b8-b0/"/>
-    <id>https://osujin.github.io/2017/07/05/facebook-messenger-ec-99-80-node-js-eb-a5-bc-ec-9d-b4-ec-9a-a9-ed-95-98-ec-97-ac-ec-95-84-eb-91-90-ec-9d-b4-eb-85-b8-ec-a1-b0-ec-9e-91-ed-95-98-ea-b8-b0/</id>
+    <link href="https://osujin.github.io/2017/07/05/Facebook-Messenger%EC%99%80-Node.js%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-%EC%95%84%EB%91%90%EC%9D%B4%EB%85%B8-%EC%A1%B0%EC%9E%91%ED%95%98%EA%B8%B0/"/>
+    <id>https://osujin.github.io/2017/07/05/Facebook-Messenger와-Node.js를-이용하여-아두이노-조작하기/</id>
     <published>2017-07-05T07:05:23.000Z</published>
     <updated>2018-04-04T06:04:47.767Z</updated>
     
@@ -233,33 +233,9 @@
   </entry>
   
   <entry>
-    <title>Synology NAS에서 예능 자동으로 다운받고 폴더별로 분류하기</title>
-    <link href="https://osujin.github.io/2017/06/12/synology-nas-ec-97-90-ec-84-9c-ec-98-88-eb-8a-a5-ec-9e-90-eb-8f-99-ec-9c-bc-eb-a1-9c-eb-8b-a4-ec-9a-b4-eb-b0-9b-ea-b3-a0-ed-8f-b4-eb-8d-94-eb-b3-84-eb-a1-9c-eb-b6-84-eb-a5-98-ed-95-98-ea-b8-b0/"/>
-    <id>https://osujin.github.io/2017/06/12/synology-nas-ec-97-90-ec-84-9c-ec-98-88-eb-8a-a5-ec-9e-90-eb-8f-99-ec-9c-bc-eb-a1-9c-eb-8b-a4-ec-9a-b4-eb-b0-9b-ea-b3-a0-ed-8f-b4-eb-8d-94-eb-b3-84-eb-a1-9c-eb-b6-84-eb-a5-98-ed-95-98-ea-b8-b0/</id>
-    <published>2017-06-12T00:41:59.000Z</published>
-    <updated>2018-04-04T06:06:57.268Z</updated>
-    
-    <content type="html"><![CDATA[<p>synology 토렌트 다운로드에 RSS 다운로드 기능이 있다는것은 알았지만 다운받고 또 일일이 수동으로 분류하는것이 번거러워 잘 사용하지는 않았다.</p><p>그런데 파일 자동분류 프로그램을 만들어 다운로드 폴더를 모니터링 하고 있다가 자동으로 해당 폴더로 영상을 옮겨주는 프로그램을 만들면 좋겠다는 생각이 들어 Node JS를 이용해 만들어 보았다.</p><p>먼저 RSS 이용방법은 RooT님의 블로그를 보고 참고하면 된다. <a href="http://blog.iroot.kr/62" target="_blank" rel="noopener">Synology NAS RSS 사용법</a></p><p>RSS를 이용하여 즐겨보는 예능을 자동으로 특정폴더로 다운받도록 예약을 걸어놓고 자동분류 프로그램을 돌리면 예능들이 자동으로 이름에 맞게 폴더로 이동된다.</p><p>Node js를 이용해서 만들다 보니 한글처리에 약간의 문제가 있었는데 파일명을 그대로 사용하지 말고 buffer로 감싸주어 변환시켜주니 한글이 깨지지 않고 그대로 출력되었다.</p><p>파일을 분류하는 방법은 영상에 있는 프로그램 제목과 폴더명을 맞추도록 했는데 파일명에서 . 과 공백으로 파일명을 잘라 일일이 비교를 하는 방법을 사용하였다.</p><p>예를들어 “[tvN] 코미디 빅리그.E170.170521.720p-NEXT.mp4” 이라는 파일이 있을때 이를 split 하면 아래와 같이 분류가 되는데<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[tvN]</span><br><span class="line">코미디</span><br><span class="line">빅리그</span><br><span class="line">E170</span><br><span class="line">170521</span><br><span class="line">720p-NEXT</span><br><span class="line">mp4</span><br></pre></td></tr></table></figure></p><p>node js의 fs 모듈을 이용해 특정 폴더를 모니터링하는 watcher를 만들고 새로운 파일이 감지되면 예능 폴더에 있는 폴더 리스트를 array로 가져와 위 파일명과 폴더명을 비교하여 일치하는 것이 있으면 해당 폴더로 이동시키도록 해보니 큰 문제 없이 정상 동작하였다.</p><p>아래는 소스코드이다.</p><p>그리고 damon 으로 뛰우기 위해 forever를 이용하여 기동하였다.</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> dataDir = <span class="string">'[예능 폴더]'</span>;</span><br><span class="line"><span class="keyword">var</span> moveDir = <span class="string">'[토렌트로 다운받은 폴더]'</span>;</span><br><span class="line"><span class="keyword">var</span> moveList = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> walkSync = <span class="function"><span class="keyword">function</span>(<span class="params">dir, filelist</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> fs = fs || <span class="built_in">require</span>(<span class="string">'fs'</span>),</span><br><span class="line">        files = fs.readdirSync(dir);</span><br><span class="line">    filelist = filelist || [];</span><br><span class="line">    files.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (fs.statSync(dir + <span class="string">'/'</span> + file).isDirectory()) &#123;</span><br><span class="line">            filelist = walkSync(dir + <span class="string">'/'</span> + file, filelist);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            filelist.push(file);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> files;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">fs.watch(dataDir, <span class="function"><span class="keyword">function</span>(<span class="params">event, filename</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> fileList = walkSync(moveDir,<span class="string">""</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> cName = Buffer(filename, <span class="string">'binary'</span>).toString();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> words = cName.split(<span class="regexp">/[\s.]+/</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(event);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(event == <span class="string">"rename"</span> &amp;&amp; moveList != cName )  &#123;</span><br><span class="line"></span><br><span class="line">        fileList.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">element</span>) </span>&#123;</span><br><span class="line">            words.some(<span class="function"><span class="keyword">function</span> (<span class="params">p1</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> index = element.indexOf(p1);</span><br><span class="line">                <span class="keyword">if</span>(index &gt; <span class="number">-1</span>)&#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(dataDir+cName, moveDir+element+<span class="string">"/"</span>+cName);</span><br><span class="line">                    fs.rename(dataDir+cName, moveDir+element+<span class="string">"/"</span>+cName,</span><br><span class="line">                        <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">                            <span class="keyword">if</span> (err) <span class="built_in">console</span>.error(err);</span><br><span class="line">                            <span class="built_in">console</span>.log(<span class="string">'renamed complete'</span>); &#125;);</span><br><span class="line"></span><br><span class="line">                    moveList = cName;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fileList = walkSync(moveDir,<span class="string">""</span>);</span><br><span class="line"><span class="built_in">console</span>.log(fileList)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;synology 토렌트 다운로드에 RSS 다운로드 기능이 있다는것은 알았지만 다운받고 또 일일이 수동으로 분류하는것이 번거러워 잘 사용하지는 않았다.&lt;/p&gt;
-&lt;p&gt;그런데 파일 자동분류 프로그램을 만들어 다운로드 폴더를 모니터링 하고 있다가 자동으
-      
-    
-    </summary>
-    
-      <category term="기타" scheme="https://osujin.github.io/categories/%EA%B8%B0%ED%83%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>HttpsURLConnection을 이용한 통신시 SSL 인증서 수동으로 지정하는 방법</title>
-    <link href="https://osujin.github.io/2017/06/09/httpsurlconnection-ec-9d-84-ec-9d-b4-ec-9a-a9-ed-95-9c-ed-86-b5-ec-8b-a0-ec-8b-9c-ssl-ec-9d-b8-ec-a6-9d-ec-84-9c-ec-88-98-eb-8f-99-ec-9c-bc-eb-a1-9c-ec-a7-80-ec-a0-95-ed-95-98-eb-8a-94-eb-b0-a9/"/>
-    <id>https://osujin.github.io/2017/06/09/httpsurlconnection-ec-9d-84-ec-9d-b4-ec-9a-a9-ed-95-9c-ed-86-b5-ec-8b-a0-ec-8b-9c-ssl-ec-9d-b8-ec-a6-9d-ec-84-9c-ec-88-98-eb-8f-99-ec-9c-bc-eb-a1-9c-ec-a7-80-ec-a0-95-ed-95-98-eb-8a-94-eb-b0-a9/</id>
+    <link href="https://osujin.github.io/2017/06/09/HttpsURLConnection%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%86%B5%EC%8B%A0%EC%8B%9C-SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EC%88%98%EB%8F%99%EC%9C%BC%EB%A1%9C-%EC%A7%80%EC%A0%95%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95/"/>
+    <id>https://osujin.github.io/2017/06/09/HttpsURLConnection을-이용한-통신시-SSL-인증서-수동으로-지정하는-방법/</id>
     <published>2017-06-09T00:58:27.000Z</published>
     <updated>2018-04-04T06:13:14.043Z</updated>
     
@@ -307,8 +283,8 @@
   
   <entry>
     <title>Java 8 병렬처리와 성능에 대해서</title>
-    <link href="https://osujin.github.io/2017/05/31/java-8-eb-b3-91-eb-a0-ac-ec-b2-98-eb-a6-ac-ec-99-80-ec-84-b1-eb-8a-a5-ec-97-90-eb-8c-80-ed-95-b4-ec-84-9c/"/>
-    <id>https://osujin.github.io/2017/05/31/java-8-eb-b3-91-eb-a0-ac-ec-b2-98-eb-a6-ac-ec-99-80-ec-84-b1-eb-8a-a5-ec-97-90-eb-8c-80-ed-95-b4-ec-84-9c/</id>
+    <link href="https://osujin.github.io/2017/05/31/Java-8-%EB%B3%91%EB%A0%AC%EC%B2%98%EB%A6%AC%EC%99%80-%EC%84%B1%EB%8A%A5%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C/"/>
+    <id>https://osujin.github.io/2017/05/31/Java-8-병렬처리와-성능에-대해서/</id>
     <published>2017-05-31T06:10:01.000Z</published>
     <updated>2018-04-04T05:53:27.749Z</updated>
     
@@ -331,8 +307,8 @@
   
   <entry>
     <title>Intel Edison firmware Update 실패시 후속 조치방법</title>
-    <link href="https://osujin.github.io/2017/04/11/intel-edison-firmware-update-ec-8b-a4-ed-8c-a8-ec-8b-9c-ed-9b-84-ec-86-8d-ec-a1-b0-ec-b9-98-eb-b0-a9-eb-b2-95/"/>
-    <id>https://osujin.github.io/2017/04/11/intel-edison-firmware-update-ec-8b-a4-ed-8c-a8-ec-8b-9c-ed-9b-84-ec-86-8d-ec-a1-b0-ec-b9-98-eb-b0-a9-eb-b2-95/</id>
+    <link href="https://osujin.github.io/2017/04/11/Intel-Edison-firmware-Update-%EC%8B%A4%ED%8C%A8%EC%8B%9C-%ED%9B%84%EC%86%8D-%EC%A1%B0%EC%B9%98%EB%B0%A9%EB%B2%95/"/>
+    <id>https://osujin.github.io/2017/04/11/Intel-Edison-firmware-Update-실패시-후속-조치방법/</id>
     <published>2017-04-11T02:39:25.000Z</published>
     <updated>2018-04-04T02:06:47.310Z</updated>
     
@@ -356,8 +332,8 @@
   
   <entry>
     <title>iftop 소스 설치</title>
-    <link href="https://osujin.github.io/2017/04/04/iftop-ec-86-8c-ec-8a-a4-ec-84-a4-ec-b9-98/"/>
-    <id>https://osujin.github.io/2017/04/04/iftop-ec-86-8c-ec-8a-a4-ec-84-a4-ec-b9-98/</id>
+    <link href="https://osujin.github.io/2017/04/04/iftop-%EC%86%8C%EC%8A%A4-%EC%84%A4%EC%B9%98/"/>
+    <id>https://osujin.github.io/2017/04/04/iftop-소스-설치/</id>
     <published>2017-04-04T02:06:52.000Z</published>
     <updated>2018-04-04T06:10:06.601Z</updated>
     
@@ -383,8 +359,8 @@
   
   <entry>
     <title>ODL karaf 에서 impl 모듈만 빌드해서 다시 띄우는 방법</title>
-    <link href="https://osujin.github.io/2017/03/28/odl-karaf-ec-97-90-ec-84-9c-impl-eb-aa-a8-eb-93-88-eb-a7-8c-eb-b9-8c-eb-93-9c-ed-95-b4-ec-84-9c-eb-8b-a4-ec-8b-9c-eb-9d-84-ec-9a-b0-eb-8a-94-eb-b0-a9-eb-b2-95/"/>
-    <id>https://osujin.github.io/2017/03/28/odl-karaf-ec-97-90-ec-84-9c-impl-eb-aa-a8-eb-93-88-eb-a7-8c-eb-b9-8c-eb-93-9c-ed-95-b4-ec-84-9c-eb-8b-a4-ec-8b-9c-eb-9d-84-ec-9a-b0-eb-8a-94-eb-b0-a9-eb-b2-95/</id>
+    <link href="https://osujin.github.io/2017/03/28/ODL-karaf-%EC%97%90%EC%84%9C-impl-%EB%AA%A8%EB%93%88%EB%A7%8C-%EB%B9%8C%EB%93%9C%ED%95%B4%EC%84%9C-%EB%8B%A4%EC%8B%9C-%EB%9D%84%EC%9A%B0%EB%8A%94-%EB%B0%A9%EB%B2%95/"/>
+    <id>https://osujin.github.io/2017/03/28/ODL-karaf-에서-impl-모듈만-빌드해서-다시-띄우는-방법/</id>
     <published>2017-03-28T04:39:03.000Z</published>
     <updated>2018-04-04T05:41:37.441Z</updated>
     
@@ -407,12 +383,12 @@
   
   <entry>
     <title>ODL에서 외부 라이브러리 사용하기</title>
-    <link href="https://osujin.github.io/2017/03/28/odl-ec-97-90-ec-84-9c-ec-99-b8-eb-b6-80-eb-9d-bc-ec-9d-b4-eb-b8-8c-eb-9f-ac-eb-a6-ac-ec-82-ac-ec-9a-a9-ed-95-98-ea-b8-b0/"/>
-    <id>https://osujin.github.io/2017/03/28/odl-ec-97-90-ec-84-9c-ec-99-b8-eb-b6-80-eb-9d-bc-ec-9d-b4-eb-b8-8c-eb-9f-ac-eb-a6-ac-ec-82-ac-ec-9a-a9-ed-95-98-ea-b8-b0/</id>
+    <link href="https://osujin.github.io/2017/03/28/ODL%EC%97%90%EC%84%9C-%EC%99%B8%EB%B6%80-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0/"/>
+    <id>https://osujin.github.io/2017/03/28/ODL에서-외부-라이브러리-사용하기/</id>
     <published>2017-03-28T04:27:09.000Z</published>
-    <updated>2018-04-04T02:06:47.310Z</updated>
+    <updated>2018-04-04T06:50:52.374Z</updated>
     
-    <content type="html"><![CDATA[<p>ODL SB plugin을 만들면서 외부 라이브러리를 거의 필수적으로 사용하게 되는데 karaf상에서 외부라이브러리를 사용하는 방식이 다소 복잡하여 정리를 하였다.</p><p>내가 필요한 라이브라리는 아래와 같다.</p><pre><code>import org.springframework.http.HttpMethod;import org.springframework.http.ResponseEntity;import org.springframework.http.client.ClientHttpRequest;import org.springframework.util.LinkedMultiValueMap;import org.springframework.util.MultiValueMap;import org.springframework.web.client.RestTemplate;import com.fasterxml.jackson.core.JsonProcessingException;import com.fasterxml.jackson.databind.JsonNode;import com.fasterxml.jackson.databind.ObjectMapper;</code></pre><p>위 라이브러리들은</p><blockquote><p>org.springframework<br>  com.fasterxml.jackson.core</p></blockquote><p>에 포함된 라이브러리 인데 기존 자바 프로젝트처럼 단순히 dependeny만 잡아준다고해서 karaf에서 bundle로 해당 SB plugin을 기동하려고 하면 라이브러리를 추가하라는 에러가 나온다.</p><p>그래서 OSGi Framework 에서 외부라이브러리를 embedded 해주는 apache felix를 pom.xml에 설정을 해주어야 정상적으로 사용이 가능하다.</p><p>위에 명시된 두개의 외부 라이브러리를 사용하기 위해 pom.xml에 dependency를 잡아주고 추가적으로 build 설정에 felix를 추가해주었다. 설정내용은 다음과 같다.</p><pre lang="xml"><build>    <plugins>      <plugin>        <groupid>org.apache.felix</groupid>        <artifactid>maven-bundle-plugin</artifactid>        <extensions>true</extensions>        <configuration>          <instructions>            <export-package>              org.springframework.*,              com.fasterxml.jackson.*            </export-package>            <import-package>              *;resolution:=optional            </import-package>            <embed-dependency>              jackson-databind;type=!pom;inline=false,              spring-web;type=!pom;inline=false            </embed-dependency>            <embed-transitive>              true            </embed-transitive>            <include-resource>              {maven-resources}            </include-resource>            <_removeheaders>              Embed-Dependency,Include-Resource            </_removeheaders>          </instructions>        </configuration>      </plugin>    </plugins>  </build></pre><p>각 테그들에 대한 내용은 아래 문서를 보고 확인을 해봐야 할것 같다.</p><p><a href="http://felix.apache.org/documentation/subprojects/apache-felix-maven-bundle-plugin-bnd.html" target="_blank" rel="noopener">Apache Felix Maven Bundle Plugin (BND) Documentation</a></p>]]></content>
+    <content type="html"><![CDATA[<p>ODL SB plugin을 만들면서 외부 라이브러리를 거의 필수적으로 사용하게 되는데 karaf상에서 외부라이브러리를 사용하는 방식이 다소 복잡하여 정리를 하였다.</p><p>내가 필요한 라이브라리는 아래와 같다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import org.springframework.http.HttpMethod;</span><br><span class="line">import org.springframework.http.ResponseEntity;</span><br><span class="line">import org.springframework.http.client.ClientHttpRequest;</span><br><span class="line">import org.springframework.util.LinkedMultiValueMap;</span><br><span class="line">import org.springframework.util.MultiValueMap;</span><br><span class="line">import org.springframework.web.client.RestTemplate;</span><br><span class="line">import com.fasterxml.jackson.core.JsonProcessingException;</span><br><span class="line">import com.fasterxml.jackson.databind.JsonNode;</span><br><span class="line">import com.fasterxml.jackson.databind.ObjectMapper;</span><br></pre></td></tr></table></figure><p>위 라이브러리들은</p><ul><li>org.springframework</li><li>com.fasterxml.jackson.core</li></ul><p>에 포함된 라이브러리 인데 기존 자바 프로젝트처럼 단순히 dependeny만 잡아준다고해서 karaf에서 bundle로 해당 SB plugin을 기동하려고 하면 라이브러리를 추가하라는 에러가 나온다.</p><p>그래서 OSGi Framework 에서 외부라이브러리를 embedded 해주는 apache felix를 pom.xml에 설정을 해주어야 정상적으로 사용이 가능하다.</p><p>위에 명시된 두개의 외부 라이브러리를 사용하기 위해 pom.xml에 dependency를 잡아주고 추가적으로 build 설정에 felix를 추가해주었다. 설정내용은 다음과 같다.</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.felix<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-bundle-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">extensions</span>&gt;</span>true<span class="tag">&lt;/<span class="name">extensions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">instructions</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Export-Package</span>&gt;</span></span><br><span class="line">              org.springframework.*,</span><br><span class="line">              com.fasterxml.jackson.*</span><br><span class="line">            <span class="tag">&lt;/<span class="name">Export-Package</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Import-Package</span>&gt;</span></span><br><span class="line">              *;resolution:=optional</span><br><span class="line">            <span class="tag">&lt;/<span class="name">Import-Package</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Embed-Dependency</span>&gt;</span></span><br><span class="line">              jackson-databind;type=!pom;inline=false,</span><br><span class="line">              spring-web;type=!pom;inline=false</span><br><span class="line">            <span class="tag">&lt;/<span class="name">Embed-Dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Embed-Transitive</span>&gt;</span></span><br><span class="line">              true</span><br><span class="line">            <span class="tag">&lt;/<span class="name">Embed-Transitive</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Include-Resource</span>&gt;</span></span><br><span class="line">              &#123;maven-resources&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">Include-Resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">_removeheaders</span>&gt;</span></span><br><span class="line">              Embed-Dependency,Include-Resource</span><br><span class="line">            <span class="tag">&lt;/<span class="name">_removeheaders</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">instructions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure><p>각 테그들에 대한 내용은 아래 문서를 보고 확인을 해봐야 할것 같다.</p><p><a href="http://felix.apache.org/documentation/subprojects/apache-felix-maven-bundle-plugin-bnd.html" target="_blank" rel="noopener">Apache Felix Maven Bundle Plugin (BND) Documentation</a></p>]]></content>
     
     <summary type="html">
     
@@ -420,7 +396,7 @@
       
         &lt;p&gt;ODL SB plugin을 만들면서 외부 라이브러리를 거의 필수적으로 사용하게 되는데 karaf상에서 외부라이브러리를 사용하는 방식이 다소 복잡하여 정리를 하였다.&lt;/p&gt;
 &lt;p&gt;내가 필요한 라이브라리는 아래와 같다.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;i
+&lt;figure clas
       
     
     </summary>
@@ -432,8 +408,8 @@
   
   <entry>
     <title>ODL(OpenDayLight) 기본 튜토리얼 #7_4 – singletonsimple RPC Route 기능 설명</title>
-    <link href="https://osujin.github.io/2017/03/18/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-3-singletonsimple-rpc-route-ea-b8-b0-eb-8a-a5-ec-84-a4-eb-aa-85/"/>
-    <id>https://osujin.github.io/2017/03/18/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-3-singletonsimple-rpc-route-ea-b8-b0-eb-8a-a5-ec-84-a4-eb-aa-85/</id>
+    <link href="https://osujin.github.io/2017/03/18/ODL(OpenDayLight)-%EA%B8%B0%EB%B3%B8-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-#7_4-%E2%80%93-singletonsimple-RPC-Route-%EA%B8%B0%EB%8A%A5-%EC%84%A4%EB%AA%85/"/>
+    <id>https://osujin.github.io/2017/03/18/ODL(OpenDayLight)-기본-튜토리얼-#7_4-–-singletonsimple-RPC-Route-기능-설명/</id>
     <published>2017-03-18T06:08:10.000Z</published>
     <updated>2018-04-04T05:51:32.862Z</updated>
     
@@ -457,8 +433,8 @@
   
   <entry>
     <title>ODL(OpenDayLight) 기본 튜토리얼 #7_3 – clustering 설정</title>
-    <link href="https://osujin.github.io/2017/03/17/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-4-clustering-ec-84-a4-ec-a0-95/"/>
-    <id>https://osujin.github.io/2017/03/17/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-4-clustering-ec-84-a4-ec-a0-95/</id>
+    <link href="https://osujin.github.io/2017/03/17/ODL(OpenDayLight)-%EA%B8%B0%EB%B3%B8-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-#7_3-%E2%80%93-clustering-%EC%84%A4%EC%A0%95/"/>
+    <id>https://osujin.github.io/2017/03/17/ODL(OpenDayLight)-기본-튜토리얼-#7_3-–-clustering-설정/</id>
     <published>2017-03-17T08:11:02.000Z</published>
     <updated>2018-04-04T05:47:33.892Z</updated>
     
@@ -482,8 +458,8 @@
   
   <entry>
     <title>ODL(OpenDayLight) 기본 튜토리얼 #7_2 – ODL Clustering 소스 배포</title>
-    <link href="https://osujin.github.io/2017/03/13/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-1-odl-clustering-ec-86-8c-ec-8a-a4-eb-b0-b0-ed-8f-ac/"/>
-    <id>https://osujin.github.io/2017/03/13/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-1-odl-clustering-ec-86-8c-ec-8a-a4-eb-b0-b0-ed-8f-ac/</id>
+    <link href="https://osujin.github.io/2017/03/13/ODL(OpenDayLight)-%EA%B8%B0%EB%B3%B8-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-#7_2-%E2%80%93-ODL-Clustering-%EC%86%8C%EC%8A%A4-%EB%B0%B0%ED%8F%AC/"/>
+    <id>https://osujin.github.io/2017/03/13/ODL(OpenDayLight)-기본-튜토리얼-#7_2-–-ODL-Clustering-소스-배포/</id>
     <published>2017-03-13T06:35:22.000Z</published>
     <updated>2018-04-04T05:37:24.254Z</updated>
     
@@ -496,6 +472,32 @@
         &lt;p&gt;이번에는 앞서 구축한 3개의 docker instance에 소스를 배포하고 기동하는 방법이다.&lt;/p&gt;
 &lt;p&gt;테스트 소스는 coretutorials/clustering 하위에 있는 singletonsimple 으로 하겠다.&lt;/p&gt;
 &lt;p&gt;먼저 sin
+      
+    
+    </summary>
+    
+      <category term="OpenDayLight" scheme="https://osujin.github.io/categories/OpenDayLight/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ODL(OpenDayLight) 기본 튜토리얼 #7_1 – ODL Cluster 환경 구축</title>
+    <link href="https://osujin.github.io/2017/03/13/ODL(OpenDayLight)-%EA%B8%B0%EB%B3%B8-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-#7_1-%E2%80%93-ODL-Cluster-%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95/"/>
+    <id>https://osujin.github.io/2017/03/13/ODL(OpenDayLight)-기본-튜토리얼-#7_1-–-ODL-Cluster-환경-구축/</id>
+    <published>2017-03-13T05:44:04.000Z</published>
+    <updated>2018-04-04T05:35:11.645Z</updated>
+    
+    <content type="html"><![CDATA[<p>3개의 가상 Host를 이용하여 ODL cluster를 테스트 할수 있는 환경 구축해보도록 한다.</p><p>테스트에 사용된 자료는 OpenDayLight Core Tutorials 이다. 다운 받도록 하자.</p><ul><li>git clone <a href="https://git.opendaylight.org/gerrit/coretutorials.git" target="_blank" rel="noopener">https://git.opendaylight.org/gerrit/coretutorials.git</a></li></ul><p>소스를 다운받으면 <strong>clustering</strong> 폴더 안에</p><ul><li>script</li><li>shardingsimple</li><li>singletonhs</li><li>singletonsimple</li><li>src</li></ul><p>위와 같이 3개의 Maven 프로젝트가 있는데 이중 script 폴더는 cluster 환경을 구축하고 소스를 배포하는데 필요한 스크립트와 메뉴얼이 있고 나머지 3개의 폴더는 각각 cluster를 활용한 프로젝트이다.(src 폴더는 무시하도록하자)</p><p>지금부터는 scipts/site/asciidoc 폴더에 있는 scripts-user-manual.adoc 파일을 기반으로 설명하도록 하겠다.</p><p>scripts-user-manual.adoc 파일을 보면 docker를 이용하여 3개의 가상 호스트를 띄우고 ansible을 이용하여 컴파일된 소스를 각각의 호스트에 자동으로 배포하는 방법이 설명되어 있다.</p><p><strong>1. Docker 를 이용하여 3개의 Host 띄우기</strong></p><p>당연한 얘기지만 일단 google 검색을 이용하여 docker를 설치한뒤 다음 명령어들을 입력해줍니다. </p><p>docker image는 ubuntu가 설치 됩니다. 작업할때는 root 로 하였는데 일반계정으로 작업 하고 싶으시면 docker 권한 설정을 하시면 됩니다.</p><p>필수사항 : jre 1.8</p><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root # cd coretutorials/clustering/scripts/node</span><br><span class="line"> //git 에서 다운받은 소스에 포함도니 docker 생성 파일을 이용하기 위해 </span><br><span class="line">root # docker build -t clustering/odlbase:v1.1 .  </span><br><span class="line"> //docker container 생성 </span><br><span class="line">root # docker images</span><br><span class="line"></span><br><span class="line"> ex.) [root@ODL-Cluster#1 ~]# docker images REPOSITORY TAG IMAGE ID CREATED SIZE   </span><br><span class="line">      clustering/odlbase v1.1 be2bcc26a885 4 days ago 518 MB </span><br><span class="line">      ubuntu 16.04 0ef2e08ed3fa 13 days ago 130 MB</span><br></pre></td></tr></table></figure><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">foo@bar:~$ whoami</span><br><span class="line">foo</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root # docker save -o odl-base.tar clustering/odlbase:v1.1</span><br><span class="line">//container 저장</span><br><span class="line">root # docker load -i odl-base.tar</span><br><span class="line">//위에서 저장한 docker container 가 재대로 생성이 되는지 확인하기 위해</span><br><span class="line">root # docker run -d –name member-1 -h member-1 clustering/odlbase:v1.1</span><br><span class="line">//3개의 인스턴트 실행</span><br><span class="line">root # docker run -d –name member-2 -h member-2 clustering/odlbase:v1.1 # docker run -d –name member-3 -h member-3 clustering/odlbase:v1.1</span><br><span class="line">root # docker ps</span><br><span class="line">// docker instance 실행 확인</span><br></pre></td></tr></table></figure><p>여기까지 문제 없이 했다면 3개의 docker instance가 떠있을것이다.</p><p>각 instance에 접속하는 방법은 ssh <a href="mailto:root@172.17.0.2" target="_blank" rel="noopener">root@172.17.0.2</a> ssh <a href="mailto:root@172.17.0.3" target="_blank" rel="noopener">root@172.17.0.3</a> ssh <a href="mailto:root@172.17.0.4" target="_blank" rel="noopener">root@172.17.0.4</a> 으로 비밀번호는 <strong>docker123</strong> 이다.</p><p>다음으로 ssh인증키 설정이다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">인증키 생성 방법</span><br><span class="line">$ ssh-keygen -t rsa</span><br><span class="line">//id_rsa.pub , id_rsa 파일 생성</span><br></pre></td></tr></table></figure><p>docker를 설치한 호스트의 ~/.ssh/authorized_keys에 위에서 실행한 3개의 docker instance의 id_rsa.pub 파일을 복사해준다.</p><ul><li>ssh-copy-id &lt;username&#62;@&lt;host&#62;</li></ul><p>혹은 수동으로 직접 id_rsa.pub 파일을 authorized_keys에 등록해주어도 된다.</p><ul><li>docker host에는 3개 instance 의 id_rsa.pub 파일을 등록해주면 되고 instance 3개에는 docker host의 id_rsa.pub 파일을 등록해주면 된다.</li></ul><p>여기까지 ODL clustering 을 실행 할 수 있는 환경설정이다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;3개의 가상 Host를 이용하여 ODL cluster를 테스트 할수 있는 환경 구축해보도록 한다.&lt;/p&gt;
+&lt;p&gt;테스트에 사용된 자료는 OpenDayLight Core Tutorials 이다. 다운 받도록 하자.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;git cl
       
     
     </summary>
