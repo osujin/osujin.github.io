@@ -2,12 +2,12 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <sitemap>
-        <loc>http://yoursite.com/post-sitemap.xml</loc>
+        <loc>https://osujin.github.io/post-sitemap.xml</loc>
         <lastmod>2018-04-04T06:13:14.043Z</lastmod>
     </sitemap>
 
     <sitemap>
-        <loc>http://yoursite.com/category-sitemap.xml</loc>
+        <loc>https://osujin.github.io/category-sitemap.xml</loc>
         <lastmod>2018-04-04T05:51:32.862Z</lastmod>
     </sitemap>
 

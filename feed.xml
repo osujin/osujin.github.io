@@ -5,9 +5,9 @@
   <subtitle>MemoryCalendar</subtitle>
   <link href="/feed.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://osujin.github.io/"/>
   <updated>2018-04-04T00:38:55.427Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://osujin.github.io/</id>
   
   <author>
     <name>sujin Oh</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2018/04/04/hello-world/"/>
-    <id>http://yoursite.com/2018/04/04/hello-world/</id>
+    <link href="https://osujin.github.io/2018/04/04/hello-world/"/>
+    <id>https://osujin.github.io/2018/04/04/hello-world/</id>
     <published>2018-04-04T00:38:55.427Z</published>
     <updated>2018-04-04T00:38:55.427Z</updated>
     
@@ -39,8 +39,8 @@
   
   <entry>
     <title>mybatis foreach를 이용해 insert batch 처리하기</title>
-    <link href="http://yoursite.com/2018/01/16/mybatis-foreach-eb-a5-bc-ec-9d-b4-ec-9a-a9-ed-95-b4-insert-batch-ec-b2-98-eb-a6-ac-ed-95-98-ea-b8-b0/"/>
-    <id>http://yoursite.com/2018/01/16/mybatis-foreach-eb-a5-bc-ec-9d-b4-ec-9a-a9-ed-95-b4-insert-batch-ec-b2-98-eb-a6-ac-ed-95-98-ea-b8-b0/</id>
+    <link href="https://osujin.github.io/2018/01/16/mybatis-foreach-eb-a5-bc-ec-9d-b4-ec-9a-a9-ed-95-b4-insert-batch-ec-b2-98-eb-a6-ac-ed-95-98-ea-b8-b0/"/>
+    <id>https://osujin.github.io/2018/01/16/mybatis-foreach-eb-a5-bc-ec-9d-b4-ec-9a-a9-ed-95-b4-insert-batch-ec-b2-98-eb-a6-ac-ed-95-98-ea-b8-b0/</id>
     <published>2018-01-16T08:46:22.000Z</published>
     <updated>2018-04-04T05:56:15.855Z</updated>
     
@@ -56,15 +56,15 @@
     
     </summary>
     
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+      <category term="Java" scheme="https://osujin.github.io/categories/Java/"/>
     
     
   </entry>
   
   <entry>
     <title>Java ThreadPool Example</title>
-    <link href="http://yoursite.com/2017/11/13/java-threadpool-example/"/>
-    <id>http://yoursite.com/2017/11/13/java-threadpool-example/</id>
+    <link href="https://osujin.github.io/2017/11/13/java-threadpool-example/"/>
+    <id>https://osujin.github.io/2017/11/13/java-threadpool-example/</id>
     <published>2017-11-13T00:22:06.000Z</published>
     <updated>2018-04-04T05:55:11.275Z</updated>
     
@@ -79,15 +79,15 @@
     
     </summary>
     
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+      <category term="Java" scheme="https://osujin.github.io/categories/Java/"/>
     
     
   </entry>
   
   <entry>
     <title>spring @Value Annotation 사용법</title>
-    <link href="http://yoursite.com/2017/09/20/spring-value-annotation-ec-82-ac-ec-9a-a9-eb-b2-95/"/>
-    <id>http://yoursite.com/2017/09/20/spring-value-annotation-ec-82-ac-ec-9a-a9-eb-b2-95/</id>
+    <link href="https://osujin.github.io/2017/09/20/spring-value-annotation-ec-82-ac-ec-9a-a9-eb-b2-95/"/>
+    <id>https://osujin.github.io/2017/09/20/spring-value-annotation-ec-82-ac-ec-9a-a9-eb-b2-95/</id>
     <published>2017-09-20T02:21:32.000Z</published>
     <updated>2018-04-04T05:54:35.119Z</updated>
     
@@ -103,15 +103,15 @@
     
     </summary>
     
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+      <category term="Java" scheme="https://osujin.github.io/categories/Java/"/>
     
     
   </entry>
   
   <entry>
     <title>spring-boot application.yml column mapping 사용 예제</title>
-    <link href="http://yoursite.com/2017/09/20/spring-boot-application-yml-column-mapping-ec-82-ac-ec-9a-a9-ec-98-88-ec-a0-9c/"/>
-    <id>http://yoursite.com/2017/09/20/spring-boot-application-yml-column-mapping-ec-82-ac-ec-9a-a9-ec-98-88-ec-a0-9c/</id>
+    <link href="https://osujin.github.io/2017/09/20/spring-boot-application-yml-column-mapping-ec-82-ac-ec-9a-a9-ec-98-88-ec-a0-9c/"/>
+    <id>https://osujin.github.io/2017/09/20/spring-boot-application-yml-column-mapping-ec-82-ac-ec-9a-a9-ec-98-88-ec-a0-9c/</id>
     <published>2017-09-20T02:14:45.000Z</published>
     <updated>2018-04-04T05:58:56.858Z</updated>
     
@@ -127,15 +127,15 @@
     
     </summary>
     
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+      <category term="Java" scheme="https://osujin.github.io/categories/Java/"/>
     
     
   </entry>
   
   <entry>
     <title>spring-boot mybatis 연동 주의점</title>
-    <link href="http://yoursite.com/2017/09/07/spring-boot-mybatis-ec-97-b0-eb-8f-99-ec-a3-bc-ec-9d-98-ec-a0-90/"/>
-    <id>http://yoursite.com/2017/09/07/spring-boot-mybatis-ec-97-b0-eb-8f-99-ec-a3-bc-ec-9d-98-ec-a0-90/</id>
+    <link href="https://osujin.github.io/2017/09/07/spring-boot-mybatis-ec-97-b0-eb-8f-99-ec-a3-bc-ec-9d-98-ec-a0-90/"/>
+    <id>https://osujin.github.io/2017/09/07/spring-boot-mybatis-ec-97-b0-eb-8f-99-ec-a3-bc-ec-9d-98-ec-a0-90/</id>
     <published>2017-09-07T06:09:53.000Z</published>
     <updated>2018-04-04T06:01:25.484Z</updated>
     
@@ -152,15 +152,15 @@
     
     </summary>
     
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+      <category term="Java" scheme="https://osujin.github.io/categories/Java/"/>
     
     
   </entry>
   
   <entry>
     <title>Facebook Chatbot 과 Redis 활용</title>
-    <link href="http://yoursite.com/2017/08/28/facebook-chatbot-ea-b3-bc-redis-ed-99-9c-ec-9a-a9/"/>
-    <id>http://yoursite.com/2017/08/28/facebook-chatbot-ea-b3-bc-redis-ed-99-9c-ec-9a-a9/</id>
+    <link href="https://osujin.github.io/2017/08/28/facebook-chatbot-ea-b3-bc-redis-ed-99-9c-ec-9a-a9/"/>
+    <id>https://osujin.github.io/2017/08/28/facebook-chatbot-ea-b3-bc-redis-ed-99-9c-ec-9a-a9/</id>
     <published>2017-08-28T05:17:07.000Z</published>
     <updated>2018-04-04T02:14:12.749Z</updated>
     
@@ -176,15 +176,15 @@
     
     </summary>
     
-      <category term="IoT" scheme="http://yoursite.com/categories/IoT/"/>
+      <category term="IoT" scheme="https://osujin.github.io/categories/IoT/"/>
     
     
   </entry>
   
   <entry>
     <title>gitlab 관리자 비번 초기화 및 project limit 늘리기</title>
-    <link href="http://yoursite.com/2017/07/18/gitlab-ea-b4-80-eb-a6-ac-ec-9e-90-eb-b9-84-eb-b2-88-ec-b4-88-ea-b8-b0-ed-99-94-eb-b0-8f-project-limit-eb-8a-98-eb-a6-ac-ea-b8-b0/"/>
-    <id>http://yoursite.com/2017/07/18/gitlab-ea-b4-80-eb-a6-ac-ec-9e-90-eb-b9-84-eb-b2-88-ec-b4-88-ea-b8-b0-ed-99-94-eb-b0-8f-project-limit-eb-8a-98-eb-a6-ac-ea-b8-b0/</id>
+    <link href="https://osujin.github.io/2017/07/18/gitlab-ea-b4-80-eb-a6-ac-ec-9e-90-eb-b9-84-eb-b2-88-ec-b4-88-ea-b8-b0-ed-99-94-eb-b0-8f-project-limit-eb-8a-98-eb-a6-ac-ea-b8-b0/"/>
+    <id>https://osujin.github.io/2017/07/18/gitlab-ea-b4-80-eb-a6-ac-ec-9e-90-eb-b9-84-eb-b2-88-ec-b4-88-ea-b8-b0-ed-99-94-eb-b0-8f-project-limit-eb-8a-98-eb-a6-ac-ea-b8-b0/</id>
     <published>2017-07-18T04:46:53.000Z</published>
     <updated>2018-04-04T06:11:34.885Z</updated>
     
@@ -203,15 +203,15 @@
     
     </summary>
     
-      <category term="기타" scheme="http://yoursite.com/categories/%EA%B8%B0%ED%83%80/"/>
+      <category term="기타" scheme="https://osujin.github.io/categories/%EA%B8%B0%ED%83%80/"/>
     
     
   </entry>
   
   <entry>
     <title>Facebook Messenger와 Node js 를 이용하여 아두이노 조작하기</title>
-    <link href="http://yoursite.com/2017/07/05/facebook-messenger-ec-99-80-node-js-eb-a5-bc-ec-9d-b4-ec-9a-a9-ed-95-98-ec-97-ac-ec-95-84-eb-91-90-ec-9d-b4-eb-85-b8-ec-a1-b0-ec-9e-91-ed-95-98-ea-b8-b0/"/>
-    <id>http://yoursite.com/2017/07/05/facebook-messenger-ec-99-80-node-js-eb-a5-bc-ec-9d-b4-ec-9a-a9-ed-95-98-ec-97-ac-ec-95-84-eb-91-90-ec-9d-b4-eb-85-b8-ec-a1-b0-ec-9e-91-ed-95-98-ea-b8-b0/</id>
+    <link href="https://osujin.github.io/2017/07/05/facebook-messenger-ec-99-80-node-js-eb-a5-bc-ec-9d-b4-ec-9a-a9-ed-95-98-ec-97-ac-ec-95-84-eb-91-90-ec-9d-b4-eb-85-b8-ec-a1-b0-ec-9e-91-ed-95-98-ea-b8-b0/"/>
+    <id>https://osujin.github.io/2017/07/05/facebook-messenger-ec-99-80-node-js-eb-a5-bc-ec-9d-b4-ec-9a-a9-ed-95-98-ec-97-ac-ec-95-84-eb-91-90-ec-9d-b4-eb-85-b8-ec-a1-b0-ec-9e-91-ed-95-98-ea-b8-b0/</id>
     <published>2017-07-05T07:05:23.000Z</published>
     <updated>2018-04-04T06:04:47.767Z</updated>
     
@@ -227,15 +227,15 @@
     
     </summary>
     
-      <category term="IoT" scheme="http://yoursite.com/categories/IoT/"/>
+      <category term="IoT" scheme="https://osujin.github.io/categories/IoT/"/>
     
     
   </entry>
   
   <entry>
     <title>Synology NAS에서 예능 자동으로 다운받고 폴더별로 분류하기</title>
-    <link href="http://yoursite.com/2017/06/12/synology-nas-ec-97-90-ec-84-9c-ec-98-88-eb-8a-a5-ec-9e-90-eb-8f-99-ec-9c-bc-eb-a1-9c-eb-8b-a4-ec-9a-b4-eb-b0-9b-ea-b3-a0-ed-8f-b4-eb-8d-94-eb-b3-84-eb-a1-9c-eb-b6-84-eb-a5-98-ed-95-98-ea-b8-b0/"/>
-    <id>http://yoursite.com/2017/06/12/synology-nas-ec-97-90-ec-84-9c-ec-98-88-eb-8a-a5-ec-9e-90-eb-8f-99-ec-9c-bc-eb-a1-9c-eb-8b-a4-ec-9a-b4-eb-b0-9b-ea-b3-a0-ed-8f-b4-eb-8d-94-eb-b3-84-eb-a1-9c-eb-b6-84-eb-a5-98-ed-95-98-ea-b8-b0/</id>
+    <link href="https://osujin.github.io/2017/06/12/synology-nas-ec-97-90-ec-84-9c-ec-98-88-eb-8a-a5-ec-9e-90-eb-8f-99-ec-9c-bc-eb-a1-9c-eb-8b-a4-ec-9a-b4-eb-b0-9b-ea-b3-a0-ed-8f-b4-eb-8d-94-eb-b3-84-eb-a1-9c-eb-b6-84-eb-a5-98-ed-95-98-ea-b8-b0/"/>
+    <id>https://osujin.github.io/2017/06/12/synology-nas-ec-97-90-ec-84-9c-ec-98-88-eb-8a-a5-ec-9e-90-eb-8f-99-ec-9c-bc-eb-a1-9c-eb-8b-a4-ec-9a-b4-eb-b0-9b-ea-b3-a0-ed-8f-b4-eb-8d-94-eb-b3-84-eb-a1-9c-eb-b6-84-eb-a5-98-ed-95-98-ea-b8-b0/</id>
     <published>2017-06-12T00:41:59.000Z</published>
     <updated>2018-04-04T06:06:57.268Z</updated>
     
@@ -251,15 +251,15 @@
     
     </summary>
     
-      <category term="기타" scheme="http://yoursite.com/categories/%EA%B8%B0%ED%83%80/"/>
+      <category term="기타" scheme="https://osujin.github.io/categories/%EA%B8%B0%ED%83%80/"/>
     
     
   </entry>
   
   <entry>
     <title>HttpsURLConnection을 이용한 통신시 SSL 인증서 수동으로 지정하는 방법</title>
-    <link href="http://yoursite.com/2017/06/09/httpsurlconnection-ec-9d-84-ec-9d-b4-ec-9a-a9-ed-95-9c-ed-86-b5-ec-8b-a0-ec-8b-9c-ssl-ec-9d-b8-ec-a6-9d-ec-84-9c-ec-88-98-eb-8f-99-ec-9c-bc-eb-a1-9c-ec-a7-80-ec-a0-95-ed-95-98-eb-8a-94-eb-b0-a9/"/>
-    <id>http://yoursite.com/2017/06/09/httpsurlconnection-ec-9d-84-ec-9d-b4-ec-9a-a9-ed-95-9c-ed-86-b5-ec-8b-a0-ec-8b-9c-ssl-ec-9d-b8-ec-a6-9d-ec-84-9c-ec-88-98-eb-8f-99-ec-9c-bc-eb-a1-9c-ec-a7-80-ec-a0-95-ed-95-98-eb-8a-94-eb-b0-a9/</id>
+    <link href="https://osujin.github.io/2017/06/09/httpsurlconnection-ec-9d-84-ec-9d-b4-ec-9a-a9-ed-95-9c-ed-86-b5-ec-8b-a0-ec-8b-9c-ssl-ec-9d-b8-ec-a6-9d-ec-84-9c-ec-88-98-eb-8f-99-ec-9c-bc-eb-a1-9c-ec-a7-80-ec-a0-95-ed-95-98-eb-8a-94-eb-b0-a9/"/>
+    <id>https://osujin.github.io/2017/06/09/httpsurlconnection-ec-9d-84-ec-9d-b4-ec-9a-a9-ed-95-9c-ed-86-b5-ec-8b-a0-ec-8b-9c-ssl-ec-9d-b8-ec-a6-9d-ec-84-9c-ec-88-98-eb-8f-99-ec-9c-bc-eb-a1-9c-ec-a7-80-ec-a0-95-ed-95-98-eb-8a-94-eb-b0-a9/</id>
     <published>2017-06-09T00:58:27.000Z</published>
     <updated>2018-04-04T06:13:14.043Z</updated>
     
@@ -276,15 +276,15 @@
     
     </summary>
     
-      <category term="기타" scheme="http://yoursite.com/categories/%EA%B8%B0%ED%83%80/"/>
+      <category term="기타" scheme="https://osujin.github.io/categories/%EA%B8%B0%ED%83%80/"/>
     
     
   </entry>
   
   <entry>
     <title>java8 Default method</title>
-    <link href="http://yoursite.com/2017/06/01/java8-default-method/"/>
-    <id>http://yoursite.com/2017/06/01/java8-default-method/</id>
+    <link href="https://osujin.github.io/2017/06/01/java8-default-method/"/>
+    <id>https://osujin.github.io/2017/06/01/java8-default-method/</id>
     <published>2017-06-01T01:16:53.000Z</published>
     <updated>2018-04-04T05:59:56.984Z</updated>
     
@@ -300,15 +300,15 @@
     
     </summary>
     
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+      <category term="Java" scheme="https://osujin.github.io/categories/Java/"/>
     
     
   </entry>
   
   <entry>
     <title>Java 8 병렬처리와 성능에 대해서</title>
-    <link href="http://yoursite.com/2017/05/31/java-8-eb-b3-91-eb-a0-ac-ec-b2-98-eb-a6-ac-ec-99-80-ec-84-b1-eb-8a-a5-ec-97-90-eb-8c-80-ed-95-b4-ec-84-9c/"/>
-    <id>http://yoursite.com/2017/05/31/java-8-eb-b3-91-eb-a0-ac-ec-b2-98-eb-a6-ac-ec-99-80-ec-84-b1-eb-8a-a5-ec-97-90-eb-8c-80-ed-95-b4-ec-84-9c/</id>
+    <link href="https://osujin.github.io/2017/05/31/java-8-eb-b3-91-eb-a0-ac-ec-b2-98-eb-a6-ac-ec-99-80-ec-84-b1-eb-8a-a5-ec-97-90-eb-8c-80-ed-95-b4-ec-84-9c/"/>
+    <id>https://osujin.github.io/2017/05/31/java-8-eb-b3-91-eb-a0-ac-ec-b2-98-eb-a6-ac-ec-99-80-ec-84-b1-eb-8a-a5-ec-97-90-eb-8c-80-ed-95-b4-ec-84-9c/</id>
     <published>2017-05-31T06:10:01.000Z</published>
     <updated>2018-04-04T05:53:27.749Z</updated>
     
@@ -324,15 +324,15 @@
     
     </summary>
     
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+      <category term="Java" scheme="https://osujin.github.io/categories/Java/"/>
     
     
   </entry>
   
   <entry>
     <title>Intel Edison firmware Update 실패시 후속 조치방법</title>
-    <link href="http://yoursite.com/2017/04/11/intel-edison-firmware-update-ec-8b-a4-ed-8c-a8-ec-8b-9c-ed-9b-84-ec-86-8d-ec-a1-b0-ec-b9-98-eb-b0-a9-eb-b2-95/"/>
-    <id>http://yoursite.com/2017/04/11/intel-edison-firmware-update-ec-8b-a4-ed-8c-a8-ec-8b-9c-ed-9b-84-ec-86-8d-ec-a1-b0-ec-b9-98-eb-b0-a9-eb-b2-95/</id>
+    <link href="https://osujin.github.io/2017/04/11/intel-edison-firmware-update-ec-8b-a4-ed-8c-a8-ec-8b-9c-ed-9b-84-ec-86-8d-ec-a1-b0-ec-b9-98-eb-b0-a9-eb-b2-95/"/>
+    <id>https://osujin.github.io/2017/04/11/intel-edison-firmware-update-ec-8b-a4-ed-8c-a8-ec-8b-9c-ed-9b-84-ec-86-8d-ec-a1-b0-ec-b9-98-eb-b0-a9-eb-b2-95/</id>
     <published>2017-04-11T02:39:25.000Z</published>
     <updated>2018-04-04T02:06:47.310Z</updated>
     
@@ -349,15 +349,15 @@
     
     </summary>
     
-      <category term="IoT" scheme="http://yoursite.com/categories/IoT/"/>
+      <category term="IoT" scheme="https://osujin.github.io/categories/IoT/"/>
     
     
   </entry>
   
   <entry>
     <title>iftop 소스 설치</title>
-    <link href="http://yoursite.com/2017/04/04/iftop-ec-86-8c-ec-8a-a4-ec-84-a4-ec-b9-98/"/>
-    <id>http://yoursite.com/2017/04/04/iftop-ec-86-8c-ec-8a-a4-ec-84-a4-ec-b9-98/</id>
+    <link href="https://osujin.github.io/2017/04/04/iftop-ec-86-8c-ec-8a-a4-ec-84-a4-ec-b9-98/"/>
+    <id>https://osujin.github.io/2017/04/04/iftop-ec-86-8c-ec-8a-a4-ec-84-a4-ec-b9-98/</id>
     <published>2017-04-04T02:06:52.000Z</published>
     <updated>2018-04-04T06:10:06.601Z</updated>
     
@@ -376,15 +376,15 @@
     
     </summary>
     
-      <category term="기타" scheme="http://yoursite.com/categories/%EA%B8%B0%ED%83%80/"/>
+      <category term="기타" scheme="https://osujin.github.io/categories/%EA%B8%B0%ED%83%80/"/>
     
     
   </entry>
   
   <entry>
     <title>ODL karaf 에서 impl 모듈만 빌드해서 다시 띄우는 방법</title>
-    <link href="http://yoursite.com/2017/03/28/odl-karaf-ec-97-90-ec-84-9c-impl-eb-aa-a8-eb-93-88-eb-a7-8c-eb-b9-8c-eb-93-9c-ed-95-b4-ec-84-9c-eb-8b-a4-ec-8b-9c-eb-9d-84-ec-9a-b0-eb-8a-94-eb-b0-a9-eb-b2-95/"/>
-    <id>http://yoursite.com/2017/03/28/odl-karaf-ec-97-90-ec-84-9c-impl-eb-aa-a8-eb-93-88-eb-a7-8c-eb-b9-8c-eb-93-9c-ed-95-b4-ec-84-9c-eb-8b-a4-ec-8b-9c-eb-9d-84-ec-9a-b0-eb-8a-94-eb-b0-a9-eb-b2-95/</id>
+    <link href="https://osujin.github.io/2017/03/28/odl-karaf-ec-97-90-ec-84-9c-impl-eb-aa-a8-eb-93-88-eb-a7-8c-eb-b9-8c-eb-93-9c-ed-95-b4-ec-84-9c-eb-8b-a4-ec-8b-9c-eb-9d-84-ec-9a-b0-eb-8a-94-eb-b0-a9-eb-b2-95/"/>
+    <id>https://osujin.github.io/2017/03/28/odl-karaf-ec-97-90-ec-84-9c-impl-eb-aa-a8-eb-93-88-eb-a7-8c-eb-b9-8c-eb-93-9c-ed-95-b4-ec-84-9c-eb-8b-a4-ec-8b-9c-eb-9d-84-ec-9a-b0-eb-8a-94-eb-b0-a9-eb-b2-95/</id>
     <published>2017-03-28T04:39:03.000Z</published>
     <updated>2018-04-04T05:41:37.441Z</updated>
     
@@ -400,15 +400,15 @@
     
     </summary>
     
-      <category term="OpenDayLight" scheme="http://yoursite.com/categories/OpenDayLight/"/>
+      <category term="OpenDayLight" scheme="https://osujin.github.io/categories/OpenDayLight/"/>
     
     
   </entry>
   
   <entry>
     <title>ODL에서 외부 라이브러리 사용하기</title>
-    <link href="http://yoursite.com/2017/03/28/odl-ec-97-90-ec-84-9c-ec-99-b8-eb-b6-80-eb-9d-bc-ec-9d-b4-eb-b8-8c-eb-9f-ac-eb-a6-ac-ec-82-ac-ec-9a-a9-ed-95-98-ea-b8-b0/"/>
-    <id>http://yoursite.com/2017/03/28/odl-ec-97-90-ec-84-9c-ec-99-b8-eb-b6-80-eb-9d-bc-ec-9d-b4-eb-b8-8c-eb-9f-ac-eb-a6-ac-ec-82-ac-ec-9a-a9-ed-95-98-ea-b8-b0/</id>
+    <link href="https://osujin.github.io/2017/03/28/odl-ec-97-90-ec-84-9c-ec-99-b8-eb-b6-80-eb-9d-bc-ec-9d-b4-eb-b8-8c-eb-9f-ac-eb-a6-ac-ec-82-ac-ec-9a-a9-ed-95-98-ea-b8-b0/"/>
+    <id>https://osujin.github.io/2017/03/28/odl-ec-97-90-ec-84-9c-ec-99-b8-eb-b6-80-eb-9d-bc-ec-9d-b4-eb-b8-8c-eb-9f-ac-eb-a6-ac-ec-82-ac-ec-9a-a9-ed-95-98-ea-b8-b0/</id>
     <published>2017-03-28T04:27:09.000Z</published>
     <updated>2018-04-04T02:06:47.310Z</updated>
     
@@ -425,15 +425,15 @@
     
     </summary>
     
-      <category term="OpenDayLight" scheme="http://yoursite.com/categories/OpenDayLight/"/>
+      <category term="OpenDayLight" scheme="https://osujin.github.io/categories/OpenDayLight/"/>
     
     
   </entry>
   
   <entry>
     <title>ODL(OpenDayLight) 기본 튜토리얼 #7_4 – singletonsimple RPC Route 기능 설명</title>
-    <link href="http://yoursite.com/2017/03/18/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-3-singletonsimple-rpc-route-ea-b8-b0-eb-8a-a5-ec-84-a4-eb-aa-85/"/>
-    <id>http://yoursite.com/2017/03/18/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-3-singletonsimple-rpc-route-ea-b8-b0-eb-8a-a5-ec-84-a4-eb-aa-85/</id>
+    <link href="https://osujin.github.io/2017/03/18/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-3-singletonsimple-rpc-route-ea-b8-b0-eb-8a-a5-ec-84-a4-eb-aa-85/"/>
+    <id>https://osujin.github.io/2017/03/18/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-3-singletonsimple-rpc-route-ea-b8-b0-eb-8a-a5-ec-84-a4-eb-aa-85/</id>
     <published>2017-03-18T06:08:10.000Z</published>
     <updated>2018-04-04T05:51:32.862Z</updated>
     
@@ -450,15 +450,15 @@
     
     </summary>
     
-      <category term="OpenDayLight" scheme="http://yoursite.com/categories/OpenDayLight/"/>
+      <category term="OpenDayLight" scheme="https://osujin.github.io/categories/OpenDayLight/"/>
     
     
   </entry>
   
   <entry>
     <title>ODL(OpenDayLight) 기본 튜토리얼 #7_3 – clustering 설정</title>
-    <link href="http://yoursite.com/2017/03/17/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-4-clustering-ec-84-a4-ec-a0-95/"/>
-    <id>http://yoursite.com/2017/03/17/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-4-clustering-ec-84-a4-ec-a0-95/</id>
+    <link href="https://osujin.github.io/2017/03/17/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-4-clustering-ec-84-a4-ec-a0-95/"/>
+    <id>https://osujin.github.io/2017/03/17/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-4-clustering-ec-84-a4-ec-a0-95/</id>
     <published>2017-03-17T08:11:02.000Z</published>
     <updated>2018-04-04T05:47:33.892Z</updated>
     
@@ -475,15 +475,15 @@
     
     </summary>
     
-      <category term="OpenDayLight" scheme="http://yoursite.com/categories/OpenDayLight/"/>
+      <category term="OpenDayLight" scheme="https://osujin.github.io/categories/OpenDayLight/"/>
     
     
   </entry>
   
   <entry>
     <title>ODL(OpenDayLight) 기본 튜토리얼 #7_2 – ODL Clustering 소스 배포</title>
-    <link href="http://yoursite.com/2017/03/13/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-1-odl-clustering-ec-86-8c-ec-8a-a4-eb-b0-b0-ed-8f-ac/"/>
-    <id>http://yoursite.com/2017/03/13/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-1-odl-clustering-ec-86-8c-ec-8a-a4-eb-b0-b0-ed-8f-ac/</id>
+    <link href="https://osujin.github.io/2017/03/13/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-1-odl-clustering-ec-86-8c-ec-8a-a4-eb-b0-b0-ed-8f-ac/"/>
+    <id>https://osujin.github.io/2017/03/13/odlopendaylight-ea-b8-b0-eb-b3-b8-ed-8a-9c-ed-86-a0-eb-a6-ac-ec-96-bc-7-1-odl-clustering-ec-86-8c-ec-8a-a4-eb-b0-b0-ed-8f-ac/</id>
     <published>2017-03-13T06:35:22.000Z</published>
     <updated>2018-04-04T05:37:24.254Z</updated>
     
@@ -500,7 +500,7 @@
     
     </summary>
     
-      <category term="OpenDayLight" scheme="http://yoursite.com/categories/OpenDayLight/"/>
+      <category term="OpenDayLight" scheme="https://osujin.github.io/categories/OpenDayLight/"/>
     
     
   </entry>
