@@ -3,23 +3,25 @@
 <head>
     <meta charset="utf-8">
     
-    <title>java8 Default method | </title>
+    <title>ODL(OpenDayLight) 기본 튜토리얼 #5 – DataStore 구현 | </title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content="" />
     
-    <meta name="description" content="자바8에서 새로 추가된 Default method는 기존에 만들어진 interface를 implement 받는 class들에 영향을 주지 않고 interface에 새로운 항목을 추가할 수 있다. 기존에는 이미 생성된 interface에 새로운 method를 추가하려면 이를 implement 받는 모든 class들에도 Override를 해주어야 됬지만 Def">
+    <meta name="description" content="이번에는 DataStore를 구현해보도록 하겠다. 아래와 같이 단순한 구조로 ODL의 dataStore를 사용하는 방법을 알아보자   역시 가장먼저 구현 해줘야 하는것은 Yang 파일이다. 기존에 만들어놓은 hello.yang 파일을 조금 수정하도록 한다. hello.yang 파일에 아래와 같이 container 를 하나 선언해준다. 123456789101">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java8 Default method">
-<meta property="og:url" content="https://osujin.github.io/2017/06/01/java8-default-method/index.html">
+<meta property="og:title" content="ODL(OpenDayLight) 기본 튜토리얼 #5 – DataStore 구현">
+<meta property="og:url" content="https://osujin.github.io/2017/03/07/ODL(OpenDayLight)-기본-튜토리얼-5-–-DataStore-구현/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="자바8에서 새로 추가된 Default method는 기존에 만들어진 interface를 implement 받는 class들에 영향을 주지 않고 interface에 새로운 항목을 추가할 수 있다. 기존에는 이미 생성된 interface에 새로운 method를 추가하려면 이를 implement 받는 모든 class들에도 Override를 해주어야 됬지만 Def">
+<meta property="og:description" content="이번에는 DataStore를 구현해보도록 하겠다. 아래와 같이 단순한 구조로 ODL의 dataStore를 사용하는 방법을 알아보자   역시 가장먼저 구현 해줘야 하는것은 Yang 파일이다. 기존에 만들어놓은 hello.yang 파일을 조금 수정하도록 한다. hello.yang 파일에 아래와 같이 container 를 하나 선언해준다. 123456789101">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2018-04-04T05:59:56.984Z">
+<meta property="og:image" content="https://osujin.github.io/image/2017/03/스크린샷-2017-03-07-오후-4.09.59.png">
+<meta property="og:updated_time" content="2018-04-04T05:21:47.426Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java8 Default method">
-<meta name="twitter:description" content="자바8에서 새로 추가된 Default method는 기존에 만들어진 interface를 implement 받는 class들에 영향을 주지 않고 interface에 새로운 항목을 추가할 수 있다. 기존에는 이미 생성된 interface에 새로운 method를 추가하려면 이를 implement 받는 모든 class들에도 Override를 해주어야 됬지만 Def">
+<meta name="twitter:title" content="ODL(OpenDayLight) 기본 튜토리얼 #5 – DataStore 구현">
+<meta name="twitter:description" content="이번에는 DataStore를 구현해보도록 하겠다. 아래와 같이 단순한 구조로 ODL의 dataStore를 사용하는 방법을 알아보자   역시 가장먼저 구현 해줘야 하는것은 Yang 파일이다. 기존에 만들어놓은 hello.yang 파일을 조금 수정하도록 한다. hello.yang 파일에 아래와 같이 container 를 하나 선언해준다. 123456789101">
+<meta name="twitter:image" content="https://osujin.github.io/image/2017/03/스크린샷-2017-03-07-오후-4.09.59.png">
     
 
     
@@ -135,18 +137,18 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Java/">Java</a>
+    <a class="page-title-link" href="/categories/OpenDayLight/">OpenDayLight</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-java8-default-method" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-ODL(OpenDayLight)-기본-튜토리얼-5-–-DataStore-구현" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        java8 Default method
+        ODL(OpenDayLight) 기본 튜토리얼 #5 – DataStore 구현
         </h1>
     
 
@@ -156,8 +158,8 @@ ga('send', 'pageview');
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2017/06/01/java8-default-method/" class="article-date">
-            <time datetime="2017-06-01T01:16:53.000Z" itemprop="datePublished">2017-06-01</time>
+        <a href="/2017/03/07/ODL(OpenDayLight)-기본-튜토리얼-5-–-DataStore-구현/" class="article-date">
+            <time datetime="2017-03-07T07:57:33.000Z" itemprop="datePublished">2017-03-07</time>
         </a>
     </div>
 
@@ -166,11 +168,34 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>자바8에서 새로 추가된 Default method는 기존에 만들어진 interface를 implement 받는 class들에 영향을 주지 않고 interface에 새로운 항목을 추가할 수 있다.</p>
-<p>기존에는 이미 생성된 interface에 새로운 method를 추가하려면 이를 implement 받는 모든 class들에도 Override를 해주어야 됬지만 Default method는 interface에 선언 할때에 body도 함께 만들어야 하므로 기본적으로 inerface에서 제공하는 것이다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String...args)</span></span>&#123;</span><br><span class="line">       <span class="keyword">new</span> D().hello();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">A</span></span>&#123;</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">default</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">           System.out.println(<span class="string">"Hello from A"</span>);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">world</span><span class="params">()</span></span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">D</span> <span class="keyword">implements</span> <span class="title">B</span>, <span class="title">C</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">world</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>위 코드에서 public default void hello() 이부분이 Default method를 구현한것이다. 꼭 body를 함께 생성해주어야 한다. body를 생성하지 않으면 error가 발생한다. 그리고 Default method 는 기존 interface와 마찬가지로 override 받을 수 있는데 override를 하여 새롭게 body를 구성하여 기존 interface 처럼 사용가능하다.</p>
-<p>또한 interface는 여러개를 implement 받는것이 가능하므로 그동안 지원하지 않았던 <strong>다중상속</strong>의 기능을 Default method를 이용하여 사용 할 수 있다.</p>
+            <p>이번에는 DataStore를 구현해보도록 하겠다.</p>
+<p>아래와 같이 단순한 구조로 ODL의 dataStore를 사용하는 방법을 알아보자 </p>
+<p><img src="/image/2017/03/스크린샷-2017-03-07-오후-4.09.59.png" alt=""></p>
+<p>역시 가장먼저 구현 해줘야 하는것은 Yang 파일이다. 기존에 만들어놓은 hello.yang 파일을 조금 수정하도록 한다.</p>
+<p>hello.yang 파일에 아래와 같이 container 를 하나 선언해준다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">container helloWorld&#123;</span><br><span class="line">        leaf counter&#123;</span><br><span class="line">            type uint32;</span><br><span class="line">            config true;</span><br><span class="line">            default 100;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        leaf value&#123;</span><br><span class="line">            type string;</span><br><span class="line">            config false;</span><br><span class="line">            mandatory false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>그리고 나서 HelloWorldImpl.java 파일에서 RPC가 호출됬을 경우 DataStore에 넘겨진 값을 저장도록 구현한다. 그전에 HelloWorldImpl.java 에서 DataBroker를 사용하기 위해 HelloProvider.java 에서 session을 넘겨줘야 한다.</p>
+<h4 id="HelloProvider-java"><a href="#HelloProvider-java" class="headerlink" title="HelloProvider.java"></a>HelloProvider.java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSessionInitiated</span><span class="params">(ProviderContext session)</span> </span>&#123;</span><br><span class="line">        LOG.info(<span class="string">"HelloProvider Session Initiated"</span>);</span><br><span class="line">        HelloWorldImpl helloWorldImpl=<span class="keyword">new</span> HelloWorldImpl();</span><br><span class="line">        helloWorldImpl.setDb(session); <span class="comment">//HelloWorldImpl class로 session을 넘겨 사용하도록 해준다.</span></span><br><span class="line"> </span><br><span class="line">        <span class="keyword">this</span>.helloService=session.addRpcImplementation(HelloService.class,helloWorldImpl);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="HelloWorldImpl-java"><a href="#HelloWorldImpl-java" class="headerlink" title="HelloWorldImpl.java"></a>HelloWorldImpl.java</h4><ul>
+<li><p>hello-world-write RPC가 호출되면 strin 으로 넘겨온 값을 저장하도록 구현한다.</p>
+</li>
+<li><p>OPERATIONAL tree에는 strin 값이 저장되게 하고 CONFIGURATION tree 에는 DataStore에 값이 저장될때마다 helloCounter 값이 1씩 증가된값을 저장하도록 한다.</p>
+<ul>
+<li>OPERATIONAL : 네트워크 상태의 변경이 감지되면 현재 네트워크 상태를 저장</li>
+<li>CONFIGURATION : 네트워크 장비의 설정을 변경하려는 요청이 저장.</li>
+</ul>
+</li>
+</ul>
+<p>즉 네트워크 구성에 대한 request 요청이 오면 CONFIGURATION tree에 데이터가 저장되고 실제 네트워크 장비에 명령을 내려 설정을 마치면 변경된 정보가 OPERATIONAL tree에 저장이 된다.</p>
+<blockquote>
+<p>Q4. Which data is stored in MD-SAL config datastore and operational datastore?</p>
+<p>A. The config store is where “requests” are stored and the operational store is where “network state as discovered from the network” is stored. So Flows are requested by being placed in the config store, but after they are configured on the NE and ODL “discovers” them that data is put in the operational store.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDb</span><span class="params">(BindingAwareBroker.ProviderContext session)</span></span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.db=session.getSALService(DataBroker.class);</span><br><span class="line">      <span class="keyword">this</span>.session = session;</span><br><span class="line"> </span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">public</span> Future&lt;RpcResult&lt;HelloWorldWriteOutput&gt;&gt; helloWorldWrite(HelloWorldWriteInput input)&#123;</span><br><span class="line">        <span class="keyword">final</span> ReadWriteTransaction tx=db.newReadWriteTransaction();</span><br><span class="line"> </span><br><span class="line">        tx.put(LogicalDatastoreType.OPERATIONAL,HELLO_IID,<span class="keyword">new</span> HelloWorldBuilder().setValue(input.getStrin()).build());</span><br><span class="line">        tx.put(LogicalDatastoreType.CONFIGURATION,HELLO_IID,<span class="keyword">new</span> HelloWorldBuilder().setCounter(helloCounter++).build());</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">           tx.submit().get();</span><br><span class="line"> </span><br><span class="line">        &#125;<span class="keyword">catch</span>(InterruptedException e)&#123;</span><br><span class="line">          System.out.println(e.getMessage());</span><br><span class="line"> </span><br><span class="line">        &#125;<span class="keyword">catch</span>(ExecutionException e)&#123;</span><br><span class="line">          System.out.println(e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">      <span class="comment">//Noti 호출</span></span><br><span class="line">      NotificationProviderService notiService = session.getSALService(NotificationProviderService.class);</span><br><span class="line">      NotiUpdatedBuilder builder = <span class="keyword">new</span> NotiUpdatedBuilder();</span><br><span class="line">      builder.setNotiId(input.getStrin());</span><br><span class="line">      notiService.publish(builder.build());</span><br><span class="line">      <span class="comment">//</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">        HelloWorldWriteOutputBuilder helloWriteBuilder=<span class="keyword">new</span> HelloWorldWriteOutputBuilder();</span><br><span class="line">        helloWriteBuilder.setStrout(<span class="string">"return"</span>+input.getStrin());</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> RpcResultBuilder.success(helloWriteBuilder.build()).buildFuture();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>결과:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[데이터전송]</span><br><span class="line">POST : http://localhost:8181/restconf/operations/hello:hello-world-write</span><br><span class="line">data : &#123;&quot;hello:input&quot;: &#123; &quot;strin&quot;:&quot;test1&quot;&#125;&#125; </span><br><span class="line">[데이터확인]</span><br><span class="line">GET : http://localhost:8181/restconf/config/hello:helloWorld/</span><br><span class="line">GET : http://localhost:8181/restconf/operational/hello:helloWorld/</span><br></pre></td></tr></table></figure>
+<p> <a href="http://localhost:8181/apidoc/explorer/index.html" target="_blank" rel="noopener">http://localhost:8181/apidoc/explorer/index.html</a> 에 접속하여 위와 같이 데이터를 전송하면 실습이 가능하다.</p>
+<p> 최종적으로는 operational tree 에는 strin 으로 전달된 데이터가 저장되고 operational tree에는 helloCounter 값이 저장된다.</p>
 
         </div>
         <footer class="article-footer">
@@ -178,7 +203,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://osujin.github.io/2017/06/01/java8-default-method/" data-id="cjfw06s6c001ctpr6k793p0kq" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://osujin.github.io/2017/03/07/ODL(OpenDayLight)-기본-튜토리얼-5-–-DataStore-구현/" data-id="cjfw06s5x000otpr6su5gaqad" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -275,20 +300,20 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2017/06/09/HttpsURLConnection을-이용한-통신시-SSL-인증서-수동으로-지정하는-방법/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2017/03/07/ODL(OpenDayLight)-기본-튜토리얼-6-DataChangeListener-구현/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
-            HttpsURLConnection을 이용한 통신시 SSL 인증서 수동으로 지정하는 방법
+            ODL(OpenDayLight) 기본 튜토리얼 #6 – DataChangeListener 구현
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2017/05/31/Java-8-병렬처리와-성능에-대해서/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/03/07/ODL(OpenDayLight)-기본-튜토리얼-4-Notification-구현/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">Java 8 병렬처리와 성능에 대해서</p>
+        <p class="article-nav-title">ODL(OpenDayLight) 기본 튜토리얼 #4 – Notification 구현</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -425,7 +450,7 @@ ga('send', 'pageview');
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'https://osujin.github.io/2017/06/01/java8-default-method/';
+    var disqus_url = 'https://osujin.github.io/2017/03/07/ODL(OpenDayLight)-기본-튜토리얼-5-–-DataStore-구현/';
     
     (function() {
     var dsq = document.createElement('script');

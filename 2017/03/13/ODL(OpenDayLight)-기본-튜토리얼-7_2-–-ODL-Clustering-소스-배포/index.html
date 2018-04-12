@@ -3,20 +3,23 @@
 <head>
     <meta charset="utf-8">
     
-    <title>카테고리: OpenDayLight | </title>
+    <title>ODL(OpenDayLight) 기본 튜토리얼 #7_2 – ODL Clustering 소스 배포 | </title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="개인적인 프로젝트와 개발관련 블로그">
-<meta property="og:type" content="website">
-<meta property="og:title">
-<meta property="og:url" content="https://osujin.github.io/categories/OpenDayLight/index.html">
+        <meta name="keywords" content="" />
+    
+    <meta name="description" content="이번에는 앞서 구축한 3개의 docker instance에 소스를 배포하고 기동하는 방법이다. 테스트 소스는 coretutorials/clustering 하위에 있는 singletonsimple 으로 하겠다. 먼저 singletonsimple 을 빌드를 해야 하는데 singletonsimple-impl 를 빌드하다 문제가 발생했었다.  [ERROR] Fai">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ODL(OpenDayLight) 기본 튜토리얼 #7_2 – ODL Clustering 소스 배포">
+<meta property="og:url" content="https://osujin.github.io/2017/03/13/ODL(OpenDayLight)-기본-튜토리얼-7_2-–-ODL-Clustering-소스-배포/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="개인적인 프로젝트와 개발관련 블로그">
+<meta property="og:description" content="이번에는 앞서 구축한 3개의 docker instance에 소스를 배포하고 기동하는 방법이다. 테스트 소스는 coretutorials/clustering 하위에 있는 singletonsimple 으로 하겠다. 먼저 singletonsimple 을 빌드를 해야 하는데 singletonsimple-impl 를 빌드하다 문제가 발생했었다.  [ERROR] Fai">
 <meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2018-04-04T05:37:24.254Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title">
-<meta name="twitter:description" content="개인적인 프로젝트와 개발관련 블로그">
+<meta name="twitter:title" content="ODL(OpenDayLight) 기본 튜토리얼 #7_2 – ODL Clustering 소스 배포">
+<meta name="twitter:description" content="이번에는 앞서 구축한 3개의 docker instance에 소스를 배포하고 기동하는 방법이다. 테스트 소스는 coretutorials/clustering 하위에 있는 singletonsimple 으로 하겠다. 먼저 singletonsimple 을 빌드를 해야 하는데 singletonsimple-impl 를 빌드하다 문제가 발생했었다.  [ERROR] Fai">
     
 
     
@@ -132,356 +135,146 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-folder-open"></i>카테고리: <em class="page-title-link">OpenDayLight</em>
+    <a class="page-title-link" href="/categories/OpenDayLight/">OpenDayLight</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-ODL(OpenDayLight)-기본-튜토리얼-7_2-–-ODL-Clustering-소스-배포" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2017" class="archive-year"><i class="icon fa fa-calendar-o"></i>2017</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/OpenDayLight/">OpenDayLight</a>
-            </div>
-            <div class="date"><time datetime="2017-03-28T04:39:03.000Z" itemprop="datePublished">2017-03-28</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2017/03/28/ODL-karaf-에서-impl-모듈만-빌드해서-다시-띄우는-방법/">ODL karaf 에서 impl 모듈만 빌드해서 다시 띄우는 방법</a>
+        ODL(OpenDayLight) 기본 튜토리얼 #7_2 – ODL Clustering 소스 배포
         </h1>
     
 
-        <p class="article-excerpt">
-            ODL 개발시 impl 쪽을 수정할때마다 매번 프로젝트 전체를 빌드하고 다시 karaf를 띄우는게 시간이 오래걸려 확인해보니
-karaf 내에서 각 bundle별로 죽였다 다시 띄울때 jar 파일만 교체해주면 전체를 빌드하지 않아도 손쉽게 적용이 가능하다.
-
-~/karaf/target/assembly/system/org/opendaylight/hello/he
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
+            </header>
         
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/OpenDayLight/">OpenDayLight</a>
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/03/13/ODL(OpenDayLight)-기본-튜토리얼-7_2-–-ODL-Clustering-소스-배포/" class="article-date">
+            <time datetime="2017-03-13T06:35:22.000Z" itemprop="datePublished">2017-03-13</time>
+        </a>
+    </div>
+
+                
             </div>
-            <div class="date"><time datetime="2017-03-28T04:27:09.000Z" itemprop="datePublished">2017-03-28</time></div>
-        </div>
         
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/03/28/ODL에서-외부-라이브러리-사용하기/">ODL에서 외부 라이브러리 사용하기</a>
-        </h1>
-    
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>이번에는 앞서 구축한 3개의 docker instance에 소스를 배포하고 기동하는 방법이다.</p>
+<p>테스트 소스는 coretutorials/clustering 하위에 있는 singletonsimple 으로 하겠다.</p>
+<p>먼저 singletonsimple 을 빌드를 해야 하는데 singletonsimple-impl 를 빌드하다 문제가 발생했었다.</p>
+<ul>
+<li>[ERROR] Failed to execute goal org.apache.maven.plugins:maven-enforcer-plugin:1.4.1:enforce</li>
+</ul>
+<p>위와 같은 에러였는데 singletonsimple-impl/pom.xml 파일에 parent 버전정보를 불러오는 곳이 있는데 기존에 있던 <version>1.8.0-SNAPSHOT</version> 해당 버전이 존재하지 않아 발생한것 같다. 이부분을 Boron 버전중에 하나로 설정해주면 된다. 필자는 0.5.2-Boron-SR2 버전을 사용하였다.</p>
+<p>빌드를 완료했으면 각 instance로 배포를 해야 한다. 문서에 나와 있는 ansible을 이용하여 배포해보도록 하겠다.</p>
+<p>ansible을 이용하기전에 한가지 작업해줄게 있다.</p>
+<ul>
+<li>docker로 띄운 3개의 instance에 /opt/scripts/ 폴더를 생성하고 coretutorials/clustering/node/install_odl.sh, configure-cluster-ipdetect.sh 파일을 복사해주어야 한다.</li>
+</ul>
+<p>ansible 설치 방법은 구글을 참조하길 바란다.</p>
+<ul>
+<li>ansible로 소스 배포하기_ docker-Host $ cd coretutorials/clustering/scripts/ansible docker-Host $ ansible-playbook -i hosts playbook.yaml</li>
+</ul>
+<p>playbook.yaml 파일내용을 약간 수정을 해줘야 하는데 파일을 열어보면</p>
+<ul>
+<li>distro_name: singletonsimple-karaf-0.1.0-SNAPSHOT.zip local_path: /Users/jmedved/Documents/ODL/Git/coretutorials/clustering/singletonsimple/karaf/target</li>
+</ul>
+<p>위 두줄이 있는데 <strong>distro_name</strong> 부분에 자신이 배포하고 싶은 소스명을 적고 <strong>local_path</strong> 부분에 해당 소스가 있는 경로를 적어주면 된다. 배포되는 소스는 zip 으로 압축된것을 보낸다.</p>
+<p>수동으로 배포하는 방법도 알아보자</p>
+<p>singletonsimple을 빌드하면 singletonsimple/karaf/target 하위에 컴파일된 파일들이 있는데 .zip 으로 된 파일을 docker instance 들에게 ftp등을 이용하여 전송하면된다.\</p>
+<p>전송한뒤에는 앞서 옮긴 install_odl.sh 파일을 이용하여 cluster 셋팅을 해주어야 한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">member 1~3 # /opt/scripts/install_odl.sh -d [컴파일된 소스가 저장될 경로] – i [Zip 파일명] -p [Zip 파일 경로] -c [클러스터를 형성할 3개의 instance들의 IP] EX.) &gt; member 1~3 # /opt/scripts/install_odl.sh -d /opt/odl – i example-karaf-0.1.0-SNAPSHOT.zip -p . -c ‘172.17.0.2 172.17.0.3 172.17.0.4’</span><br></pre></td></tr></table></figure>
+<p>configure-cluster-ipdetect.sh 파일을 열어보면 zip/configuration에 initial폴더를 생성하고 akka.conf , module-shards.conf , modules.conf 3개의 파일을 생성하는데 akka.conf 파일에 cluster를 형성할 instance들의 ip 정보가 담겨져 있다.</p>
+<p>ODL Cluster구성은 akka framework를 이용해서 구성을 하는듯 하다.</p>
+<p>akka 설정을 통해 cluster node를 설정할 수 있고 손쉽게 여러개의 cluster node 구현이 가능하다.</p>
+<p><a href="http://docs.opendaylight.org/en/stable-boron/getting-started-guide/common-features/clustering.html" target="_blank" rel="noopener">Multiple Node Clustering 공식 문서</a></p>
 
-        <p class="article-excerpt">
-            ODL SB plugin을 만들면서 외부 라이브러리를 거의 필수적으로 사용하게 되는데 karaf상에서 외부라이브러리를 사용하는 방식이 다소 복잡하여 정리를 하였다.
-내가 필요한 라이브라리는 아래와 같다.
-123456789import org.springframework.http.HttpMethod;import org.springframework.http.Re
-        </p>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://osujin.github.io/2017/03/13/ODL(OpenDayLight)-기본-튜토리얼-7_2-–-ODL-Clustering-소스-배포/" data-id="cjfw06s60000stpr6cckl8bed" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
 </article>
-    
-        </div>
-    
 
+    <section id="comments">
     
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
         
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/OpenDayLight/">OpenDayLight</a>
-            </div>
-            <div class="date"><time datetime="2017-03-18T06:08:10.000Z" itemprop="datePublished">2017-03-18</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/03/18/ODL(OpenDayLight)-기본-튜토리얼-7_4–singletonsimple-RPC-Route-기능-설명/">ODL(OpenDayLight) 기본 튜토리얼 #7_4 – singletonsimple RPC Route 기능 설명</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            singletons cluster의 구조는 다음과 같다.
- [사진 1]
-3개의 docker instance에 singletonsimple 를 배포하고 기동하면 자동으로 cluster 설정이 이루어 지고 Leader Node가 설정되어 진다.
-Leader Node는 3개의 Node중에 선택되어지고 Leader Node가 죽으면 다른 Node가 Leader가 
-        </p>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-</article>
-    
 
     
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/OpenDayLight/">OpenDayLight</a>
-            </div>
-            <div class="date"><time datetime="2017-03-17T08:11:02.000Z" itemprop="datePublished">2017-03-17</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/03/17/ODL(OpenDayLight)-기본-튜토리얼-7_3-–-clustering-설정/">ODL(OpenDayLight) 기본 튜토리얼 #7_3 – clustering 설정</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            앞선 예제에서 사용했던 hello 프로젝트를 clustering을 이용하도록 구현해보자.
-목표는 global-rpc,routed-rpc 구현과 datastore 공유이다.
-hello 프로젝트에 아무런 설정을 하지 않고
-1ansible-playbook -i hosts playbook_hello.yaml
-명령어를 이용하여 3개의 docker instance로 
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/OpenDayLight/">OpenDayLight</a>
-            </div>
-            <div class="date"><time datetime="2017-03-13T06:35:22.000Z" itemprop="datePublished">2017-03-13</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/03/13/ODL(OpenDayLight)-기본-튜토리얼-7_2-–-ODL-Clustering-소스-배포/">ODL(OpenDayLight) 기본 튜토리얼 #7_2 – ODL Clustering 소스 배포</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            이번에는 앞서 구축한 3개의 docker instance에 소스를 배포하고 기동하는 방법이다.
-테스트 소스는 coretutorials/clustering 하위에 있는 singletonsimple 으로 하겠다.
-먼저 singletonsimple 을 빌드를 해야 하는데 singletonsimple-impl 를 빌드하다 문제가 발생했었다.
-
-[ERROR] Fai
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/OpenDayLight/">OpenDayLight</a>
-            </div>
-            <div class="date"><time datetime="2017-03-13T05:44:04.000Z" itemprop="datePublished">2017-03-13</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/03/13/ODL(OpenDayLight)-기본-튜토리얼-7_1-–-ODL-Cluster-환경-구축/">ODL(OpenDayLight) 기본 튜토리얼 #7_1 – ODL Cluster 환경 구축</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            3개의 가상 Host를 이용하여 ODL cluster를 테스트 할수 있는 환경 구축해보도록 한다.
-테스트에 사용된 자료는 OpenDayLight Core Tutorials 이다. 다운 받도록 하자.
-
-git clone https://git.opendaylight.org/gerrit/coretutorials.git
-
-소스를 다운받으면 clustering 폴더
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/OpenDayLight/">OpenDayLight</a>
-            </div>
-            <div class="date"><time datetime="2017-03-08T07:42:42.000Z" itemprop="datePublished">2017-03-08</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/03/08/ODL-개발시-삽질-내역../">ODL 개발시 삽질 내역..</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            빌드를 하다 난 에러1234567[ERROR] Failed to execute goal org.apache.maven.plugins:maven-enforcer-plugin:1.4.1:enforce (enforce-banned-dependencies) on project singletonsimple-impl: Some Enforcer rules have fa
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/OpenDayLight/">OpenDayLight</a>
-            </div>
-            <div class="date"><time datetime="2017-03-07T08:26:27.000Z" itemprop="datePublished">2017-03-07</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/03/07/ODL(OpenDayLight)-기본-튜토리얼-6-DataChangeListener-구현/">ODL(OpenDayLight) 기본 튜토리얼 #6 – DataChangeListener 구현</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            DataStore에 값이 저장되거나 변경 , 삭제가 되면 변경상태를 감지하는 DataChangeListener 를 구현해보도록한다.
-
-먼저 HelloProvider.java 에서 DataChangeListener를 등록해준다
-CONFIGURATION tree 만 감시하도록 구현하였다.
-
-
-12345678910111213141516private DataBro
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/OpenDayLight/">OpenDayLight</a>
-            </div>
-            <div class="date"><time datetime="2017-03-07T07:57:33.000Z" itemprop="datePublished">2017-03-07</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/03/07/ODL(OpenDayLight)-기본-튜토리얼-5-–-DataStore-구현/">ODL(OpenDayLight) 기본 튜토리얼 #5 – DataStore 구현</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            이번에는 DataStore를 구현해보도록 하겠다.
-아래와 같이 단순한 구조로 ODL의 dataStore를 사용하는 방법을 알아보자 
-
-역시 가장먼저 구현 해줘야 하는것은 Yang 파일이다. 기존에 만들어놓은 hello.yang 파일을 조금 수정하도록 한다.
-hello.yang 파일에 아래와 같이 container 를 하나 선언해준다.
-123456789101
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/OpenDayLight/">OpenDayLight</a>
-            </div>
-            <div class="date"><time datetime="2017-03-07T04:43:20.000Z" itemprop="datePublished">2017-03-07</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2017/03/07/ODL(OpenDayLight)-기본-튜토리얼-4-Notification-구현/">ODL(OpenDayLight) 기본 튜토리얼 #4 – Notification 구현</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            ODL에서 사용하는 Notification의 개념은 RPC와 비슷하다고 생각하면 되는데 차이점이 있다면 Notification은 return값이 없다는것이다.
-새로운 impl module을 추가하고 폴더명을 notificationService로 변경하고 artifactId 는 notification 로 바꿔준다.
-
-현재 프로젝트 구조는 아래와 같다.  
-
-
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-
-    </div></section>
-
-
-    <nav id="page-nav">
-        <span class="pages">Page 1 of 2</span>
-        <span class="page-number current">1</span><a class="page-number" href="/categories/OpenDayLight/page/2/">2</a><a class="extend next" rel="next" href="/categories/OpenDayLight/page/2/">&raquo;</a>
-    </nav>
-
+    </section>
 
 
                         </div>
@@ -502,6 +295,29 @@ hello.yang 파일에 아래와 같이 container 를 하나 선언해준다.
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/03/17/ODL(OpenDayLight)-기본-튜토리얼-7_3-–-clustering-설정/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            ODL(OpenDayLight) 기본 튜토리얼 #7_3 – clustering 설정
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/03/13/ODL(OpenDayLight)-기본-튜토리얼-7_1-–-ODL-Cluster-환경-구축/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">ODL(OpenDayLight) 기본 튜토리얼 #7_1 – ODL Cluster 환경 구축</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -633,11 +449,13 @@ hello.yang 파일에 아래와 같이 container 를 하나 선언해준다.
     var disqus_shortname = 'hexo-theme-hueman';
     
     
+    var disqus_url = 'https://osujin.github.io/2017/03/13/ODL(OpenDayLight)-기본-튜토리얼-7_2-–-ODL-Clustering-소스-배포/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>

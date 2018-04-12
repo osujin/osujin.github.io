@@ -3,23 +3,25 @@
 <head>
     <meta charset="utf-8">
     
-    <title>java8 Default method | </title>
+    <title>ODL(OpenDayLight) 기본 튜토리얼 #4 – Notification 구현 | </title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content="" />
     
-    <meta name="description" content="자바8에서 새로 추가된 Default method는 기존에 만들어진 interface를 implement 받는 class들에 영향을 주지 않고 interface에 새로운 항목을 추가할 수 있다. 기존에는 이미 생성된 interface에 새로운 method를 추가하려면 이를 implement 받는 모든 class들에도 Override를 해주어야 됬지만 Def">
+    <meta name="description" content="ODL에서 사용하는 Notification의 개념은 RPC와 비슷하다고 생각하면 되는데 차이점이 있다면 Notification은 return값이 없다는것이다. 새로운 impl module을 추가하고 폴더명을 notificationService로 변경하고 artifactId 는 notification 로 바꿔준다.  현재 프로젝트 구조는 아래와 같다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java8 Default method">
-<meta property="og:url" content="https://osujin.github.io/2017/06/01/java8-default-method/index.html">
+<meta property="og:title" content="ODL(OpenDayLight) 기본 튜토리얼 #4 – Notification 구현">
+<meta property="og:url" content="https://osujin.github.io/2017/03/07/ODL(OpenDayLight)-기본-튜토리얼-4-Notification-구현/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="자바8에서 새로 추가된 Default method는 기존에 만들어진 interface를 implement 받는 class들에 영향을 주지 않고 interface에 새로운 항목을 추가할 수 있다. 기존에는 이미 생성된 interface에 새로운 method를 추가하려면 이를 implement 받는 모든 class들에도 Override를 해주어야 됬지만 Def">
+<meta property="og:description" content="ODL에서 사용하는 Notification의 개념은 RPC와 비슷하다고 생각하면 되는데 차이점이 있다면 Notification은 return값이 없다는것이다. 새로운 impl module을 추가하고 폴더명을 notificationService로 변경하고 artifactId 는 notification 로 바꿔준다.  현재 프로젝트 구조는 아래와 같다.">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2018-04-04T05:59:56.984Z">
+<meta property="og:image" content="https://osujin.github.io/image/2017/03/스크린샷-2017-03-07-오후-1.19.58.png">
+<meta property="og:updated_time" content="2018-04-04T05:12:34.345Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java8 Default method">
-<meta name="twitter:description" content="자바8에서 새로 추가된 Default method는 기존에 만들어진 interface를 implement 받는 class들에 영향을 주지 않고 interface에 새로운 항목을 추가할 수 있다. 기존에는 이미 생성된 interface에 새로운 method를 추가하려면 이를 implement 받는 모든 class들에도 Override를 해주어야 됬지만 Def">
+<meta name="twitter:title" content="ODL(OpenDayLight) 기본 튜토리얼 #4 – Notification 구현">
+<meta name="twitter:description" content="ODL에서 사용하는 Notification의 개념은 RPC와 비슷하다고 생각하면 되는데 차이점이 있다면 Notification은 return값이 없다는것이다. 새로운 impl module을 추가하고 폴더명을 notificationService로 변경하고 artifactId 는 notification 로 바꿔준다.  현재 프로젝트 구조는 아래와 같다.">
+<meta name="twitter:image" content="https://osujin.github.io/image/2017/03/스크린샷-2017-03-07-오후-1.19.58.png">
     
 
     
@@ -135,18 +137,18 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Java/">Java</a>
+    <a class="page-title-link" href="/categories/OpenDayLight/">OpenDayLight</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-java8-default-method" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-ODL(OpenDayLight)-기본-튜토리얼-4-Notification-구현" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        java8 Default method
+        ODL(OpenDayLight) 기본 튜토리얼 #4 – Notification 구현
         </h1>
     
 
@@ -156,8 +158,8 @@ ga('send', 'pageview');
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2017/06/01/java8-default-method/" class="article-date">
-            <time datetime="2017-06-01T01:16:53.000Z" itemprop="datePublished">2017-06-01</time>
+        <a href="/2017/03/07/ODL(OpenDayLight)-기본-튜토리얼-4-Notification-구현/" class="article-date">
+            <time datetime="2017-03-07T04:43:20.000Z" itemprop="datePublished">2017-03-07</time>
         </a>
     </div>
 
@@ -166,19 +168,45 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>자바8에서 새로 추가된 Default method는 기존에 만들어진 interface를 implement 받는 class들에 영향을 주지 않고 interface에 새로운 항목을 추가할 수 있다.</p>
-<p>기존에는 이미 생성된 interface에 새로운 method를 추가하려면 이를 implement 받는 모든 class들에도 Override를 해주어야 됬지만 Default method는 interface에 선언 할때에 body도 함께 만들어야 하므로 기본적으로 inerface에서 제공하는 것이다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String...args)</span></span>&#123;</span><br><span class="line">       <span class="keyword">new</span> D().hello();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">A</span></span>&#123;</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">default</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">           System.out.println(<span class="string">"Hello from A"</span>);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">world</span><span class="params">()</span></span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">D</span> <span class="keyword">implements</span> <span class="title">B</span>, <span class="title">C</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">world</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>위 코드에서 public default void hello() 이부분이 Default method를 구현한것이다. 꼭 body를 함께 생성해주어야 한다. body를 생성하지 않으면 error가 발생한다. 그리고 Default method 는 기존 interface와 마찬가지로 override 받을 수 있는데 override를 하여 새롭게 body를 구성하여 기존 interface 처럼 사용가능하다.</p>
-<p>또한 interface는 여러개를 implement 받는것이 가능하므로 그동안 지원하지 않았던 <strong>다중상속</strong>의 기능을 Default method를 이용하여 사용 할 수 있다.</p>
-
+            <p>ODL에서 사용하는 Notification의 개념은 RPC와 비슷하다고 생각하면 되는데 차이점이 있다면 Notification은 return값이 없다는것이다.</p>
+<p>새로운 impl module을 추가하고 폴더명을 <strong>notificationService</strong>로 변경하고 artifactId 는 <strong>notification</strong> 로 바꿔준다.</p>
+<blockquote>
+<p>현재 프로젝트 구조는 아래와 같다.<br>  <img src="/image/2017/03/스크린샷-2017-03-07-오후-1.19.58.png" alt=""></p>
+</blockquote>
+<p>먼저 notificationService 에서 사용될 yang 파일을 만들어 준다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">module notification-manager &#123;</span><br><span class="line">      yang-version 1;</span><br><span class="line">      namespace &quot;urn:opendaylight:params:xml:ns:yang:notification-manager&quot;;</span><br><span class="line">      prefix &quot;inventory-manager&quot;;</span><br><span class="line"></span><br><span class="line">      revision &quot;2015-01-05&quot; &#123;</span><br><span class="line">      description &quot;Initial revision of ptnTest model&quot;;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      notification noti-updated &#123;</span><br><span class="line">              leaf noti-id &#123; type string; &#125;</span><br><span class="line">       &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>이어서 NotificationProvider.java 에 notification을 등록해준다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSessionInitiated</span><span class="params">(ProviderContext session)</span> </span>&#123;</span><br><span class="line">        LOG.info(<span class="string">"NotificationProvider Session Initiated"</span>);</span><br><span class="line">        NotificationProviderService noti = session.getSALService(NotificationProviderService.class);</span><br><span class="line"> </span><br><span class="line">        noti.registerNotificationListener(<span class="keyword">new</span> NotificationImpl());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>NotificationImpl.java 를 생성하고 위에서 생성한 yang 파일을 implements 한뒤 onNotiUpdated 메서드를 구현해준다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NotificationImpl</span> <span class="keyword">implements</span> <span class="title">NotificationManagerListener</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG = LoggerFactory.getLogger(NotificationImpl.class);</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNotiUpdated</span><span class="params">(NotiUpdated notification)</span> </span>&#123;</span><br><span class="line">        LOG.info(<span class="string">"Receive Noti : "</span>+notification.getNotiId());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이제 NotificationListener를 수현했으면 호출해서 사용만 하면 된다.</p>
+<ul>
+<li>아래 예제에서는 hello-world-write RPC가 호출되면 전달된 값을 notificationService 로 넘기도록 하였다.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public Future&lt;RpcResult&lt;HelloWorldWriteOutput&gt;&gt; helloWorldWrite(HelloWorldWriteInput input)&#123;</span><br><span class="line"> </span><br><span class="line">      //Noti 호출부분</span><br><span class="line">      NotificationProviderService notiService = session.getSALService(NotificationProviderService.class);</span><br><span class="line">      NotiUpdatedBuilder builder = new NotiUpdatedBuilder();</span><br><span class="line">      builder.setNotiId(input.getStrin());</span><br><span class="line">      notiService.publish(builder.build());</span><br><span class="line">      //</span><br><span class="line"> </span><br><span class="line">      //RPC result return</span><br><span class="line">      HelloWorldWriteOutputBuilder helloWriteBuilder=new HelloWorldWriteOutputBuilder();</span><br><span class="line">      helloWriteBuilder.setStrout(&quot;return&quot;+input.getStrin());</span><br><span class="line"> </span><br><span class="line">      return RpcResultBuilder.success(helloWriteBuilder.build()).buildFuture();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>이제 위 예제를 돌려보아 다음과 같은 결과가 표시되면 정상적으로 동작한것이다.</p>
+<ol>
+<li>RPC 호출<ul>
+<li>{“hello:input”: { “strin”:”test1”}}  을 post 방식으로 전달해주면 return 으로 다음과 같은 결과를 받는다.</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"output"</span>: &#123;</span><br><span class="line">    <span class="attr">"strout"</span>: <span class="string">"returntest1"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/image/2017/03/스크린샷-2017-03-07-오후-1.32.24.png" alt=""></p>
+<ol start="2">
+<li>Notification 호출<ul>
+<li>hello-world-write RPC를 호출하면 전달받은 strin 값을 notificationService 으로 전달한다.</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2017-03-07 13:18:37,623 | INFO  | pool-28-thread-1 | NotificationImpl | 161 -org.opendaylight.hello.notification - 1.0.0.SNAPSHOT | Receive Noti : test1</span><br></pre></td></tr></table></figure>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://osujin.github.io/2017/06/01/java8-default-method/" data-id="cjfw06s6c001ctpr6k793p0kq" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://osujin.github.io/2017/03/07/ODL(OpenDayLight)-기본-튜토리얼-4-Notification-구현/" data-id="cjfw06s5v000ktpr6yklif7fr" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -275,20 +303,20 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2017/06/09/HttpsURLConnection을-이용한-통신시-SSL-인증서-수동으로-지정하는-방법/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2017/03/07/ODL(OpenDayLight)-기본-튜토리얼-5-–-DataStore-구현/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
-            HttpsURLConnection을 이용한 통신시 SSL 인증서 수동으로 지정하는 방법
+            ODL(OpenDayLight) 기본 튜토리얼 #5 – DataStore 구현
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2017/05/31/Java-8-병렬처리와-성능에-대해서/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/03/06/ODL(OpenDayLight)-기본-튜토리얼-3-–-RPC-구현/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">Java 8 병렬처리와 성능에 대해서</p>
+        <p class="article-nav-title">ODL(OpenDayLight) 기본 튜토리얼 #3 – RPC 구현</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -425,7 +453,7 @@ ga('send', 'pageview');
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'https://osujin.github.io/2017/06/01/java8-default-method/';
+    var disqus_url = 'https://osujin.github.io/2017/03/07/ODL(OpenDayLight)-기본-튜토리얼-4-Notification-구현/';
     
     (function() {
     var dsq = document.createElement('script');

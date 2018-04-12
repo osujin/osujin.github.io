@@ -3,23 +3,25 @@
 <head>
     <meta charset="utf-8">
     
-    <title>java8 Default method | </title>
+    <title>ODL(OpenDayLight) 기본 튜토리얼 #3 – RPC 구현 | </title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content="" />
     
-    <meta name="description" content="자바8에서 새로 추가된 Default method는 기존에 만들어진 interface를 implement 받는 class들에 영향을 주지 않고 interface에 새로운 항목을 추가할 수 있다. 기존에는 이미 생성된 interface에 새로운 method를 추가하려면 이를 implement 받는 모든 class들에도 Override를 해주어야 됬지만 Def">
+    <meta name="description" content="Yang파일에 RPC 선언RPC를 구현하기 위해선 yang파일에 rpc를 선언해줘야 한다. 123456789101112131415161718192021222324252627282930313233343536module hello &amp;#123;   yang-version 1;   namespace &amp;quot;urn:opendaylight:params:xml:ns">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java8 Default method">
-<meta property="og:url" content="https://osujin.github.io/2017/06/01/java8-default-method/index.html">
+<meta property="og:title" content="ODL(OpenDayLight) 기본 튜토리얼 #3 – RPC 구현">
+<meta property="og:url" content="https://osujin.github.io/2017/03/06/ODL(OpenDayLight)-기본-튜토리얼-3-–-RPC-구현/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="자바8에서 새로 추가된 Default method는 기존에 만들어진 interface를 implement 받는 class들에 영향을 주지 않고 interface에 새로운 항목을 추가할 수 있다. 기존에는 이미 생성된 interface에 새로운 method를 추가하려면 이를 implement 받는 모든 class들에도 Override를 해주어야 됬지만 Def">
+<meta property="og:description" content="Yang파일에 RPC 선언RPC를 구현하기 위해선 yang파일에 rpc를 선언해줘야 한다. 123456789101112131415161718192021222324252627282930313233343536module hello &amp;#123;   yang-version 1;   namespace &amp;quot;urn:opendaylight:params:xml:ns">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2018-04-04T05:59:56.984Z">
+<meta property="og:image" content="https://osujin.github.io/image/2017/03/스크린샷-2017-03-06-오후-5.44.04.png">
+<meta property="og:updated_time" content="2018-04-04T05:02:50.723Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java8 Default method">
-<meta name="twitter:description" content="자바8에서 새로 추가된 Default method는 기존에 만들어진 interface를 implement 받는 class들에 영향을 주지 않고 interface에 새로운 항목을 추가할 수 있다. 기존에는 이미 생성된 interface에 새로운 method를 추가하려면 이를 implement 받는 모든 class들에도 Override를 해주어야 됬지만 Def">
+<meta name="twitter:title" content="ODL(OpenDayLight) 기본 튜토리얼 #3 – RPC 구현">
+<meta name="twitter:description" content="Yang파일에 RPC 선언RPC를 구현하기 위해선 yang파일에 rpc를 선언해줘야 한다. 123456789101112131415161718192021222324252627282930313233343536module hello &amp;#123;   yang-version 1;   namespace &amp;quot;urn:opendaylight:params:xml:ns">
+<meta name="twitter:image" content="https://osujin.github.io/image/2017/03/스크린샷-2017-03-06-오후-5.44.04.png">
     
 
     
@@ -135,18 +137,18 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Java/">Java</a>
+    <a class="page-title-link" href="/categories/OpenDayLight/">OpenDayLight</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-java8-default-method" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-ODL(OpenDayLight)-기본-튜토리얼-3-–-RPC-구현" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        java8 Default method
+        ODL(OpenDayLight) 기본 튜토리얼 #3 – RPC 구현
         </h1>
     
 
@@ -156,8 +158,8 @@ ga('send', 'pageview');
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2017/06/01/java8-default-method/" class="article-date">
-            <time datetime="2017-06-01T01:16:53.000Z" itemprop="datePublished">2017-06-01</time>
+        <a href="/2017/03/06/ODL(OpenDayLight)-기본-튜토리얼-3-–-RPC-구현/" class="article-date">
+            <time datetime="2017-03-06T08:23:36.000Z" itemprop="datePublished">2017-03-06</time>
         </a>
     </div>
 
@@ -166,11 +168,25 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>자바8에서 새로 추가된 Default method는 기존에 만들어진 interface를 implement 받는 class들에 영향을 주지 않고 interface에 새로운 항목을 추가할 수 있다.</p>
-<p>기존에는 이미 생성된 interface에 새로운 method를 추가하려면 이를 implement 받는 모든 class들에도 Override를 해주어야 됬지만 Default method는 interface에 선언 할때에 body도 함께 만들어야 하므로 기본적으로 inerface에서 제공하는 것이다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String...args)</span></span>&#123;</span><br><span class="line">       <span class="keyword">new</span> D().hello();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">A</span></span>&#123;</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">default</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">           System.out.println(<span class="string">"Hello from A"</span>);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">world</span><span class="params">()</span></span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">D</span> <span class="keyword">implements</span> <span class="title">B</span>, <span class="title">C</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">world</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>위 코드에서 public default void hello() 이부분이 Default method를 구현한것이다. 꼭 body를 함께 생성해주어야 한다. body를 생성하지 않으면 error가 발생한다. 그리고 Default method 는 기존 interface와 마찬가지로 override 받을 수 있는데 override를 하여 새롭게 body를 구성하여 기존 interface 처럼 사용가능하다.</p>
-<p>또한 interface는 여러개를 implement 받는것이 가능하므로 그동안 지원하지 않았던 <strong>다중상속</strong>의 기능을 Default method를 이용하여 사용 할 수 있다.</p>
+            <h1 id="Yang파일에-RPC-선언"><a href="#Yang파일에-RPC-선언" class="headerlink" title="Yang파일에 RPC 선언"></a>Yang파일에 RPC 선언</h1><p>RPC를 구현하기 위해선 yang파일에 rpc를 선언해줘야 한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">module hello &#123;</span><br><span class="line">   yang-version 1;</span><br><span class="line">   namespace &quot;urn:opendaylight:params:xml:ns:yang:hello&quot;;</span><br><span class="line">   prefix &quot;hello&quot;;</span><br><span class="line"></span><br><span class="line">   revision &quot;2015-01-05&quot; &#123;</span><br><span class="line">       description &quot;Initial revision of hello model&quot;;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   rpc hello-world-write&#123;</span><br><span class="line">       input&#123;</span><br><span class="line">          leaf strin&#123;</span><br><span class="line">               type string;</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       output&#123;</span><br><span class="line">          leaf strout&#123;</span><br><span class="line">               type string;</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   rpc hello-world-read&#123;</span><br><span class="line">        input&#123;</span><br><span class="line">           leaf strin&#123;</span><br><span class="line">               type string;</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        output&#123;</span><br><span class="line">           leaf strout&#123;</span><br><span class="line">               type string;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>위 yang 파일에선 hello-world-write , hello-world-read 두개의 RPC를 선언했다. yang 파일을 만든 후 api module을 bulid 하면 target 밑에 java source code가 생성된다.</p>
+<h1 id="xxxProvider-java-파일에-RPC-등록"><a href="#xxxProvider-java-파일에-RPC-등록" class="headerlink" title="xxxProvider.java 파일에 RPC 등록"></a>xxxProvider.java 파일에 RPC 등록</h1><p>karaf를 구동하면 Impl module이 자동으로 기동되는데 xxxProvider.java 파일에 있는 onSessionInitiated 메소드에 RPC를 등록해주어 사용이 가능하도록 해준다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> RpcRegistration&lt;HelloService&gt; helloService;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSessionInitiated</span><span class="params">(ProviderContext session)</span> </span>&#123;</span><br><span class="line">        LOG.info(<span class="string">"HelloProvider Session Initiated"</span>);</span><br><span class="line">        <span class="keyword">this</span>.helloService=session.addRpcImplementation(HelloService.class,helloWorldImpl);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>위 소스의 설명을 하면</p>
+<ul>
+<li>private RpcRegistration<helloservice> helloService; 에서 HelloService 는 위에 생성한 yang 파일의 모듈명이다. 예제에선 hello 라는 이름으로 모듈을 생성했고 RPC로 생성될때는 $module명+Service = HelloService 라고 생성되는것이다.<br>그리고 실제로 RPC가 작동할 helloWorldImpl.java 를 생성해주고 RPC interface를 구현해준다.</helloservice></li>
+</ul>
+<h1 id="helloWorldImpl-java-구현"><a href="#helloWorldImpl-java-구현" class="headerlink" title="helloWorldImpl.java 구현"></a>helloWorldImpl.java 구현</h1><p>helloWorldImpl.java는 HelloService 를 implements 받아 생성된 메서드를 구현해줘야 한다. 위의 yang 파일에선 hello-world-write , hello-world-read 두가지 RPC를 선언했으므로 두개의 메서드를 implements 받아 구현한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Future&lt;RpcResult&lt;HelloWorldWriteOutput&gt;&gt; helloWorldWrite(HelloWorldWriteInput input)&#123;</span><br><span class="line"> </span><br><span class="line">        HelloWorldWriteOutputBuilder helloWriteBuilder=<span class="keyword">new</span> HelloWorldWriteOutputBuilder();</span><br><span class="line">        helloWriteBuilder.setStrout(<span class="string">"return"</span>+input.getStrin());</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> RpcResultBuilder.success(helloWriteBuilder.build()).buildFuture();</span><br><span class="line">  &#125; </span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> Future&lt;RpcResult&lt;HelloWorldReadOutput&gt;&gt; helloWorldRead(HelloWorldReadInput input)&#123;</span><br><span class="line"> </span><br><span class="line">       HelloWorldReadOutputBuilder helloReadBuilder=<span class="keyword">new</span> HelloWorldReadOutputBuilder();</span><br><span class="line"> </span><br><span class="line">       <span class="keyword">try</span>&#123;</span><br><span class="line">          helloReadBuilder.setStrout(<span class="string">"Echo :: "</span>+input.getStrin());</span><br><span class="line">       &#125;<span class="keyword">catch</span>(InterruptedException e)&#123;</span><br><span class="line">          System.out.println(e.getMessage());</span><br><span class="line">       &#125;<span class="keyword">catch</span>(ExecutionException e)&#123;</span><br><span class="line">          System.out.println(e.getMessage());</span><br><span class="line">       &#125;</span><br><span class="line"> </span><br><span class="line">       <span class="keyword">return</span> RpcResultBuilder.success(helloReadBuilder.build()).buildFuture();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>내용추가</strong></p>
+<p> impl 빌드 할때 Line does not match expected header 에러가 발생하면 impl 의 pom.xml 파일에 아래 내용을 추가해주면 된다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-checkstyle-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">skip</span>&gt;</span>true<span class="tag">&lt;/<span class="name">skip</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="실행-결과"><a href="#실행-결과" class="headerlink" title="실행 결과"></a>실행 결과</h1><ul>
+<li><a href="http://localhost:8181/apidoc/explorer/index.html" target="_blank" rel="noopener">http://localhost:8181/apidoc/explorer/index.html</a> 으로 접속하면 REST API를 호출할수 있는 화면이 나온다. 위에서 생성한 yang 파일의 모듈명을 찾으면 아래와 같이 두가지 POST request가 나온다.</li>
+</ul>
+<p>각각을 선택하여 <strong>{“hello:input”: { “strin”:”OpenDayLight”}}</strong> 이라는 메시지를 전송하면 이에대한 응답이 올것이다.</p>
+<p><img src="/image/2017/03/스크린샷-2017-03-06-오후-5.44.04.png" alt=""> <img src="/image/2017/03/스크린샷-2017-03-06-오후-5.43.42.png" alt=""></p>
 
         </div>
         <footer class="article-footer">
@@ -178,7 +194,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://osujin.github.io/2017/06/01/java8-default-method/" data-id="cjfw06s6c001ctpr6k793p0kq" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://osujin.github.io/2017/03/06/ODL(OpenDayLight)-기본-튜토리얼-3-–-RPC-구현/" data-id="cjfw06s5s000htpr6qt8aglcq" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -275,20 +291,20 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2017/06/09/HttpsURLConnection을-이용한-통신시-SSL-인증서-수동으로-지정하는-방법/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2017/03/07/ODL(OpenDayLight)-기본-튜토리얼-4-Notification-구현/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
-            HttpsURLConnection을 이용한 통신시 SSL 인증서 수동으로 지정하는 방법
+            ODL(OpenDayLight) 기본 튜토리얼 #4 – Notification 구현
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2017/05/31/Java-8-병렬처리와-성능에-대해서/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/03/06/ODL(OpenDayLight)-기본-튜토리얼-2-–-Impl-추가(Lithium-Version)/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">Java 8 병렬처리와 성능에 대해서</p>
+        <p class="article-nav-title">ODL(OpenDayLight) 기본 튜토리얼 #2 – Impl 추가(Lithium Version)</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -425,7 +441,7 @@ ga('send', 'pageview');
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'https://osujin.github.io/2017/06/01/java8-default-method/';
+    var disqus_url = 'https://osujin.github.io/2017/03/06/ODL(OpenDayLight)-기본-튜토리얼-3-–-RPC-구현/';
     
     (function() {
     var dsq = document.createElement('script');
