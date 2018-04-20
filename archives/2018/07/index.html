@@ -3,23 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Java ThreadPool Example | </title>
+    <title>아카이브: 2018/7 | </title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="" />
-    
-    <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152import java.util.Date;import java.util.concurrent.*; public class ObjectTest &amp;#123;    public static void">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java ThreadPool Example">
-<meta property="og:url" content="https://osujin.github.io/2017/11/13/java-threadpool-example/index.html">
+    <meta name="description" content="개인적인 프로젝트와 개발관련 블로그">
+<meta property="og:type" content="website">
+<meta property="og:title">
+<meta property="og:url" content="https://osujin.github.io/archives/2018/07/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152import java.util.Date;import java.util.concurrent.*; public class ObjectTest &amp;#123;    public static void">
+<meta property="og:description" content="개인적인 프로젝트와 개발관련 블로그">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2018-04-04T05:55:11.275Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java ThreadPool Example">
-<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152import java.util.Date;import java.util.concurrent.*; public class ObjectTest &amp;#123;    public static void">
+<meta name="twitter:title">
+<meta name="twitter:description" content="개인적인 프로젝트와 개발관련 블로그">
     
 
     
@@ -135,117 +132,58 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Java/">Java</a>
+    <i class="icon fa fa-archive"></i>아카이브: 2018/7
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-java-threadpool-example" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+                            
+
+    
+    
         
-            <header class="article-header">
-                
+        
+        <section class="archives-wrap">
+            <div class="archive-year-wrap">
+                <a href="/archives/2018" class="archive-year"><i class="icon fa fa-calendar-o"></i>2018</a>
+            </div>
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/MemoryCalendar/">MemoryCalendar</a>
+            </div>
+            <div class="date"><time datetime="2018-07-05T07:05:23.000Z" itemprop="datePublished">2018-07-05</time></div>
+        </div>
+        
     
         <h1 class="article-title" itemprop="name">
-        Java ThreadPool Example
+        <a href="/2018/07/05/MemoryCalendar-V1/">MemoryCalendar_V1</a>
         </h1>
     
 
-            </header>
-        
-        
-            <div class="article-meta">
-                
-    <div class="article-date">
-        <a href="/2017/11/13/java-threadpool-example/" class="article-date">
-            <time datetime="2017-11-13T00:22:06.000Z" itemprop="datePublished">2017-11-13</time>
-        </a>
-    </div>
+        <p class="article-excerpt">
+            대학교 재학 시절 졸업작품으로 만들었던 MemoryCalendar 라는 제품의 V2 버전을 제작하기전에 초기 버전에 대한 간단한 리뷰를 작성하려고 한다.
+제품 개발 컨센은 다음과 같았다.
 
-                
-            </div>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.*;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Future future = <span class="keyword">null</span>;</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// ExecutorService 인터페이스 구현객체 Executors 정적메서드를 통해 최대 스레드 개수가 2인 스레드 풀 생성</span></span><br><span class="line">        ExecutorService executorService = Executors.newFixedThreadPool(<span class="number">5</span>);</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            Runnable runnable = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    <span class="comment">//스레드에게 시킬 작업 내용</span></span><br><span class="line">                    ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) executorService;</span><br><span class="line"> </span><br><span class="line">                    <span class="keyword">int</span> poolSize = threadPoolExecutor.getPoolSize();<span class="comment">//스레드 풀 사이즈 얻기</span></span><br><span class="line">                    String threadName = Thread.currentThread().getName();<span class="comment">//스레드 풀에 있는 해당 스레드 이름 얻기</span></span><br><span class="line">                    System.out.println(<span class="string">"[총 스레드 개수:"</span> + poolSize + <span class="string">"] 작업 스레드 이름: "</span> + threadName);</span><br><span class="line"> </span><br><span class="line">                    <span class="comment">//일부로 예외 발생 시킴</span></span><br><span class="line"><span class="comment">//                    int value = Integer.parseInt("예외");</span></span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        Thread.sleep(<span class="number">5000</span>);</span><br><span class="line">                        System.out.println(<span class="keyword">new</span> Date().toString());</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line"> </span><br><span class="line">            <span class="comment">//스레드풀에게 작업 처리 요청</span></span><br><span class="line"><span class="comment">//            executorService.execute(runnable);</span></span><br><span class="line">          future = executorService.submit(runnable);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                future.get();</span><br><span class="line">                System.out.println(<span class="string">"[작업 처리 완료]"</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (ExecutionException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="comment">//스레드풀 종료</span></span><br><span class="line">        executorService.shutdown();</span><br><span class="line">        System.out.println(<span class="string">"Finish"</span>);</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        <footer class="article-footer">
-            
-
-
-
-    <a data-url="https://osujin.github.io/2017/11/13/java-threadpool-example/" data-id="cjg7j3s2f001gwrr6qifnvau7" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-        </footer>
+흔히 사용하는 탁상달력에 LED 모듈을 달아 자체제작한 스마트폰 달력 App과 연동하여 LED를 제어하고자 하는것이 가장 큰 목표였다.
+추가적으로 LCD 모둘과의 페이스
+        </p>
     </div>
 </article>
-
-    <section id="comments">
     
-        
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-
+        </div>
     
-    </section>
+
+
+    </div></section>
+
 
 
                         </div>
@@ -266,29 +204,6 @@ ga('send', 'pageview');
             
         </ul>
     </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2018/01/16/mybatis-foreach를-이용해-insert-batch-처리하기/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">새로운</strong>
-        <p class="article-nav-title">
-        
-            mybatis foreach를 이용해 insert batch 처리하기
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
-    
-    
-        <a href="/2017/09/20/spring-@Value-Annotation-사용법/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">spring @Value Annotation 사용법</p>
-        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-        </a>
-    
-</nav>
-
     
     <div class="widgets-container">
         
@@ -420,13 +335,11 @@ ga('send', 'pageview');
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'https://osujin.github.io/2017/11/13/java-threadpool-example/';
-    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
