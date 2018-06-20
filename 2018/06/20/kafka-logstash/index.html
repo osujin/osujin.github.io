@@ -17,7 +17,7 @@
 <meta property="og:site_name">
 <meta property="og:description" content="ELK 를 구축할때 kafka 로 프로세스별 log 데이터를 밀어넣은 다음 kafka - logstash 를 연동하여 ElasticSearch로 보내도록 구현중이다. logstash 에서 여러개의 kafka Topic 을 처리하는 방법에 대해서 정리한 내용이다 A123 process =&amp;gt; topic : A1 B123 process =&amp;gt; topic">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2018-06-20T07:57:04.437Z">
+<meta property="og:updated_time" content="2018-06-20T08:53:48.572Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="logstash와 kafka 연동시 Multiple Topic 사용하기">
 <meta name="twitter:description" content="ELK 를 구축할때 kafka 로 프로세스별 log 데이터를 밀어넣은 다음 kafka - logstash 를 연동하여 ElasticSearch로 보내도록 구현중이다. logstash 에서 여러개의 kafka Topic 을 처리하는 방법에 대해서 정리한 내용이다 A123 process =&amp;gt; topic : A1 B123 process =&amp;gt; topic">
@@ -165,7 +165,7 @@ ga('send', 'pageview');
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/kafka-logstash-ElasticSearch/">kafka,logstash,ElasticSearch</a>
+        <a class="tag-link" href="/tags/ElasticSearch/">ElasticSearch</a>, <a class="tag-link" href="/tags/kafka/">kafka</a>, <a class="tag-link" href="/tags/logstash/">logstash</a>
     </div>
 
             </div>
@@ -179,12 +179,8 @@ ga('send', 'pageview');
 <p>C123 process =&gt; topic : A3</p>
 <p>이런식으로 3개의 프로세스의 로그가 각각 다른 토픽에 저장되어있다.</p>
 <p>ES(ElasticSearch)에는 다음과 같이 저장하려고 한다  </p>
-<pre><code>index : server-log-[@date]
-- type
-  - A1-log
-  - A2-log
-  - A3-log
-</code></pre><p>logstash 에서 여러개의 topic 을 불러오는건 다음과 같다</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">index : server-log-[@date]</span><br><span class="line">- type</span><br><span class="line">  - A1-log</span><br><span class="line">  - A2-log</span><br><span class="line">  - A3-log</span><br></pre></td></tr></table></figure>
+<p>logstash 에서 여러개의 topic 을 불러오는건 다음과 같다</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">    kafka &#123;</span><br><span class="line">        bootstrap_servers =&gt; &quot;192.168.202.148:9092&quot;</span><br><span class="line">        topics =&gt; [&quot;topic1&quot;,&quot;topic2&quot;]</span><br><span class="line">        group_id =&gt; &quot;logstash&quot;</span><br><span class="line">        consumer_threads =&gt; 2</span><br><span class="line">        decorate_events =&gt; true</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
 <p>위 topic 부분에 리스트([]) 형식으로 불러올 topic 을 넣어주면 된다.</p>
 <p>문제는 topic 들을 각각 다른 ES type으로 분류하여 저장하는것이다.</p>
@@ -196,10 +192,10 @@ ga('send', 'pageview');
 <p>그렇다.. ES 6 버전부터는 index 당 한개의 type 만 생성이 가능하다.</p>
 <p>그전에 input - kafka 안쪽에 “decorate_events =&gt; true” 설정을 꼭 넣어주자 그래야 topic 을 불러올수가 있다.</p>
 <p>type을 여러개 만들면 이와같은 오류가 발생한다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Rejecting mapping update to [index1-2018.06.20] as the final mapping would have more than 1 type</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">공식 문서에는 document_type을 생성하여 기존 type을 대체하라고 했는데 나는 그냥 원본 데이터에 새로 pName 필드를 추가하여 구분하는 방식으로 해보았다</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">최종 왼성된 config 설정은 아래와 같다</span><br></pre></td></tr></table></figure>
-<p>input {<br>    kafka {<br>        bootstrap_servers =&gt; “192.168.202.148:9092”<br>        topics =&gt; [“topic1”,”topic2”]<br>        group_id =&gt; “logstash”<br>        consumer_threads =&gt; 2<br>        decorate_events =&gt; true<br>    }<br>}</p>
-<p>filter {<br> if [@metadata][kafka][topic] == “topic1” {<br>        mutate {<br>                add_field =&gt; {‘pName’ =&gt; ‘topic1’}<br>        }<br> }<br>if [@metadata][kafka][topic] == “topic2” {<br>        mutate {<br>                add_field =&gt; {‘pName’ =&gt; ‘topic2’}<br>        }<br> }<br>  json {<br>    source =&gt; “message”<br>  }<br>}</p>
-<p>output {<br>elasticsearch {<br>    hosts =&gt; [“127.0.0.1:9200”]<br>    index =&gt; “index-%{+YYYY.MM.dd}”<br>    document_type =&gt; “logs”<br>  }<br>}<br><code>`</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rejecting mapping update to [index1-2018.06.20] as the final mapping would have more than 1 type</span><br></pre></td></tr></table></figure>
+<p>공식 문서에는 document_type을 생성하여 기존 type을 대체하라고 했는데 나는 그냥 원본 데이터에 새로 pName 필드를 추가하여 구분하는 방식으로 해보았다</p>
+<p>최종 왼성된 config 설정은 아래와 같다</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">    kafka &#123;</span><br><span class="line">        bootstrap_servers =&gt; &quot;192.168.202.148:9092&quot;</span><br><span class="line">        topics =&gt; [&quot;topic1&quot;,&quot;topic2&quot;]</span><br><span class="line">        group_id =&gt; &quot;logstash&quot;</span><br><span class="line">        consumer_threads =&gt; 2</span><br><span class="line">        decorate_events =&gt; true     </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">filter &#123;</span><br><span class="line"> if [@metadata][kafka][topic] == &quot;topic1&quot; &#123;</span><br><span class="line">        mutate &#123;</span><br><span class="line">                add_field =&gt; &#123;&apos;pName&apos; =&gt; &apos;topic1&apos;&#125;</span><br><span class="line">        &#125;</span><br><span class="line"> &#125;</span><br><span class="line">if [@metadata][kafka][topic] == &quot;topic2&quot; &#123;</span><br><span class="line">        mutate &#123;</span><br><span class="line">                add_field =&gt; &#123;&apos;pName&apos; =&gt; &apos;topic2&apos;&#125;</span><br><span class="line">        &#125;</span><br><span class="line"> &#125;</span><br><span class="line">  json &#123;</span><br><span class="line">    source =&gt; &quot;message&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">elasticsearch &#123;</span><br><span class="line">    hosts =&gt; [&quot;127.0.0.1:9200&quot;]</span><br><span class="line">    index =&gt; &quot;index-%&#123;+YYYY.MM.dd&#125;&quot;</span><br><span class="line">    document_type =&gt; &quot;logs&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>if [@metadata][kafka][topic] 를 이용하여 topic 을 불러와 새로운 필드를 추가하는 방식으로 프로세스별 로그를 구분하도록 하였다.</p>
 
         </div>
@@ -208,7 +204,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://osujin.github.io/2018/06/20/kafka-logstash/" data-id="cjimtr20j0000o3r6ir36m1ud" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://osujin.github.io/2018/06/20/kafka-logstash/" data-id="cjimvsm7f001io8r6f2pnxobh" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -401,7 +397,7 @@ ga('send', 'pageview');
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">태그</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka-logstash-ElasticSearch/">kafka,logstash,ElasticSearch</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -411,7 +407,7 @@ ga('send', 'pageview');
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">태그 클라우드</h3>
         <div class="widget tagcloud">
-            <a href="/tags/kafka-logstash-ElasticSearch/" style="font-size: 10px;">kafka,logstash,ElasticSearch</a>
+            <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a>
         </div>
     </div>
 
