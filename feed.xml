@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://osujin.github.io/"/>
-  <updated>2018-04-20T05:56:17.369Z</updated>
+  <updated>2018-06-20T07:57:04.437Z</updated>
   <id>https://osujin.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>logstash와 kafka 연동시 Multiple Topic 사용하기</title>
+    <link href="https://osujin.github.io/2018/06/20/kafka-logstash/"/>
+    <id>https://osujin.github.io/2018/06/20/kafka-logstash/</id>
+    <published>2018-06-20T07:52:29.000Z</published>
+    <updated>2018-06-20T07:57:04.437Z</updated>
+    
+    <content type="html"><![CDATA[<p>ELK 를 구축할때 kafka 로 프로세스별 log 데이터를 밀어넣은 다음 kafka - logstash 를 연동하여 ElasticSearch로 보내도록 구현중이다.</p><p>logstash 에서 여러개의 kafka Topic 을 처리하는 방법에 대해서 정리한 내용이다</p><p>A123 process =&gt; topic : A1</p><p>B123 process =&gt; topic : A2</p><p>C123 process =&gt; topic : A3</p><p>이런식으로 3개의 프로세스의 로그가 각각 다른 토픽에 저장되어있다.</p><p>ES(ElasticSearch)에는 다음과 같이 저장하려고 한다  </p><pre><code>index : server-log-[@date]- type  - A1-log  - A2-log  - A3-log</code></pre><p>logstash 에서 여러개의 topic 을 불러오는건 다음과 같다</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">    kafka &#123;</span><br><span class="line">        bootstrap_servers =&gt; &quot;192.168.202.148:9092&quot;</span><br><span class="line">        topics =&gt; [&quot;topic1&quot;,&quot;topic2&quot;]</span><br><span class="line">        group_id =&gt; &quot;logstash&quot;</span><br><span class="line">        consumer_threads =&gt; 2</span><br><span class="line">        decorate_events =&gt; true</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure><p>위 topic 부분에 리스트([]) 형식으로 불러올 topic 을 넣어주면 된다.</p><p>문제는 topic 들을 각각 다른 ES type으로 분류하여 저장하는것이다.</p><p>topic 이름으로 구분하여 ES에 저장할때 사용되는 type 을 지정하고 싶은데 topic 을 구분할 수 있는 방법이 topic 명 말고는 없다.</p><p>그래서 logstash config 파일에 output 부분에서 topic 명으로 분기를 만들어 주기로 했는데…</p><blockquote><p>Removal of mapping types &gt;&gt;  <a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.0/removal-of-types.html#removal-of-types" target="_blank" rel="noopener">multiple type 불가</a></p></blockquote><p>그렇다.. ES 6 버전부터는 index 당 한개의 type 만 생성이 가능하다.</p><p>그전에 input - kafka 안쪽에 “decorate_events =&gt; true” 설정을 꼭 넣어주자 그래야 topic 을 불러올수가 있다.</p><p>type을 여러개 만들면 이와같은 오류가 발생한다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Rejecting mapping update to [index1-2018.06.20] as the final mapping would have more than 1 type</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">공식 문서에는 document_type을 생성하여 기존 type을 대체하라고 했는데 나는 그냥 원본 데이터에 새로 pName 필드를 추가하여 구분하는 방식으로 해보았다</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">최종 왼성된 config 설정은 아래와 같다</span><br></pre></td></tr></table></figure><p>input {<br>    kafka {<br>        bootstrap_servers =&gt; “192.168.202.148:9092”<br>        topics =&gt; [“topic1”,”topic2”]<br>        group_id =&gt; “logstash”<br>        consumer_threads =&gt; 2<br>        decorate_events =&gt; true<br>    }<br>}</p><p>filter {<br> if [@metadata][kafka][topic] == “topic1” {<br>        mutate {<br>                add_field =&gt; {‘pName’ =&gt; ‘topic1’}<br>        }<br> }<br>if [@metadata][kafka][topic] == “topic2” {<br>        mutate {<br>                add_field =&gt; {‘pName’ =&gt; ‘topic2’}<br>        }<br> }<br>  json {<br>    source =&gt; “message”<br>  }<br>}</p><p>output {<br>elasticsearch {<br>    hosts =&gt; [“127.0.0.1:9200”]<br>    index =&gt; “index-%{+YYYY.MM.dd}”<br>    document_type =&gt; “logs”<br>  }<br>}<br><code>`</code></p><p>if [@metadata][kafka][topic] 를 이용하여 topic 을 불러와 새로운 필드를 추가하는 방식으로 프로세스별 로그를 구분하도록 하였다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;ELK 를 구축할때 kafka 로 프로세스별 log 데이터를 밀어넣은 다음 kafka - logstash 를 연동하여 ElasticSearch로 보내도록 구현중이다.&lt;/p&gt;
+&lt;p&gt;logstash 에서 여러개의 kafka Topic 을 처리하는 방
+      
+    
+    </summary>
+    
+      <category term="기타" scheme="https://osujin.github.io/categories/%EA%B8%B0%ED%83%80/"/>
+    
+    
+      <category term="kafka,logstash,ElasticSearch" scheme="https://osujin.github.io/tags/kafka-logstash-ElasticSearch/"/>
+    
+  </entry>
   
   <entry>
     <title>MemoryCalendar_V1</title>
@@ -475,31 +501,6 @@
         &lt;p&gt;앞선 예제에서 사용했던 hello 프로젝트를 clustering을 이용하도록 구현해보자.&lt;/p&gt;
 &lt;p&gt;목표는 global-rpc,routed-rpc 구현과 datastore 공유이다.&lt;/p&gt;
 &lt;p&gt;hello 프로젝트에 아무런 설정을 하지 않고&lt;/
-      
-    
-    </summary>
-    
-      <category term="OpenDayLight" scheme="https://osujin.github.io/categories/OpenDayLight/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ODL(OpenDayLight) 기본 튜토리얼 #7_2 – ODL Clustering 소스 배포</title>
-    <link href="https://osujin.github.io/2017/03/13/ODL(OpenDayLight)-%EA%B8%B0%EB%B3%B8-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-7_2-%E2%80%93-ODL-Clustering-%EC%86%8C%EC%8A%A4-%EB%B0%B0%ED%8F%AC/"/>
-    <id>https://osujin.github.io/2017/03/13/ODL(OpenDayLight)-기본-튜토리얼-7_2-–-ODL-Clustering-소스-배포/</id>
-    <published>2017-03-13T06:35:22.000Z</published>
-    <updated>2018-04-04T05:37:24.254Z</updated>
-    
-    <content type="html"><![CDATA[<p>이번에는 앞서 구축한 3개의 docker instance에 소스를 배포하고 기동하는 방법이다.</p><p>테스트 소스는 coretutorials/clustering 하위에 있는 singletonsimple 으로 하겠다.</p><p>먼저 singletonsimple 을 빌드를 해야 하는데 singletonsimple-impl 를 빌드하다 문제가 발생했었다.</p><ul><li>[ERROR] Failed to execute goal org.apache.maven.plugins:maven-enforcer-plugin:1.4.1:enforce</li></ul><p>위와 같은 에러였는데 singletonsimple-impl/pom.xml 파일에 parent 버전정보를 불러오는 곳이 있는데 기존에 있던 <version>1.8.0-SNAPSHOT</version> 해당 버전이 존재하지 않아 발생한것 같다. 이부분을 Boron 버전중에 하나로 설정해주면 된다. 필자는 0.5.2-Boron-SR2 버전을 사용하였다.</p><p>빌드를 완료했으면 각 instance로 배포를 해야 한다. 문서에 나와 있는 ansible을 이용하여 배포해보도록 하겠다.</p><p>ansible을 이용하기전에 한가지 작업해줄게 있다.</p><ul><li>docker로 띄운 3개의 instance에 /opt/scripts/ 폴더를 생성하고 coretutorials/clustering/node/install_odl.sh, configure-cluster-ipdetect.sh 파일을 복사해주어야 한다.</li></ul><p>ansible 설치 방법은 구글을 참조하길 바란다.</p><ul><li>ansible로 소스 배포하기_ docker-Host $ cd coretutorials/clustering/scripts/ansible docker-Host $ ansible-playbook -i hosts playbook.yaml</li></ul><p>playbook.yaml 파일내용을 약간 수정을 해줘야 하는데 파일을 열어보면</p><ul><li>distro_name: singletonsimple-karaf-0.1.0-SNAPSHOT.zip local_path: /Users/jmedved/Documents/ODL/Git/coretutorials/clustering/singletonsimple/karaf/target</li></ul><p>위 두줄이 있는데 <strong>distro_name</strong> 부분에 자신이 배포하고 싶은 소스명을 적고 <strong>local_path</strong> 부분에 해당 소스가 있는 경로를 적어주면 된다. 배포되는 소스는 zip 으로 압축된것을 보낸다.</p><p>수동으로 배포하는 방법도 알아보자</p><p>singletonsimple을 빌드하면 singletonsimple/karaf/target 하위에 컴파일된 파일들이 있는데 .zip 으로 된 파일을 docker instance 들에게 ftp등을 이용하여 전송하면된다.\</p><p>전송한뒤에는 앞서 옮긴 install_odl.sh 파일을 이용하여 cluster 셋팅을 해주어야 한다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">member 1~3 # /opt/scripts/install_odl.sh -d [컴파일된 소스가 저장될 경로] – i [Zip 파일명] -p [Zip 파일 경로] -c [클러스터를 형성할 3개의 instance들의 IP] EX.) &gt; member 1~3 # /opt/scripts/install_odl.sh -d /opt/odl – i example-karaf-0.1.0-SNAPSHOT.zip -p . -c ‘172.17.0.2 172.17.0.3 172.17.0.4’</span><br></pre></td></tr></table></figure><p>configure-cluster-ipdetect.sh 파일을 열어보면 zip/configuration에 initial폴더를 생성하고 akka.conf , module-shards.conf , modules.conf 3개의 파일을 생성하는데 akka.conf 파일에 cluster를 형성할 instance들의 ip 정보가 담겨져 있다.</p><p>ODL Cluster구성은 akka framework를 이용해서 구성을 하는듯 하다.</p><p>akka 설정을 통해 cluster node를 설정할 수 있고 손쉽게 여러개의 cluster node 구현이 가능하다.</p><p><a href="http://docs.opendaylight.org/en/stable-boron/getting-started-guide/common-features/clustering.html" target="_blank" rel="noopener">Multiple Node Clustering 공식 문서</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;이번에는 앞서 구축한 3개의 docker instance에 소스를 배포하고 기동하는 방법이다.&lt;/p&gt;
-&lt;p&gt;테스트 소스는 coretutorials/clustering 하위에 있는 singletonsimple 으로 하겠다.&lt;/p&gt;
-&lt;p&gt;먼저 sin
       
     
     </summary>
