@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://osujin.github.io/"/>
-  <updated>2018-06-21T05:24:07.073Z</updated>
+  <updated>2018-06-21T09:01:56.762Z</updated>
   <id>https://osujin.github.io/</id>
   
   <author>
@@ -17,13 +17,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Linux 서버에서 VPN 자동접속 하는방</title>
+    <title>Linux 서버에서 VPN 자동접속 하는방법</title>
     <link href="https://osujin.github.io/2018/06/21/post/"/>
     <id>https://osujin.github.io/2018/06/21/post/</id>
     <published>2018-06-21T05:18:40.000Z</published>
-    <updated>2018-06-21T05:24:07.073Z</updated>
+    <updated>2018-06-21T09:01:56.762Z</updated>
     
-    <content type="html"><![CDATA[<p>Linux 에서 VPN 접속 끊어지면 자동으로 reconnect 하는 스크립트 <strong>nmcli</strong> 명령어를 사용하였다</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">while [ "true" ]</span><br><span class="line">do</span><br><span class="line">VPNCON=$(nmcli con status)</span><br><span class="line">if [[ $VPNCON != *testVPN* ]]; then</span><br><span class="line">echo "Disconnected, trying to reconnect..."</span><br><span class="line">(sleep 1s &amp;&amp; nmcli con up uuid 5f359e9f-010e-43ca-a3a0-25787c9b1359)</span><br><span class="line">else</span><br><span class="line">echo "Already connected !"</span><br><span class="line">fi</span><br><span class="line">sleep 30</span><br><span class="line">done</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>Linux 에서 VPN 접속 끊어지면 자동으로 reconnect 하는 스크립트 <strong>nmcli</strong> 명령어를 사용하였다</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line">while [ "true" ]</span><br><span class="line">do</span><br><span class="line">        VPNCON=$(nmcli con show | grep 'VPN' | cut -f1 -d " ")</span><br><span class="line">        if [[ $VPNCON != "VPN" ]]; then</span><br><span class="line">                echo "Disconnected, trying to reconnect..."</span><br><span class="line">                (sleep 1s &amp;&amp; nmcli con up uuid 5f359e9f-010e-43ca-a3a0-25787c9b1359)</span><br><span class="line">        else</span><br><span class="line">                echo "Already connected !"</span><br><span class="line">        fi</span><br><span class="line">        sleep 30</span><br><span class="line">done</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     

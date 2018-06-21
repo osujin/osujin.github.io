@@ -164,13 +164,13 @@ ga('send', 'pageview');
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/06/21/post/">Linux 서버에서 VPN 자동접속 하는방</a>
+        <a href="/2018/06/21/post/">Linux 서버에서 VPN 자동접속 하는방법</a>
         </h1>
     
 
         <p class="article-excerpt">
             Linux 에서 VPN 접속 끊어지면 자동으로 reconnect 하는 스크립트 nmcli 명령어를 사용하였다
-123456789101112#!/bin/bashwhile [ "true" ]do	VPNCON=$(nmcli con status)	if [[ $VPNCON != *testVPN* ]]; then		echo "Disconnected, trying to 
+123456789101112#!/bin/bashwhile [ "true" ]do        VPNCON=$(nmcli con show | grep 'VPN' | cut -f1 -d " ")        if [[ $VPNCON != "VPN" ]]
         </p>
     </div>
 </article>
@@ -313,7 +313,7 @@ java code
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/기타/">기타</a></p>
-                            <p class="item-title"><a href="/2018/06/21/post/" class="title">Linux 서버에서 VPN 자동접속 하는방</a></p>
+                            <p class="item-title"><a href="/2018/06/21/post/" class="title">Linux 서버에서 VPN 자동접속 하는방법</a></p>
                             <p class="item-date"><time datetime="2018-06-21T05:18:40.000Z" itemprop="datePublished">2018-06-21</time></p>
                         </div>
                     </li>
