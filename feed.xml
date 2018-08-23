@@ -173,7 +173,7 @@
     <link href="https://osujin.github.io/2017/09/20/spring-@Value-Annotation-%EC%82%AC%EC%9A%A9%EB%B2%95/"/>
     <id>https://osujin.github.io/2017/09/20/spring-@Value-Annotation-사용법/</id>
     <published>2017-09-20T02:21:32.000Z</published>
-    <updated>2018-04-04T05:54:35.119Z</updated>
+    <updated>2018-08-23T04:45:10.389Z</updated>
     
     <content type="html"><![CDATA[<p>spring을 이용하여 @Value Annotation 사용할때 properties 파일과 mapping 시키는데 삽질한 내용이다.</p><p>SpringContext.xml 에 아래와 같은 내용 properties를 만들어주고 context:component-scan 또한 선언해주어야 @Value Annotation 이 선언된 class 에서 properties를 참조하여 사용할수 있다.</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">util:properties</span> <span class="attr">id</span>=<span class="string">"prop"</span> <span class="attr">location</span>=<span class="string">“classpath:sample.properties</span>" /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">“com.spring.test</span>" /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">properties-ref</span>=<span class="string">"prop"</span>  /&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
     
@@ -187,7 +187,7 @@
     
     </summary>
     
-      <category term="Java" scheme="https://osujin.github.io/categories/Java/"/>
+      <category term="JAVA" scheme="https://osujin.github.io/categories/JAVA/"/>
     
     
   </entry>
