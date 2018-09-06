@@ -17,7 +17,7 @@
 <meta property="og:site_name">
 <meta property="og:description" content="ELK 를 구축할때 kafka 로 프로세스별 log 데이터를 밀어넣은 다음 kafka - logstash 를 연동하여 ElasticSearch로 보내도록 구현중이다. logstash 에서 여러개의 kafka Topic 을 처리하는 방법에 대해서 정리한 내용이다 A123 process =&amp;gt; topic : A1 B123 process =&amp;gt; topic">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2018-06-20T08:53:48.572Z">
+<meta property="og:updated_time" content="2018-09-04T01:25:43.784Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="logstash와 kafka 연동시 Multiple Topic 사용하기">
 <meta name="twitter:description" content="ELK 를 구축할때 kafka 로 프로세스별 log 데이터를 밀어넣은 다음 kafka - logstash 를 연동하여 ElasticSearch로 보내도록 구현중이다. logstash 에서 여러개의 kafka Topic 을 처리하는 방법에 대해서 정리한 내용이다 A123 process =&amp;gt; topic : A1 B123 process =&amp;gt; topic">
@@ -81,7 +81,7 @@ ga('send', 'pageview');
                                     <a class="main-nav-list-link" href="/">홈</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/MemoryCalendar/">MemoryCalendar</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/OpenDayLight/">OpenDayLight</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/기타/">기타</a></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ElasticSearch/">ElasticSearch</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/MemoryCalendar/">MemoryCalendar</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/OpenDayLight/">OpenDayLight</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/기타/">기타</a></li></ul>
                                     
                         </ul>
                         <nav id="sub-nav">
@@ -136,7 +136,7 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/기타/">기타</a>
+    <a class="page-title-link" href="/categories/ElasticSearch/">ElasticSearch</a>
     </h1>
 </div>
                         <div class="main-body-content">
@@ -204,7 +204,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="https://osujin.github.io/2018/06/20/kafka-logstash/" data-id="cjl62mwfx001yk4r61k3iom58" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="https://osujin.github.io/2018/06/20/kafka-logstash/" data-id="cjlpy4jas001t51r62a1t0mi7" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -363,7 +363,7 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/기타/">기타</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/ElasticSearch/">ElasticSearch</a></p>
                             <p class="item-title"><a href="/2018/06/20/kafka-logstash/" class="title">logstash와 kafka 연동시 Multiple Topic 사용하기</a></p>
                             <p class="item-date"><time datetime="2018-06-20T07:52:29.000Z" itemprop="datePublished">2018-06-20</time></p>
                         </div>
@@ -387,7 +387,7 @@ ga('send', 'pageview');
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">카테고리</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IoT/">IoT</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MemoryCalendar/">MemoryCalendar</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenDayLight/">OpenDayLight</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/기타/">기타</a><span class="category-list-count">6</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ElasticSearch/">ElasticSearch</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IoT/">IoT</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MemoryCalendar/">MemoryCalendar</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenDayLight/">OpenDayLight</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/기타/">기타</a><span class="category-list-count">5</span></li></ul>
         </div>
     </div>
 

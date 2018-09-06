@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>https://osujin.github.io/2018/06/20/kafka-logstash/</loc>
+        <lastmod>2018-09-04T01:25:43.784Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://osujin.github.io/2018/08/23/Spring-boot%20JPA%20%EC%B4%88%EA%B8%B0%20%EC%84%A4%EC%A0%95%EB%B0%A9%EB%B2%95%20/</loc>
         <lastmod>2018-08-23T04:59:41.749Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -33,14 +41,6 @@
     <url>
         <loc>https://osujin.github.io/2018/06/21/Linux%20%EC%84%9C%EB%B2%84%EC%97%90%EC%84%9C%20VPN%20%EC%9E%90%EB%8F%99%EC%A0%91%EC%86%8D%20%ED%95%98%EB%8A%94%EB%B0%A9%EB%B2%95/</loc>
         <lastmod>2018-06-21T09:01:56.762Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://osujin.github.io/2018/06/20/kafka-logstash/</loc>
-        <lastmod>2018-06-20T08:53:48.572Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
