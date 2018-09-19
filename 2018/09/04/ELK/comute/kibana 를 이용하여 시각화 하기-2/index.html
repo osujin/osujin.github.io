@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>kibana 를 이용하여 시각화 하기 2 | </title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="ELK,elastic search,시각화" />
+    
+    <meta name="description" content="지난 글에서는 ES에 저장된 데이터에 몇개의 필드를 추가하는 방법에 대해 알아 보았다. 이번글에서는 수집된 데이터를 이용해 그래프를 통한 시각화를 해보도록 하자.  Kibana 왼쪽 메뉴에서 Visualize를 선택한 뒤 “+” 버튼을 누르면 다음과 같은 화면이나온다.  Line 차트를 선택하고 차트에 사용되어질 데이터가 들어있는 index를 선택해주면 그">
+<meta name="keywords" content="ELK,elastic search,시각화">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kibana 를 이용하여 시각화 하기 2">
+<meta property="og:url" content="https://osujin.github.io/2018/09/04/ELK/comute/kibana 를 이용하여 시각화 하기-2/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="지난 글에서는 ES에 저장된 데이터에 몇개의 필드를 추가하는 방법에 대해 알아 보았다. 이번글에서는 수집된 데이터를 이용해 그래프를 통한 시각화를 해보도록 하자.  Kibana 왼쪽 메뉴에서 Visualize를 선택한 뒤 “+” 버튼을 누르면 다음과 같은 화면이나온다.  Line 차트를 선택하고 차트에 사용되어질 데이터가 들어있는 index를 선택해주면 그">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="https://osujin.github.io/image/2018/ELK_comute/차트종륭.png">
+<meta property="og:updated_time" content="2018-09-19T04:28:10.981Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="kibana 를 이용하여 시각화 하기 2">
+<meta name="twitter:description" content="지난 글에서는 ES에 저장된 데이터에 몇개의 필드를 추가하는 방법에 대해 알아 보았다. 이번글에서는 수집된 데이터를 이용해 그래프를 통한 시각화를 해보도록 하자.  Kibana 왼쪽 메뉴에서 Visualize를 선택한 뒤 “+” 버튼을 누르면 다음과 같은 화면이나온다.  Line 차트를 선택하고 차트에 사용되어질 데이터가 들어있는 index를 선택해주면 그">
+<meta name="twitter:image" content="https://osujin.github.io/image/2018/ELK_comute/차트종륭.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/image/2018/04/memory_calander_ic.png" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-116900069-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Elastic-Search/">Elastic Search</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/MemoryCalendar/">MemoryCalendar</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/OpenDayLight/">OpenDayLight</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/기타/">기타</a></li></ul>
+                                    
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Elastic-Search/">Elastic Search</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-ELK/comute/kibana 를 이용하여 시각화 하기-2" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        kibana 를 이용하여 시각화 하기 2
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/09/04/ELK/comute/kibana 를 이용하여 시각화 하기-2/" class="article-date">
+            <time datetime="2018-09-04T12:12:31.000Z" itemprop="datePublished">2018-09-04</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/ELK-elastic-search-시각화/">ELK,elastic search,시각화</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>지난 글에서는 ES에 저장된 데이터에 몇개의 필드를 추가하는 방법에 대해 알아 보았다.</p>
+<p>이번글에서는 수집된 데이터를 이용해 그래프를 통한 시각화를 해보도록 하자.</p>
+<hr>
+<p>Kibana 왼쪽 메뉴에서 <strong>Visualize</strong>를 선택한 뒤 “+” 버튼을 누르면 다음과 같은 화면이나온다.</p>
+<p><img src="/image/2018/ELK_comute/차트종륭.png" alt=""></p>
+<p>Line 차트를 선택하고 차트에 사용되어질 데이터가 들어있는 index를 선택해주면 그래프를 그릴수 있는 화면이 나오는데 앞서 만든 데이터를 활용하여 그래프를 그려주면 된다.</p>
+<p>먼저 설정해줄것은 Metrics 으로 Y 축의 기준이 되는 값을 설정해 주어야한다. </p>
+<p>Y축을 통근하는데 걸린 시간의 총 합으로 하기로하고 “Y-Axis” 왼쪽에 있는 화살표를 눌러 <strong>Aggregation</strong>항목을 sum 으로 선택하고 field는 <strong>estimated</strong>를 선택해준다.</p>
+<p> estimated 는 앞선 글에서 설명했듯이 하차시간 - 승차시간을 계산하여 만들어진 값을 새로운 필드로 추가한 값이다.</p>
+<p>다음으로 Buckets(X 축)을 설정 해줄 차례이다. 마찬가지로 “X-Axis”를 선택해 <strong>Aggregation</strong>항목을 Data Histogram 으로 선택하고 Field는 @timestamp 를 선택해준다.</p>
+<p>Interval은 daily로 선택하여 하루를 기준으로 출근,퇴근 소요시간의 총 합을 계산하도록 한다.</p>
+<p><img src="/image/2018/ELK_comute/통근 소요시간.png" alt=""></p>
+<p>위 그림이 최종적으로 만들어진 그래프이다. 중간에 값이 없는 구간이 있는데 이때는 아마 다른 교통카드를 사용중이라 데이터가 없었던것 같다.</p>
+<p>이번에는 출근과 퇴근 시간을 나누어서 확인해 보도록 하자.</p>
+<p>Buckets 항목에 하단에 <strong>Add sub-buckets</strong> 항목을 누르고 <strong>Split Series</strong>를 선택하여 <strong>Sub Aggregation</strong> =&gt; <strong>Terms</strong> 로 선택하고 Field는 이전 글에서 생성한 <strong>commuteType</strong> Field를 선택해주자</p>
+<p><img src="/image/2018/ELK_comute/통근종류.png" alt=""></p>
+<p>그러면 위 그림과 같이 출근,퇴근 그래프가 각각 생성되어진다.</p>
+<p>출근, 퇴근 시간만 각각 보고 싶으면 상단의 필터기능을 이용해  commuteType 을 기준으로 필터를 적용해주면 된다.</p>
+<p>다음 글에서는 여러가지 차트를 만들어 dashboard를 구성해보도록 하겠다.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://osujin.github.io/2018/09/04/ELK/comute/kibana 를 이용하여 시각화 하기-2/" data-id="cjm8nrvsy002qgdr6sadnvyxm" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/osujin" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/09/05/ELK/comute/kibana 를 이용하여 시각화 하기-3/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            kibana 를 이용하여 시각화 하기 3
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/09/03/ELK/comute/kibana 를 이용하여 시각화 하기-1/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">kibana 를 이용하여 시각화 하기 1</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Elastic-Search/">Elastic Search</a></p>
+                            <p class="item-title"><a href="/2018/09/05/ELK/comute/kibana 를 이용하여 시각화 하기-3/" class="title">kibana 를 이용하여 시각화 하기 3</a></p>
+                            <p class="item-date"><time datetime="2018-09-05T06:29:51.000Z" itemprop="datePublished">2018-09-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Elastic-Search/">Elastic Search</a></p>
+                            <p class="item-title"><a href="/2018/09/04/ELK/comute/kibana 를 이용하여 시각화 하기-2/" class="title">kibana 를 이용하여 시각화 하기 2</a></p>
+                            <p class="item-date"><time datetime="2018-09-04T12:12:31.000Z" itemprop="datePublished">2018-09-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Elastic-Search/">Elastic Search</a></p>
+                            <p class="item-title"><a href="/2018/09/03/ELK/comute/kibana 를 이용하여 시각화 하기-1/" class="title">kibana 를 이용하여 시각화 하기 1</a></p>
+                            <p class="item-date"><time datetime="2018-09-03T12:11:58.000Z" itemprop="datePublished">2018-09-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Elastic-Search/">Elastic Search</a></p>
+                            <p class="item-title"><a href="/2018/08/26/ELK/comute/logstash를 이용하여 source 데이터 가공하기/" class="title">logstash를 이용하여 source 데이터 가공하기</a></p>
+                            <p class="item-date"><time datetime="2018-08-26T14:31:14.000Z" itemprop="datePublished">2018-08-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/08/23/spring-boot/Spring-boot JPA 이용하기/" class="title">Spring-boot JPA 이용하기</a></p>
+                            <p class="item-date"><time datetime="2018-08-23T04:00:32.000Z" itemprop="datePublished">2018-08-23</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Elastic-Search/">Elastic Search</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IoT/">IoT</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MemoryCalendar/">MemoryCalendar</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenDayLight/">OpenDayLight</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/기타/">기타</a><span class="category-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">6월 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">4월 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">1월 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">11월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">6월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">5월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">4월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">3월 2017</a><span class="archive-list-count">13</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK-elastic-search-시각화/">ELK,elastic search,시각화</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/ELK-elastic-search-시각화/" style="font-size: 20px;">ELK,elastic search,시각화</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 sujin Oh</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://osujin.github.io/2018/09/04/ELK/comute/kibana 를 이용하여 시각화 하기-2/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

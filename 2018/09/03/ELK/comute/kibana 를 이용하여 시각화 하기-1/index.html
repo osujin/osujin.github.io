@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>kibana 를 이용하여 시각화 하기 1 | </title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="ELK,elastic search,시각화" />
+    
+    <meta name="description" content="앞서 logstash 를 이용해 source data를 가공하여 ES에 저장하였다. 데이터를 ES에 저장한 뒤에는 꼭 index를 생성해주어야 하는데 logstash가 데이터를 ES 에 저장하는 순간 ES 상에는 index 가 생성되고 mapping 까지 완료된 상태이다. 그러나 kibana 를 통해 접속해보면 index가 나와있지 않는데 kibana가 관">
+<meta name="keywords" content="ELK,elastic search,시각화">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kibana 를 이용하여 시각화 하기 1">
+<meta property="og:url" content="https://osujin.github.io/2018/09/03/ELK/comute/kibana 를 이용하여 시각화 하기-1/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="앞서 logstash 를 이용해 source data를 가공하여 ES에 저장하였다. 데이터를 ES에 저장한 뒤에는 꼭 index를 생성해주어야 하는데 logstash가 데이터를 ES 에 저장하는 순간 ES 상에는 index 가 생성되고 mapping 까지 완료된 상태이다. 그러나 kibana 를 통해 접속해보면 index가 나와있지 않는데 kibana가 관">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="https://osujin.github.io/image/2018/ELK_comute/새로운">
+<meta property="og:updated_time" content="2018-09-19T04:34:48.855Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="kibana 를 이용하여 시각화 하기 1">
+<meta name="twitter:description" content="앞서 logstash 를 이용해 source data를 가공하여 ES에 저장하였다. 데이터를 ES에 저장한 뒤에는 꼭 index를 생성해주어야 하는데 logstash가 데이터를 ES 에 저장하는 순간 ES 상에는 index 가 생성되고 mapping 까지 완료된 상태이다. 그러나 kibana 를 통해 접속해보면 index가 나와있지 않는데 kibana가 관">
+<meta name="twitter:image" content="https://osujin.github.io/image/2018/ELK_comute/새로운">
+    
+
+    
+
+    
+        <link rel="icon" href="/image/2018/04/memory_calander_ic.png" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-116900069-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Elastic-Search/">Elastic Search</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/MemoryCalendar/">MemoryCalendar</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/OpenDayLight/">OpenDayLight</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/기타/">기타</a></li></ul>
+                                    
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Elastic-Search/">Elastic Search</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-ELK/comute/kibana 를 이용하여 시각화 하기-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        kibana 를 이용하여 시각화 하기 1
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/09/03/ELK/comute/kibana 를 이용하여 시각화 하기-1/" class="article-date">
+            <time datetime="2018-09-03T12:11:58.000Z" itemprop="datePublished">2018-09-03</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/ELK-elastic-search-시각화/">ELK,elastic search,시각화</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>앞서 logstash 를 이용해 source data를 가공하여 ES에 저장하였다.</p>
+<p>데이터를 ES에 저장한 뒤에는 꼭 index를 생성해주어야 하는데 logstash가 데이터를 ES 에 저장하는 순간 ES 상에는 index 가 생성되고 mapping 까지 완료된 상태이다.</p>
+<p>그러나 kibana 를 통해 접속해보면 index가 나와있지 않는데 kibana가 관리하는 index를 ES로 부터 불러와야 한다.</p>
+<p>kibana 에 접속하여 왼쪽 메뉴에서 Management 를 누르고 kibana 항목의 index patterns 를 클릭한다.</p>
+<p>그리고 + Create Index Pattern 을 선택하여 logstash 에서 사용한 index 명을 입력해주고 “Next step” 을 클릭한다음 Time Filter를 @Timestamp 를 선택하여 index를 생성해준다.</p>
+<p>이제 kibana를 이용해 저장된 데이터를 분석하고 시각화를 해보도록 한다.</p>
+<p>ES에 저장된 데이터중 하나의 document를 살펴보자</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"_index"</span>: <span class="string">"office_work"</span>,</span><br><span class="line">  <span class="attr">"_type"</span>: <span class="string">"doc"</span>,</span><br><span class="line">  <span class="attr">"_id"</span>: <span class="string">"xsMrx2UBHYmbdMUbWuZ_"</span>,</span><br><span class="line">  <span class="attr">"_version"</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">"_score"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"_source"</span>: &#123;</span><br><span class="line">    <span class="attr">"@timestamp"</span>: <span class="string">"2018-09-02T07:11:27.000Z"</span>,</span><br><span class="line">    <span class="attr">"charge "</span>: <span class="string">" 1,200원 "</span>,</span><br><span class="line">    <span class="attr">"Boarding_Station"</span>: <span class="string">"신사사거리.가로"</span>,</span><br><span class="line">    <span class="attr">"host"</span>: <span class="string">"osujin-MBP"</span>,</span><br><span class="line">    <span class="attr">"date"</span>: <span class="string">"2018-09-01T15:00:00.000Z"</span>,</span><br><span class="line">    <span class="attr">"message"</span>: <span class="string">"2018.09.02,신사사거리.가로,16:11:27,지하철2호선강남,16:19:09,\" 1,200원 \",버스\r"</span>,</span><br><span class="line">    <span class="attr">"classify"</span>: <span class="string">"버스"</span>,</span><br><span class="line">    <span class="attr">"Boarding_clock"</span>: <span class="string">"2018-09-02T07:11:27.000Z"</span>,</span><br><span class="line">    <span class="attr">"@version"</span>: <span class="string">"1"</span>,</span><br><span class="line">    <span class="attr">"Exit_Station"</span>: <span class="string">"지하철2호선강남"</span>,</span><br><span class="line">    <span class="attr">"Exit_clock"</span>: <span class="string">"2018-09-02T07:19:09.000Z"</span>,</span><br><span class="line">    <span class="attr">"path"</span>: <span class="string">"/Users/osujin12/Downloads/bus.csv"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"fields"</span>: &#123;</span><br><span class="line">    <span class="attr">"date"</span>: [</span><br><span class="line">      <span class="string">"2018-09-01T15:00:00.000Z"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"@timestamp"</span>: [</span><br><span class="line">      <span class="string">"2018-09-02T07:11:27.000Z"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"Boarding_clock"</span>: [</span><br><span class="line">      <span class="string">"2018-09-02T07:11:27.000Z"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"Exit_clock"</span>: [</span><br><span class="line">      <span class="string">"2018-09-02T07:19:09.000Z"</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"sort"</span>: [</span><br><span class="line">    <span class="number">1536304287000</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>_source 하위에 있는 field는 원본 데이터인 csv 파일에 logstash 파 추가로 생성한 field 정보가 붙여져 있다. 그리고 logstash 에서 filter plugin 으로 수정한 필드는 fields 하위 영역에 포함되어 있다.</p>
+<p>이제 위 데이터를 가지고 출퇴근 소요 시간을 계산하려고 한다.</p>
+<p>간단히 생각해서 <strong>하차시간 - 승차 시간 = 통근 소요시간</strong> 이라는 공식이 생각나는데 아예 통근 소요시간 필드를 하나 추가해 주면 여러므로 이용할때가 많을거라 생각이 들었다. </p>
+<p>구글을 열심히 검색해본 결과 index에 새로운 field를 생성하는 방법이 나와 있었는데  Management 를 누르고 kibana 항목의 index patterns 를 클릭하면 총 3개의 탭이 나온다. Fields, Scripted fields, Source filters 가 있는데 이중 <strong>Scripted fields</strong> 를 클릭하고 <strong>Add scripted field</strong> 를 해준다.</p>
+<p>painless 라는 문법을 가지고 새로운 field 데이터를 생성하는 방법이 있는데 하차시간 - 승차 시간 을 계산한 값을 새로운 필드로 생성하고자 한다.</p>
+<p><img src="/image/2018/ELK_comute/새로운 필드 생성.png" alt=""></p>
+<p>통근 시간계산하는 스크립트는 다음과 같다. Boarding_clock, Exit_clock 는 date type 이므로 millisecond 로 데이터 형태를 변형 할 수 있고 이를 1시간을 분으로 표현한 60으로 나누어 주면 통근 소요시간이 분단위로 계산되어진다. </p>
+<p>원본데이터중 쓰레기 값이 있는 경우가 있기때문에 음수값이 나오는 경우는 0을 리턴하도록 하였다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def time = (doc[&apos;Exit_clock&apos;].value.getMillis() - doc[&apos;Boarding_clock&apos;].value.getMillis())/60000.0;</span><br><span class="line"></span><br><span class="line">if(time &gt; 0)&#123;</span><br><span class="line">return time;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>필드를 추가한 김에 몇가지 정보를 더 추가해 보자.</p>
+<p>원본데이터를 보면 승차역,하차역이 따로 되어있어 하나로 합쳐진 필드명이 있으면 좋을것 같다. </p>
+<p>간단히 두개의 필드명을 합쳐주면 된다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">doc[&apos;Boarding_Station.keyword&apos;].value + &apos;-&apos; + doc[&apos;Exit_Station.keyword&apos;].value</span><br></pre></td></tr></table></figure>
+<p>그리고 계산한 통근 시간이 출근인지 퇴근인지 표시해주는 필드도 필요하다. 이경우는 조금 복잡하였는데 기본적으로 ES는 timezone 이 UTC 로 기본 셋팅되어 있어 timezone을 변경하지 않으면 시간이 꼬여서 계산하기 힘들어진다.</p>
+<p>timezone은 Asia/Seoul 로 바꿔주고  승차시간이 13시 이전이면 출근으로 간주하는 스크립트를 만들어 줬다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def commuteType = LocalDateTime.ofInstant(Instant.ofEpochMilli(doc[&apos;Boarding_clock&apos;].value.millis),ZoneId.of(&apos;Asia/Seoul&apos;)).getHour();</span><br><span class="line"></span><br><span class="line">if(commuteType &lt; 13)&#123;</span><br><span class="line">return &quot;출근&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">return &quot;퇴근&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이로써 시각화에 필요한 데이터를 만드는데 얼추 끝난것 같다. </p>
+<p>다음 글에서는 Kibana 에서 제공하는 시각화 도구를 이용하여 통근시간에 대한 다양한 분석을 시도 해보도록 하겠다.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://osujin.github.io/2018/09/03/ELK/comute/kibana 를 이용하여 시각화 하기-1/" data-id="cjm8nrvsx002ogdr6a83gmswx" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/osujin" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/09/04/ELK/comute/kibana 를 이용하여 시각화 하기-2/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            kibana 를 이용하여 시각화 하기 2
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/08/26/ELK/comute/logstash를 이용하여 source 데이터 가공하기/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">logstash를 이용하여 source 데이터 가공하기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Elastic-Search/">Elastic Search</a></p>
+                            <p class="item-title"><a href="/2018/09/05/ELK/comute/kibana 를 이용하여 시각화 하기-3/" class="title">kibana 를 이용하여 시각화 하기 3</a></p>
+                            <p class="item-date"><time datetime="2018-09-05T06:29:51.000Z" itemprop="datePublished">2018-09-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Elastic-Search/">Elastic Search</a></p>
+                            <p class="item-title"><a href="/2018/09/04/ELK/comute/kibana 를 이용하여 시각화 하기-2/" class="title">kibana 를 이용하여 시각화 하기 2</a></p>
+                            <p class="item-date"><time datetime="2018-09-04T12:12:31.000Z" itemprop="datePublished">2018-09-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Elastic-Search/">Elastic Search</a></p>
+                            <p class="item-title"><a href="/2018/09/03/ELK/comute/kibana 를 이용하여 시각화 하기-1/" class="title">kibana 를 이용하여 시각화 하기 1</a></p>
+                            <p class="item-date"><time datetime="2018-09-03T12:11:58.000Z" itemprop="datePublished">2018-09-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Elastic-Search/">Elastic Search</a></p>
+                            <p class="item-title"><a href="/2018/08/26/ELK/comute/logstash를 이용하여 source 데이터 가공하기/" class="title">logstash를 이용하여 source 데이터 가공하기</a></p>
+                            <p class="item-date"><time datetime="2018-08-26T14:31:14.000Z" itemprop="datePublished">2018-08-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/08/23/spring-boot/Spring-boot JPA 이용하기/" class="title">Spring-boot JPA 이용하기</a></p>
+                            <p class="item-date"><time datetime="2018-08-23T04:00:32.000Z" itemprop="datePublished">2018-08-23</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Elastic-Search/">Elastic Search</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IoT/">IoT</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MemoryCalendar/">MemoryCalendar</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenDayLight/">OpenDayLight</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/기타/">기타</a><span class="category-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">6월 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">4월 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">1월 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">11월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">9월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">6월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">5월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">4월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">3월 2017</a><span class="archive-list-count">13</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ELK-elastic-search-시각화/">ELK,elastic search,시각화</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/ELK-elastic-search-시각화/" style="font-size: 20px;">ELK,elastic search,시각화</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 sujin Oh</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://osujin.github.io/2018/09/03/ELK/comute/kibana 를 이용하여 시각화 하기-1/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

@@ -6,7 +6,7 @@
   <link href="/feed.xml" rel="self"/>
   
   <link href="https://osujin.github.io/"/>
-  <updated>2018-08-23T04:51:18.164Z</updated>
+  <updated>2018-09-19T04:28:10.986Z</updated>
   <id>https://osujin.github.io/</id>
   
   <author>
@@ -17,9 +17,117 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>kibana 를 이용하여 시각화 하기 3</title>
+    <link href="https://osujin.github.io/2018/09/05/ELK/comute/kibana%20%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC%20%EC%8B%9C%EA%B0%81%ED%99%94%20%ED%95%98%EA%B8%B0-3/"/>
+    <id>https://osujin.github.io/2018/09/05/ELK/comute/kibana 를 이용하여 시각화 하기-3/</id>
+    <published>2018-09-05T06:29:51.000Z</published>
+    <updated>2018-09-19T04:28:10.986Z</updated>
+    
+    <content type="html"><![CDATA[<p>앞선 두개의 글에서 kibana를 활용하여 데이터를 시각화 하는 방법에 대해 알아보았다.</p><p>이번글에서는 kibana가 제공하는 여러가지 시각화 툴을 이용하여 다양한 형태의 통계자료를 만들어 보고자 한다.</p><p>Line 차트를 이용해 통근 소요시간에 대한 그래프를 그려보았는데 평균적으로 출근과 퇴근하는데 걸리는 시간을 계산해보았다.</p><p>Visualize - Data - Metric 순서대로 들어가서 <strong>estimated</strong> 값을 기준으로 평균값을 계산해주면 된다. </p><p>그런데 한가지 주의 할 점이 외근,야근이나 약속등으로 바로 집으로 퇴근 하지 않은 경우엔 데이터가 누락되어 정확한 계산이 나오기 힘들었다. </p><p>그래서 가장 출퇴근 비율이 높은 버스 정류장의 시점과 종점을 기준으로 삼사 해당 구간의 통근 시간만 계산해 보기로 하였다.</p><p>우선 <strong>estimated</strong>를 기준으로 평균값을 계산한다음 filter로 <strong>travelStation</strong>을 선택하여 정류장 이름을 선택해주니 다음과 같은 결과가 나왔다.</p><p><img src="/image/2018/ELK_comute/평균계산.png" alt=""></p><p>통근시간 분석을 계획했을때 궁금했던점이 비가오거나 눈이 올때와 같이 기상상태가 좋지 않은 경우 교통체증이 좀더 심하게 느껴지는 경향이 있었는데 기상정보 통계 데이터와 나의 통근 시간도 관계가 있지 않을까 생각이 들어 기상정보 데이터도 수집하여 ES에 넣고 시각화를 해보았다.</p><p>그결과 다음과 같은 Dashboard를 만들 수 있었다.</p><p><img src="/image/2018/ELK_comute/출퇴근 소요시간 - Kibana.png" alt=""></p><p>강수량과 통근시간의 상관 관계를 한눈에 파악하긴 힘들었지만 비가 오는날이 평소보단 출근시간이 좀더 걸렸다는건 알 수 있었다. </p><p>아직은 1차원 적인 접근방법을 통하였기 때문에 단순이 데이터를 시각화 하는 수준이지만 앞으로 이를 활용하여 미래를 예측 할 수 있지 않을까 하는 생각도 들었다.</p><p>과거의 데이터를 기반으로 출근 시간이 대략 얼마정도 걸릴 것인지 어떤 교통수단이 효율적인지등 좀더 실생활에서 체감 할 수있는 데이터 활용이 가능 할 것같다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;앞선 두개의 글에서 kibana를 활용하여 데이터를 시각화 하는 방법에 대해 알아보았다.&lt;/p&gt;
+&lt;p&gt;이번글에서는 kibana가 제공하는 여러가지 시각화 툴을 이용하여 다양한 형태의 통계자료를 만들어 보고자 한다.&lt;/p&gt;
+&lt;p&gt;Line 차트를 이
+      
+    
+    </summary>
+    
+      <category term="Elastic Search" scheme="https://osujin.github.io/categories/Elastic-Search/"/>
+    
+    
+      <category term="ELK,elastic search,시각화" scheme="https://osujin.github.io/tags/ELK-elastic-search-%EC%8B%9C%EA%B0%81%ED%99%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>kibana 를 이용하여 시각화 하기 2</title>
+    <link href="https://osujin.github.io/2018/09/04/ELK/comute/kibana%20%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC%20%EC%8B%9C%EA%B0%81%ED%99%94%20%ED%95%98%EA%B8%B0-2/"/>
+    <id>https://osujin.github.io/2018/09/04/ELK/comute/kibana 를 이용하여 시각화 하기-2/</id>
+    <published>2018-09-04T12:12:31.000Z</published>
+    <updated>2018-09-19T04:28:10.981Z</updated>
+    
+    <content type="html"><![CDATA[<p>지난 글에서는 ES에 저장된 데이터에 몇개의 필드를 추가하는 방법에 대해 알아 보았다.</p><p>이번글에서는 수집된 데이터를 이용해 그래프를 통한 시각화를 해보도록 하자.</p><hr><p>Kibana 왼쪽 메뉴에서 <strong>Visualize</strong>를 선택한 뒤 “+” 버튼을 누르면 다음과 같은 화면이나온다.</p><p><img src="/image/2018/ELK_comute/차트종륭.png" alt=""></p><p>Line 차트를 선택하고 차트에 사용되어질 데이터가 들어있는 index를 선택해주면 그래프를 그릴수 있는 화면이 나오는데 앞서 만든 데이터를 활용하여 그래프를 그려주면 된다.</p><p>먼저 설정해줄것은 Metrics 으로 Y 축의 기준이 되는 값을 설정해 주어야한다. </p><p>Y축을 통근하는데 걸린 시간의 총 합으로 하기로하고 “Y-Axis” 왼쪽에 있는 화살표를 눌러 <strong>Aggregation</strong>항목을 sum 으로 선택하고 field는 <strong>estimated</strong>를 선택해준다.</p><p> estimated 는 앞선 글에서 설명했듯이 하차시간 - 승차시간을 계산하여 만들어진 값을 새로운 필드로 추가한 값이다.</p><p>다음으로 Buckets(X 축)을 설정 해줄 차례이다. 마찬가지로 “X-Axis”를 선택해 <strong>Aggregation</strong>항목을 Data Histogram 으로 선택하고 Field는 @timestamp 를 선택해준다.</p><p>Interval은 daily로 선택하여 하루를 기준으로 출근,퇴근 소요시간의 총 합을 계산하도록 한다.</p><p><img src="/image/2018/ELK_comute/통근 소요시간.png" alt=""></p><p>위 그림이 최종적으로 만들어진 그래프이다. 중간에 값이 없는 구간이 있는데 이때는 아마 다른 교통카드를 사용중이라 데이터가 없었던것 같다.</p><p>이번에는 출근과 퇴근 시간을 나누어서 확인해 보도록 하자.</p><p>Buckets 항목에 하단에 <strong>Add sub-buckets</strong> 항목을 누르고 <strong>Split Series</strong>를 선택하여 <strong>Sub Aggregation</strong> =&gt; <strong>Terms</strong> 로 선택하고 Field는 이전 글에서 생성한 <strong>commuteType</strong> Field를 선택해주자</p><p><img src="/image/2018/ELK_comute/통근종류.png" alt=""></p><p>그러면 위 그림과 같이 출근,퇴근 그래프가 각각 생성되어진다.</p><p>출근, 퇴근 시간만 각각 보고 싶으면 상단의 필터기능을 이용해  commuteType 을 기준으로 필터를 적용해주면 된다.</p><p>다음 글에서는 여러가지 차트를 만들어 dashboard를 구성해보도록 하겠다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;지난 글에서는 ES에 저장된 데이터에 몇개의 필드를 추가하는 방법에 대해 알아 보았다.&lt;/p&gt;
+&lt;p&gt;이번글에서는 수집된 데이터를 이용해 그래프를 통한 시각화를 해보도록 하자.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Kibana 왼쪽 메뉴에서 &lt;strong&gt;Visu
+      
+    
+    </summary>
+    
+      <category term="Elastic Search" scheme="https://osujin.github.io/categories/Elastic-Search/"/>
+    
+    
+      <category term="ELK,elastic search,시각화" scheme="https://osujin.github.io/tags/ELK-elastic-search-%EC%8B%9C%EA%B0%81%ED%99%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>kibana 를 이용하여 시각화 하기 1</title>
+    <link href="https://osujin.github.io/2018/09/03/ELK/comute/kibana%20%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC%20%EC%8B%9C%EA%B0%81%ED%99%94%20%ED%95%98%EA%B8%B0-1/"/>
+    <id>https://osujin.github.io/2018/09/03/ELK/comute/kibana 를 이용하여 시각화 하기-1/</id>
+    <published>2018-09-03T12:11:58.000Z</published>
+    <updated>2018-09-19T04:34:48.855Z</updated>
+    
+    <content type="html"><![CDATA[<p>앞서 logstash 를 이용해 source data를 가공하여 ES에 저장하였다.</p><p>데이터를 ES에 저장한 뒤에는 꼭 index를 생성해주어야 하는데 logstash가 데이터를 ES 에 저장하는 순간 ES 상에는 index 가 생성되고 mapping 까지 완료된 상태이다.</p><p>그러나 kibana 를 통해 접속해보면 index가 나와있지 않는데 kibana가 관리하는 index를 ES로 부터 불러와야 한다.</p><p>kibana 에 접속하여 왼쪽 메뉴에서 Management 를 누르고 kibana 항목의 index patterns 를 클릭한다.</p><p>그리고 + Create Index Pattern 을 선택하여 logstash 에서 사용한 index 명을 입력해주고 “Next step” 을 클릭한다음 Time Filter를 @Timestamp 를 선택하여 index를 생성해준다.</p><p>이제 kibana를 이용해 저장된 데이터를 분석하고 시각화를 해보도록 한다.</p><p>ES에 저장된 데이터중 하나의 document를 살펴보자</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"_index"</span>: <span class="string">"office_work"</span>,</span><br><span class="line">  <span class="attr">"_type"</span>: <span class="string">"doc"</span>,</span><br><span class="line">  <span class="attr">"_id"</span>: <span class="string">"xsMrx2UBHYmbdMUbWuZ_"</span>,</span><br><span class="line">  <span class="attr">"_version"</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">"_score"</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">"_source"</span>: &#123;</span><br><span class="line">    <span class="attr">"@timestamp"</span>: <span class="string">"2018-09-02T07:11:27.000Z"</span>,</span><br><span class="line">    <span class="attr">"charge "</span>: <span class="string">" 1,200원 "</span>,</span><br><span class="line">    <span class="attr">"Boarding_Station"</span>: <span class="string">"신사사거리.가로"</span>,</span><br><span class="line">    <span class="attr">"host"</span>: <span class="string">"osujin-MBP"</span>,</span><br><span class="line">    <span class="attr">"date"</span>: <span class="string">"2018-09-01T15:00:00.000Z"</span>,</span><br><span class="line">    <span class="attr">"message"</span>: <span class="string">"2018.09.02,신사사거리.가로,16:11:27,지하철2호선강남,16:19:09,\" 1,200원 \",버스\r"</span>,</span><br><span class="line">    <span class="attr">"classify"</span>: <span class="string">"버스"</span>,</span><br><span class="line">    <span class="attr">"Boarding_clock"</span>: <span class="string">"2018-09-02T07:11:27.000Z"</span>,</span><br><span class="line">    <span class="attr">"@version"</span>: <span class="string">"1"</span>,</span><br><span class="line">    <span class="attr">"Exit_Station"</span>: <span class="string">"지하철2호선강남"</span>,</span><br><span class="line">    <span class="attr">"Exit_clock"</span>: <span class="string">"2018-09-02T07:19:09.000Z"</span>,</span><br><span class="line">    <span class="attr">"path"</span>: <span class="string">"/Users/osujin12/Downloads/bus.csv"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"fields"</span>: &#123;</span><br><span class="line">    <span class="attr">"date"</span>: [</span><br><span class="line">      <span class="string">"2018-09-01T15:00:00.000Z"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"@timestamp"</span>: [</span><br><span class="line">      <span class="string">"2018-09-02T07:11:27.000Z"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"Boarding_clock"</span>: [</span><br><span class="line">      <span class="string">"2018-09-02T07:11:27.000Z"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"Exit_clock"</span>: [</span><br><span class="line">      <span class="string">"2018-09-02T07:19:09.000Z"</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"sort"</span>: [</span><br><span class="line">    <span class="number">1536304287000</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>_source 하위에 있는 field는 원본 데이터인 csv 파일에 logstash 파 추가로 생성한 field 정보가 붙여져 있다. 그리고 logstash 에서 filter plugin 으로 수정한 필드는 fields 하위 영역에 포함되어 있다.</p><p>이제 위 데이터를 가지고 출퇴근 소요 시간을 계산하려고 한다.</p><p>간단히 생각해서 <strong>하차시간 - 승차 시간 = 통근 소요시간</strong> 이라는 공식이 생각나는데 아예 통근 소요시간 필드를 하나 추가해 주면 여러므로 이용할때가 많을거라 생각이 들었다. </p><p>구글을 열심히 검색해본 결과 index에 새로운 field를 생성하는 방법이 나와 있었는데  Management 를 누르고 kibana 항목의 index patterns 를 클릭하면 총 3개의 탭이 나온다. Fields, Scripted fields, Source filters 가 있는데 이중 <strong>Scripted fields</strong> 를 클릭하고 <strong>Add scripted field</strong> 를 해준다.</p><p>painless 라는 문법을 가지고 새로운 field 데이터를 생성하는 방법이 있는데 하차시간 - 승차 시간 을 계산한 값을 새로운 필드로 생성하고자 한다.</p><p><img src="/image/2018/ELK_comute/새로운 필드 생성.png" alt=""></p><p>통근 시간계산하는 스크립트는 다음과 같다. Boarding_clock, Exit_clock 는 date type 이므로 millisecond 로 데이터 형태를 변형 할 수 있고 이를 1시간을 분으로 표현한 60으로 나누어 주면 통근 소요시간이 분단위로 계산되어진다. </p><p>원본데이터중 쓰레기 값이 있는 경우가 있기때문에 음수값이 나오는 경우는 0을 리턴하도록 하였다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def time = (doc[&apos;Exit_clock&apos;].value.getMillis() - doc[&apos;Boarding_clock&apos;].value.getMillis())/60000.0;</span><br><span class="line"></span><br><span class="line">if(time &gt; 0)&#123;</span><br><span class="line">return time;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>필드를 추가한 김에 몇가지 정보를 더 추가해 보자.</p><p>원본데이터를 보면 승차역,하차역이 따로 되어있어 하나로 합쳐진 필드명이 있으면 좋을것 같다. </p><p>간단히 두개의 필드명을 합쳐주면 된다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">doc[&apos;Boarding_Station.keyword&apos;].value + &apos;-&apos; + doc[&apos;Exit_Station.keyword&apos;].value</span><br></pre></td></tr></table></figure><p>그리고 계산한 통근 시간이 출근인지 퇴근인지 표시해주는 필드도 필요하다. 이경우는 조금 복잡하였는데 기본적으로 ES는 timezone 이 UTC 로 기본 셋팅되어 있어 timezone을 변경하지 않으면 시간이 꼬여서 계산하기 힘들어진다.</p><p>timezone은 Asia/Seoul 로 바꿔주고  승차시간이 13시 이전이면 출근으로 간주하는 스크립트를 만들어 줬다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def commuteType = LocalDateTime.ofInstant(Instant.ofEpochMilli(doc[&apos;Boarding_clock&apos;].value.millis),ZoneId.of(&apos;Asia/Seoul&apos;)).getHour();</span><br><span class="line"></span><br><span class="line">if(commuteType &lt; 13)&#123;</span><br><span class="line">return &quot;출근&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">return &quot;퇴근&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>이로써 시각화에 필요한 데이터를 만드는데 얼추 끝난것 같다. </p><p>다음 글에서는 Kibana 에서 제공하는 시각화 도구를 이용하여 통근시간에 대한 다양한 분석을 시도 해보도록 하겠다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;앞서 logstash 를 이용해 source data를 가공하여 ES에 저장하였다.&lt;/p&gt;
+&lt;p&gt;데이터를 ES에 저장한 뒤에는 꼭 index를 생성해주어야 하는데 logstash가 데이터를 ES 에 저장하는 순간 ES 상에는 index 가 생성되
+      
+    
+    </summary>
+    
+      <category term="Elastic Search" scheme="https://osujin.github.io/categories/Elastic-Search/"/>
+    
+    
+      <category term="ELK,elastic search,시각화" scheme="https://osujin.github.io/tags/ELK-elastic-search-%EC%8B%9C%EA%B0%81%ED%99%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>logstash를 이용하여 source 데이터 가공하기</title>
+    <link href="https://osujin.github.io/2018/08/26/ELK/comute/logstash%EB%A5%BC%20%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC%20source%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B0%80%EA%B3%B5%ED%95%98%EA%B8%B0/"/>
+    <id>https://osujin.github.io/2018/08/26/ELK/comute/logstash를 이용하여 source 데이터 가공하기/</id>
+    <published>2018-08-26T14:31:14.000Z</published>
+    <updated>2018-09-19T04:24:58.586Z</updated>
+    
+    <content type="html"><![CDATA[<p>이전 글에서 ES에 대한 소개와 ELK 설치에 대해 알아보았다.</p><p>본글에서는 source data를 가공하고 logstash 를 이용하여 ES에 저장하는 방법에 대해 알아보고자 한다.</p><h2 id="Source-Data-편집"><a href="#Source-Data-편집" class="headerlink" title="Source Data 편집"></a>Source Data 편집</h2><p>1편에서 언급했던 교통카드 이용 정보는 다음과 같이 총 9개의 필드가 있다.</p><table><thead><tr><th>사용일</th><th>카드번호</th><th>승차역(입구)</th><th>승차시간</th><th>하차역(출구)</th><th>하차시간</th><th>사용금액</th><th>구분</th><th>결제예정일자</th></tr></thead><tbody><tr><td></td></tr></tbody></table><p>내가 필요한 필드는 ‘사용일’, ‘승차역’, ‘승차시간’, ‘하차역’, ‘하차시간’,’사용금액’, ‘구분’ 정도라서 해당 필드만 선택하여 새로운 엑셀자료를 만들어 주었다.</p><p>그리고 한글 필드명은 여러모로 불편하므로 필드명도 영문명으로 바꿔주었다.</p><p><img src="/image/2018/ELK_comute/변환 교통카드 이용내역.png" alt=""></p><p>새로 만든 엑셀파일을 csv 형태로 저장해주면 된다.</p><h2 id="Logstash를-이용해-ES에-데이터-저장하기"><a href="#Logstash를-이용해-ES에-데이터-저장하기" class="headerlink" title="Logstash를 이용해 ES에 데이터 저장하기"></a>Logstash를 이용해 ES에 데이터 저장하기</h2><p>위 수정된 source data를 보면 Boarding_Time(승차시간) , Exit_Time(하차시간) 필드의 데이터가 HH:mm:ss 형태로 되어있어 년,월,일을 알 수가 없다. </p><p>그래서 date 필드의 날짜 정보와 합쳐 “yyyy.MM.dd HH:mm:ss” 형태의 date field 를 생성하고 ES에 저장할때 Date type으로 인식하도록 해주는 작업이 필요하다.</p><p>이 작업들은 logstash 설정파일을 통해 가능한대 </p><ul><li>입력</li><li>가공</li><li>출력</li></ul><p>총 3개의 필드로 나뉘어져 있다. 하나씩 알아가 보자.</p><h3 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h3><p>먼저 csv 형태로 만든 파일을 읽어오는 부분이다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">  file &#123;</span><br><span class="line">    path =&gt; &quot;/Users/abc/Downloads/bus.csv&quot;</span><br><span class="line">    start_position =&gt; &quot;beginning&quot;</span><br><span class="line">   sincedb_path =&gt; &quot;/dev/null&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>input 부분에 파일형태의 데이터를 입력받는 file플러그인을 사용하였다.</p><h3 id="가공-filter"><a href="#가공-filter" class="headerlink" title="가공(filter)"></a>가공(filter)</h3><p>filter 영역은 활용성이 정말 무긍무진 하다. 새로운 필드를 추가할 수도 있고 제거할 수도 있고 기존 데이터의 형식을 바꾸는등 다양한 활용방법이 있는데 내가 필요한 기능은 위에서 언급했듯이 Boarding_Time(승차시간) , Exit_Time(하차시간) 필드의 데이터 형식을 바꾸고 date type으로 변환 하는것이다.</p><p>먼저 해주어야 할 것은 csv 파일의 header 정보를 제공해주고 separator를 설정해주는것이다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">csv &#123;</span><br><span class="line">      separator =&gt; &quot;,&quot;</span><br><span class="line">     columns =&gt; [&quot;date&quot;,&quot;Boarding_Station&quot;,&quot;Boarding_Time&quot;,&quot;Exit_Station&quot;,&quot;Exit_Time&quot;,&quot;charge &quot;,&quot;classify&quot;]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><h4 id="시간정보-변경"><a href="#시간정보-변경" class="headerlink" title="시간정보 변경"></a>시간정보 변경</h4><p>기존 승차시간 =&gt; 07:51:07</p><p>변환된 승차시간 =&gt; 2018.03.02 07:51:07</p><p>위 작업은 mutate plugin을 이용한다. 기존 date, Boarding_Time, Exit_Time 필드를 이용해 새로운 필드인 Boarding_clock, Exit_clock 필드를 생성해 주고 기존 Boarding_Time, Exit_Time 두 필드는 삭제를 해주었다. date 필드는 검색에 사용될거라 남겨뒀다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mutate &#123;</span><br><span class="line">    add_field =&gt; &#123;</span><br><span class="line">      &quot;Boarding_clock&quot; =&gt; &quot;%&#123;date&#125; %&#123;Boarding_Time&#125;&quot;</span><br><span class="line">      &quot;Exit_clock&quot; =&gt; &quot;%&#123;date&#125; %&#123;Exit_Time&#125;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    remove_field =&gt; [&quot;Exit_Time&quot;, &quot;Boarding_Time&quot;]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p>그리고 새로 생성한 두개의 필드와 date 필드의 type을 Date 형식으로 변환 해주어야 한다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">date &#123; </span><br><span class="line">      match =&gt; [&quot;Boarding_clock&quot;, &quot;yyyy.MM.dd HH:mm:ss&quot;] </span><br><span class="line">      target =&gt; &quot;Boarding_clock&quot;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  date &#123; </span><br><span class="line">      match =&gt; [&quot;Exit_clock&quot;, &quot;yyyy.MM.dd HH:mm:ss&quot;] </span><br><span class="line">      target =&gt; &quot;Exit_clock&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  date &#123; </span><br><span class="line">      match =&gt; [&quot;date&quot;, &quot;yyyy.MM.dd&quot;] </span><br><span class="line">      target =&gt; &quot;date&quot;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p>마지막으로 @timestamp 필드 정보를 Boarding_clock 필드로 치환한다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date &#123; </span><br><span class="line">      match =&gt; [&quot;Boarding_clock&quot;, &quot;yyyy.MM.dd HH:mm:ss&quot;] </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><h3 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h3><p>마지막으로 입력받은 데이터를 출력하는 부분이다. stdout 형태로 출력하여 수정된 데이터 형태를 보며 수정할 수 있고 수정작업이 끝나면 바로 ES로 데이터를 보낼 수 있다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">output &#123;</span><br><span class="line">  elasticsearch &#123;</span><br><span class="line">    hosts =&gt; &quot;http://localhost:9200&quot;</span><br><span class="line">    index =&gt; &quot;office_work&quot;</span><br><span class="line"> &#125;</span><br><span class="line">stdout &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>다음 글에서는 kibana 를 이용해서 시각화 하는 방법에 대해 알아보자.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;이전 글에서 ES에 대한 소개와 ELK 설치에 대해 알아보았다.&lt;/p&gt;
+&lt;p&gt;본글에서는 source data를 가공하고 logstash 를 이용하여 ES에 저장하는 방법에 대해 알아보고자 한다.&lt;/p&gt;
+&lt;h2 id=&quot;Source-Data-편집&quot;&gt;
+      
+    
+    </summary>
+    
+      <category term="Elastic Search" scheme="https://osujin.github.io/categories/Elastic-Search/"/>
+    
+    
+      <category term="ELK,elastic search,시각화" scheme="https://osujin.github.io/tags/ELK-elastic-search-%EC%8B%9C%EA%B0%81%ED%99%94/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Spring-boot JPA 이용하기</title>
-    <link href="https://osujin.github.io/2018/08/23/Spring-boot%20JPA%20%EC%9D%B4%EC%9A%A9%ED%95%98%EA%B8%B0/"/>
-    <id>https://osujin.github.io/2018/08/23/Spring-boot JPA 이용하기/</id>
+    <link href="https://osujin.github.io/2018/08/23/spring-boot/Spring-boot%20JPA%20%EC%9D%B4%EC%9A%A9%ED%95%98%EA%B8%B0/"/>
+    <id>https://osujin.github.io/2018/08/23/spring-boot/Spring-boot JPA 이용하기/</id>
     <published>2018-08-23T04:00:32.000Z</published>
     <updated>2018-08-23T04:51:18.164Z</updated>
     
@@ -43,8 +151,8 @@
   
   <entry>
     <title>Spring-boot JPA 초기 설정방법</title>
-    <link href="https://osujin.github.io/2018/08/23/Spring-boot%20JPA%20%EC%B4%88%EA%B8%B0%20%EC%84%A4%EC%A0%95%EB%B0%A9%EB%B2%95%20/"/>
-    <id>https://osujin.github.io/2018/08/23/Spring-boot JPA 초기 설정방법 /</id>
+    <link href="https://osujin.github.io/2018/08/23/spring-boot/Spring-boot%20JPA%20%EC%B4%88%EA%B8%B0%20%EC%84%A4%EC%A0%95%EB%B0%A9%EB%B2%95%20/"/>
+    <id>https://osujin.github.io/2018/08/23/spring-boot/Spring-boot JPA 초기 설정방법 /</id>
     <published>2018-08-23T02:00:32.000Z</published>
     <updated>2018-08-23T04:59:41.749Z</updated>
     
@@ -62,6 +170,58 @@
     
       <category term="Java" scheme="https://osujin.github.io/categories/Java/"/>
     
+    
+  </entry>
+  
+  <entry>
+    <title>ELK 소개 및 간략 셋팅방법</title>
+    <link href="https://osujin.github.io/2018/08/22/ELK/comute/ELK%20%EC%86%8C%EA%B0%9C%20%EB%B0%8F%20%EA%B0%84%EB%9E%B5%20%EC%85%8B%ED%8C%85%EB%B0%A9%EB%B2%95/"/>
+    <id>https://osujin.github.io/2018/08/22/ELK/comute/ELK 소개 및 간략 셋팅방법/</id>
+    <published>2018-08-22T05:38:11.000Z</published>
+    <updated>2018-09-19T04:30:38.489Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/image/2018/ELK_comute/217A9C4E58C504202D.png" alt=""></p><p>지난 글에서는 Elastic Search를 이용해 통근시간을 분석해 보자는 목표를 세우고 필요한 데이터를 수집하는 방법에 대해 알아 보았다.</p><p>이번글에선 데이터 분석에 활용되는 ELK(Elasitc Search, Logstash, Kibana)의 간략한 소개와 설치 및 셋팅 방법에 대해 알아보자.</p><p>우선 rawData 분석에 활용되는 Elastic Search에 대해 알아보자.</p><p>Elastic Search(이하 ES)는 Lucene 이란 자바 오픈소스 검색 라이브러리 기반으로 만들어진 검색 엔진으로 JSON 형식으로 데이터를 저장하여 관리한다.</p><p>RESTful API 를 기반으로 다양한 형태의 데이터를 정형화 하여 검색 및 통계등을 낼 수 있는 강력한 도구이다. 또한 분산과 확장에 용이하여 대량의 데이터도 빠르게 처리가 가능하다.</p><p>처음 ES를 접한것은 log 데이터 분석에 활용된다는 얘기를 듣고 어떻게 활용되는지 보고 지나갔었는데 다시 ES를 공부해보니 데이터 분석에 상당히 막강한 도구로 활용 할 수 있다는 생각이 들었다.</p><h3 id="설치방법"><a href="#설치방법" class="headerlink" title="설치방법"></a>설치방법</h3><p>기본적으로 설치하는 방법에는 apt,yum 등을 이용한 설치 방법과 binary 형태로 제공되는 압축파일을 받아 실행 하는 방법이 있는데 처음에는 압축파일을 다운받아 테스트해보길 권장한다. </p><p>yum등을 이용한 설치 방법은 로그파일 위치,각종 설정 파일의 위치를 파악하기 힘들고 문제가 생겼을 경우 쉽게 수정하기 힘들수 있다. </p><h3 id="설치-파일"><a href="#설치-파일" class="headerlink" title="설치 파일"></a>설치 파일</h3><ul><li>Elastic Search : 데이터 저장 및 분석</li><li>Logstash : source Data를 ES에 저장하는 tool</li><li>Kibana : ES에 저장된 데이터를 관리해주고 시각화 해주는 UI tool</li></ul><p>위 3개의 설치파일 모두 Elastic Search 공식 홈페이지에서 최신 버전으로 다운받아 사용하길 권장한다.</p><p>ES를 사용하기 앞서 몇가지 용어를 알고 갈게 있다.</p><ul><li>index : 검색의 기준이 되는 단위로 rdb로 치면 database와 유사하다. </li><li>type : rdb의 table과 같은 역활. </li><li>document : 데이터의 구성 단위로써 하나의 json object로 이루어져있다. rdb에서의 row의 개념으로 보면 된다.</li><li>mapping : 데이터 필드의 type을 명시하는 것으로 table schema 를 생성하는것과 유사하다.</li></ul><p>아직 ES 클러스터를 구성하여 운용할 필요가 없기에 단일 노드로 구성해서 사용하였는데 추후 대량의 데이터와 index가 늘어나면 클러스터를 구성해볼 필요성이 있을것 같다.</p><p>다음 글에서는 1탄에서 준비한 source data(대중교통 이용정보)를 가공하여 ES에 저장하는 방법에 대해 알아보겠다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;/image/2018/ELK_comute/217A9C4E58C504202D.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;지난 글에서는 Elastic Search를 이용해 통근시간을 분석해 보자는 목표를 세우고 필요한 데이터를 수집하는 방
+      
+    
+    </summary>
+    
+      <category term="Elastic Search" scheme="https://osujin.github.io/categories/Elastic-Search/"/>
+    
+    
+      <category term="ELK,elastic search,시각화" scheme="https://osujin.github.io/tags/ELK-elastic-search-%EC%8B%9C%EA%B0%81%ED%99%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Elastic Search를 통근시간 분석 목표설정</title>
+    <link href="https://osujin.github.io/2018/08/11/ELK/comute/Elastic%20Search%EB%A5%BC%20%ED%86%B5%EA%B7%BC%EC%8B%9C%EA%B0%84%20%EB%B6%84%EC%84%9D%20%EB%AA%A9%ED%91%9C%EC%84%A4%EC%A0%95/"/>
+    <id>https://osujin.github.io/2018/08/11/ELK/comute/Elastic Search를 통근시간 분석 목표설정/</id>
+    <published>2018-08-11T02:39:25.000Z</published>
+    <updated>2018-09-19T04:17:48.611Z</updated>
+    
+    <content type="html"><![CDATA[<p>ElasticSearch를 보고있던중 이걸로 뭘 해야 할지 고민하던중 평소 극심한 출퇴근길 혼잡에 시달렸는데 나의 출퇴근길에 대한 통계를 내보면 재밌을것 같다는 생각이 들었다.</p><p><img src="/image/2018/ELK_comute/네이버 교통정보.png" alt=""></p><p>보통 위 그림처럼 네이버,다음,티맵 등에서 제공하는 교통정보는 개인에게 특화된 정보가 아니라 어는정도 정확 하긴하지만 좀더 개인에게 특화된 교통정보를 제공 해주면 좋을것 같다는 생각이들어 오직 ‘나’를 위한 교통정보 서비스를 분석해보자 한다.</p><p>그래서 생각했던 분석 결과는 </p><ol><li>출근 소요시간</li><li>퇴근 소요시간</li><li>일자별 통근 시간의 변화</li><li>날씨와 통근시간 상관관계</li></ol><p>위 4개정도 정보만 파악 하는것을 목표로 하였다. </p><p>분석을 위해 가장 중요한 것이 source data 수집인데 평소 대중교통을 이용해 출퇴근을 하기에 교통카드 기록이 남아 있을거라 생각하고 사용중인 신용카드의 교통카드 사용 이력을 출력해보았다.</p><p><img src="/image/2018/ELK_comute/교통카드 이용내역.png" alt=""></p><p>위와 같이 단말기에 카드를 찍은 _시간_ 과 <em>승차역</em> <em>하차역</em> 정보가 정확이 나온다. 이정도 정보만 있어도 출퇴근 시간을 계산하는데는 문제가 없어 보인다.</p><p><img src="/image/2018/ELK_comute/그래프1.png" alt=""></p><p>대략 위와 같은 모양의 그래프를 그려 출,퇴근에 걸리는 시간과 구간별 소요시간 최대,최소 값등을 분석해본다.</p><p>다음 글에서는 ELK(Elastic Search, Logstash, Kibana)의 간략한 소개와 설치방법 및 셋팅 방법을 알아본다.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;ElasticSearch를 보고있던중 이걸로 뭘 해야 할지 고민하던중 평소 극심한 출퇴근길 혼잡에 시달렸는데 나의 출퇴근길에 대한 통계를 내보면 재밌을것 같다는 생각이 들었다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/image/2018/ELK_comut
+      
+    
+    </summary>
+    
+      <category term="Elastic Search" scheme="https://osujin.github.io/categories/Elastic-Search/"/>
+    
+    
+      <category term="ELK,elastic search,시각화" scheme="https://osujin.github.io/tags/ELK-elastic-search-%EC%8B%9C%EA%B0%81%ED%99%94/"/>
     
   </entry>
   
@@ -93,10 +253,10 @@
   
   <entry>
     <title>logstash와 kafka 연동시 Multiple Topic 사용하기</title>
-    <link href="https://osujin.github.io/2018/06/20/kafka-logstash/"/>
-    <id>https://osujin.github.io/2018/06/20/kafka-logstash/</id>
+    <link href="https://osujin.github.io/2018/06/20/ELK/kafka-logstash/"/>
+    <id>https://osujin.github.io/2018/06/20/ELK/kafka-logstash/</id>
     <published>2018-06-20T07:52:29.000Z</published>
-    <updated>2018-09-04T01:25:43.784Z</updated>
+    <updated>2018-09-19T04:11:41.461Z</updated>
     
     <content type="html"><![CDATA[<p>ELK 를 구축할때 kafka 로 프로세스별 log 데이터를 밀어넣은 다음 kafka - logstash 를 연동하여 ElasticSearch로 보내도록 구현중이다.</p><p>logstash 에서 여러개의 kafka Topic 을 처리하는 방법에 대해서 정리한 내용이다</p><p>A123 process =&gt; topic : A1</p><p>B123 process =&gt; topic : A2</p><p>C123 process =&gt; topic : A3</p><p>이런식으로 3개의 프로세스의 로그가 각각 다른 토픽에 저장되어있다.</p><p>ES(ElasticSearch)에는 다음과 같이 저장하려고 한다  </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">index : server-log-[@date]</span><br><span class="line">- type</span><br><span class="line">  - A1-log</span><br><span class="line">  - A2-log</span><br><span class="line">  - A3-log</span><br></pre></td></tr></table></figure><p>logstash 에서 여러개의 topic 을 불러오는건 다음과 같다</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">    kafka &#123;</span><br><span class="line">        bootstrap_servers =&gt; &quot;192.168.202.148:9092&quot;</span><br><span class="line">        topics =&gt; [&quot;topic1&quot;,&quot;topic2&quot;]</span><br><span class="line">        group_id =&gt; &quot;logstash&quot;</span><br><span class="line">        consumer_threads =&gt; 2</span><br><span class="line">        decorate_events =&gt; true</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure><p>위 topic 부분에 리스트([]) 형식으로 불러올 topic 을 넣어주면 된다.</p><p>문제는 topic 들을 각각 다른 ES type으로 분류하여 저장하는것이다.</p><p>topic 이름으로 구분하여 ES에 저장할때 사용되는 type 을 지정하고 싶은데 topic 을 구분할 수 있는 방법이 topic 명 말고는 없다.</p><p>그래서 logstash config 파일에 output 부분에서 topic 명으로 분기를 만들어 주기로 했는데…</p><blockquote><p>Removal of mapping types &gt;&gt;  <a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.0/removal-of-types.html#removal-of-types" target="_blank" rel="noopener">multiple type 불가</a></p></blockquote><p>그렇다.. ES 6 버전부터는 index 당 한개의 type 만 생성이 가능하다.</p><p>그전에 input - kafka 안쪽에 “decorate_events =&gt; true” 설정을 꼭 넣어주자 그래야 topic 을 불러올수가 있다.</p><p>type을 여러개 만들면 이와같은 오류가 발생한다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rejecting mapping update to [index1-2018.06.20] as the final mapping would have more than 1 type</span><br></pre></td></tr></table></figure><p>공식 문서에는 document_type을 생성하여 기존 type을 대체하라고 했는데 나는 그냥 원본 데이터에 새로 pName 필드를 추가하여 구분하는 방식으로 해보았다</p><p>최종 왼성된 config 설정은 아래와 같다</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">    kafka &#123;</span><br><span class="line">        bootstrap_servers =&gt; &quot;192.168.202.148:9092&quot;</span><br><span class="line">        topics =&gt; [&quot;topic1&quot;,&quot;topic2&quot;]</span><br><span class="line">        group_id =&gt; &quot;logstash&quot;</span><br><span class="line">        consumer_threads =&gt; 2</span><br><span class="line">        decorate_events =&gt; true     </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">filter &#123;</span><br><span class="line"> if [@metadata][kafka][topic] == &quot;topic1&quot; &#123;</span><br><span class="line">        mutate &#123;</span><br><span class="line">                add_field =&gt; &#123;&apos;pName&apos; =&gt; &apos;topic1&apos;&#125;</span><br><span class="line">        &#125;</span><br><span class="line"> &#125;</span><br><span class="line">if [@metadata][kafka][topic] == &quot;topic2&quot; &#123;</span><br><span class="line">        mutate &#123;</span><br><span class="line">                add_field =&gt; &#123;&apos;pName&apos; =&gt; &apos;topic2&apos;&#125;</span><br><span class="line">        &#125;</span><br><span class="line"> &#125;</span><br><span class="line">  json &#123;</span><br><span class="line">    source =&gt; &quot;message&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">elasticsearch &#123;</span><br><span class="line">    hosts =&gt; [&quot;127.0.0.1:9200&quot;]</span><br><span class="line">    index =&gt; &quot;index-%&#123;+YYYY.MM.dd&#125;&quot;</span><br><span class="line">    document_type =&gt; &quot;logs&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>if [@metadata][kafka][topic] 를 이용하여 topic 을 불러와 새로운 필드를 추가하는 방식으로 프로세스별 로그를 구분하도록 하였다.</p>]]></content>
     
@@ -110,7 +270,7 @@
     
     </summary>
     
-      <category term="ElasticSearch" scheme="https://osujin.github.io/categories/ElasticSearch/"/>
+      <category term="Elastic Search" scheme="https://osujin.github.io/categories/Elastic-Search/"/>
     
     
       <category term="kafka" scheme="https://osujin.github.io/tags/kafka/"/>
@@ -195,8 +355,8 @@
   
   <entry>
     <title>spring @Value Annotation 사용법</title>
-    <link href="https://osujin.github.io/2017/09/20/spring-@Value-Annotation-%EC%82%AC%EC%9A%A9%EB%B2%95/"/>
-    <id>https://osujin.github.io/2017/09/20/spring-@Value-Annotation-사용법/</id>
+    <link href="https://osujin.github.io/2017/09/20/spring-boot/spring-@Value-Annotation-%EC%82%AC%EC%9A%A9%EB%B2%95/"/>
+    <id>https://osujin.github.io/2017/09/20/spring-boot/spring-@Value-Annotation-사용법/</id>
     <published>2017-09-20T02:21:32.000Z</published>
     <updated>2018-08-23T04:51:18.167Z</updated>
     
@@ -219,8 +379,8 @@
   
   <entry>
     <title>spring-boot application.yml column mapping 사용 예제</title>
-    <link href="https://osujin.github.io/2017/09/20/spring-boot-application.yml-column-mapping-%EC%82%AC%EC%9A%A9-%EC%98%88%EC%A0%9C/"/>
-    <id>https://osujin.github.io/2017/09/20/spring-boot-application.yml-column-mapping-사용-예제/</id>
+    <link href="https://osujin.github.io/2017/09/20/spring-boot/spring-boot-application.yml-column-mapping-%EC%82%AC%EC%9A%A9-%EC%98%88%EC%A0%9C/"/>
+    <id>https://osujin.github.io/2017/09/20/spring-boot/spring-boot-application.yml-column-mapping-사용-예제/</id>
     <published>2017-09-20T02:14:45.000Z</published>
     <updated>2018-04-04T05:58:56.858Z</updated>
     
@@ -243,8 +403,8 @@
   
   <entry>
     <title>spring-boot mybatis 연동 주의점</title>
-    <link href="https://osujin.github.io/2017/09/07/spring-boot-mybatis-%EC%97%B0%EB%8F%99-%EC%A3%BC%EC%9D%98%EC%A0%90/"/>
-    <id>https://osujin.github.io/2017/09/07/spring-boot-mybatis-연동-주의점/</id>
+    <link href="https://osujin.github.io/2017/09/07/spring-boot/spring-boot-mybatis-%EC%97%B0%EB%8F%99-%EC%A3%BC%EC%9D%98%EC%A0%90/"/>
+    <id>https://osujin.github.io/2017/09/07/spring-boot/spring-boot-mybatis-연동-주의점/</id>
     <published>2017-09-07T06:09:53.000Z</published>
     <updated>2018-04-04T06:01:25.484Z</updated>
     
@@ -361,155 +521,6 @@
     </summary>
     
       <category term="기타" scheme="https://osujin.github.io/categories/%EA%B8%B0%ED%83%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>HttpsURLConnection을 이용한 통신시 SSL 인증서 수동으로 지정하는 방법</title>
-    <link href="https://osujin.github.io/2017/06/09/HttpsURLConnection%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%86%B5%EC%8B%A0%EC%8B%9C-SSL-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EC%88%98%EB%8F%99%EC%9C%BC%EB%A1%9C-%EC%A7%80%EC%A0%95%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95/"/>
-    <id>https://osujin.github.io/2017/06/09/HttpsURLConnection을-이용한-통신시-SSL-인증서-수동으로-지정하는-방법/</id>
-    <published>2017-06-09T00:58:27.000Z</published>
-    <updated>2018-04-04T06:13:14.043Z</updated>
-    
-    <content type="html"><![CDATA[<p>Https를 이용하여 데이터를 주고 받을때 SSL 인증을 해야한다.</p><p>기본적으로</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">System.setProperty(<span class="string">"javax.net.ssl.keyStore"</span>,context.getKeyFile().getAbsolutePath());</span><br><span class="line">System.setProperty(<span class="string">"javax.net.ssl.keyStorePassword"</span>, context.getKeyFilePassword());</span><br><span class="line">System.setProperty(<span class="string">"javax.net.ssl.keyStoreType"</span>, <span class="string">"PKCS12"</span>);</span><br><span class="line">System.setProperty(<span class="string">"http.keepAlive"</span>,<span class="string">"false”);</span></span><br></pre></td></tr></table></figure><p>이런식으로 System property를 추가해주면 HttpsURLConnection을 생성할때 자동으로 SSL인증서를 포함 시키지만 간혹 이방법이 안되는 경우가 있다.</p><p>이럴때는 수동으로 SSLContext에 keystore를 등록해주면 해결이 된다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">KeyStore clientStore = KeyStore.getInstance(<span class="string">"PKCS12"</span>);</span><br><span class="line">clientStore.load(<span class="keyword">new</span> FileInputStream(<span class="string">"test.p12"</span>), <span class="string">"testPass"</span>.toCharArray());</span><br><span class="line"> </span><br><span class="line">KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());</span><br><span class="line">kmf.init(clientStore, <span class="string">"testPass"</span>.toCharArray());</span><br><span class="line">KeyManager[] kms = kmf.getKeyManagers();</span><br><span class="line"> </span><br><span class="line">KeyStore trustStore = KeyStore.getInstance(<span class="string">"JKS"</span>);</span><br><span class="line">trustStore.load(<span class="keyword">new</span> FileInputStream(System.getProperty(<span class="string">"java.home"</span>) + <span class="string">"/lib/security/cacerts"</span>), <span class="string">"changeit"</span>.toCharArray());</span><br><span class="line"> </span><br><span class="line">TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());</span><br><span class="line">tmf.init(trustStore);</span><br><span class="line">TrustManager[] tms = tmf.getTrustManagers();</span><br><span class="line"> </span><br><span class="line">SSLContext sslContext = <span class="keyword">null</span>;</span><br><span class="line">sslContext = SSLContext.getInstance(<span class="string">"TLS"</span>);</span><br><span class="line">sslContext.init(kms, tms, <span class="keyword">new</span> SecureRandom());</span><br><span class="line"> </span><br><span class="line">HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());</span><br><span class="line">URL url = <span class="keyword">new</span> URL(<span class="string">"https://www.testurl.com"</span>);</span><br><span class="line"> </span><br><span class="line">HttpsURLConnection urlConn = (HttpsURLConnection) url.openConnection();</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Https를 이용하여 데이터를 주고 받을때 SSL 인증을 해야한다.&lt;/p&gt;
-&lt;p&gt;기본적으로&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;lin
-      
-    
-    </summary>
-    
-      <category term="기타" scheme="https://osujin.github.io/categories/%EA%B8%B0%ED%83%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>java8 Default method</title>
-    <link href="https://osujin.github.io/2017/06/01/java8-default-method/"/>
-    <id>https://osujin.github.io/2017/06/01/java8-default-method/</id>
-    <published>2017-06-01T01:16:53.000Z</published>
-    <updated>2018-04-04T05:59:56.984Z</updated>
-    
-    <content type="html"><![CDATA[<p>자바8에서 새로 추가된 Default method는 기존에 만들어진 interface를 implement 받는 class들에 영향을 주지 않고 interface에 새로운 항목을 추가할 수 있다.</p><p>기존에는 이미 생성된 interface에 새로운 method를 추가하려면 이를 implement 받는 모든 class들에도 Override를 해주어야 됬지만 Default method는 interface에 선언 할때에 body도 함께 만들어야 하므로 기본적으로 inerface에서 제공하는 것이다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String...args)</span></span>&#123;</span><br><span class="line">       <span class="keyword">new</span> D().hello();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">A</span></span>&#123;</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">default</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">           System.out.println(<span class="string">"Hello from A"</span>);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">world</span><span class="params">()</span></span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">D</span> <span class="keyword">implements</span> <span class="title">B</span>, <span class="title">C</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">world</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><p>위 코드에서 public default void hello() 이부분이 Default method를 구현한것이다. 꼭 body를 함께 생성해주어야 한다. body를 생성하지 않으면 error가 발생한다. 그리고 Default method 는 기존 interface와 마찬가지로 override 받을 수 있는데 override를 하여 새롭게 body를 구성하여 기존 interface 처럼 사용가능하다.</p><p>또한 interface는 여러개를 implement 받는것이 가능하므로 그동안 지원하지 않았던 <strong>다중상속</strong>의 기능을 Default method를 이용하여 사용 할 수 있다.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;자바8에서 새로 추가된 Default method는 기존에 만들어진 interface를 implement 받는 class들에 영향을 주지 않고 interface에 새로운 항목을 추가할 수 있다.&lt;/p&gt;
-&lt;p&gt;기존에는 이미 생성된 interface
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://osujin.github.io/categories/Java/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Java 8 병렬처리와 성능에 대해서</title>
-    <link href="https://osujin.github.io/2017/05/31/Java-8-%EB%B3%91%EB%A0%AC%EC%B2%98%EB%A6%AC%EC%99%80-%EC%84%B1%EB%8A%A5%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C/"/>
-    <id>https://osujin.github.io/2017/05/31/Java-8-병렬처리와-성능에-대해서/</id>
-    <published>2017-05-31T06:10:01.000Z</published>
-    <updated>2018-04-04T05:53:27.749Z</updated>
-    
-    <content type="html"><![CDATA[<p>자바 8의 Stream API에서 사용가능한 병렬처리 함수인 parallel를 이용할때 확인해야 할 점이 있다.</p><p>1부터 n 까지 더하는 작업을 단순 반복문 , Stream parallel 를 이용한 코드의 동작 시간을 확인해보자.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1. 단순 반복문</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">iterativeSum</span><span class="params">(<span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">long</span> result = <span class="number">0</span>;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">         result += i;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> result;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//2. Parallel 를 이용하여 병령처리한 작업</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">parallelSum</span><span class="params">(<span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> Stream.iterate(<span class="number">1L</span>, i -&gt; i + <span class="number">1</span>).limit(n).parallel().reduce(Long::sum).get();</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//출처 Java 8 in Action</span></span><br></pre></td></tr></table></figure><p>결과<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.  Iterative Sum done in: 3 msecs</span><br><span class="line"> </span><br><span class="line">2.  Parallel forkJoinSum done in: 95 msecs</span><br></pre></td></tr></table></figure></p><p>3개의 메소드를 실행 해보면 1번이 가장빠르다는것을 확인 할 수 있는데 이 예제에서 iterate 연산은 본질적으로 순차적으로 일어나기 때문에 병령처리를 해도 큰 효과를 보기 힘들고 Steam을 이용하여 계산을 할때는 기본형 데이터 타입이 아닌 참조형으로 변환하는 과정이 있기때문에 더 많은 리소스가 사용된다.</p><p>자바8을 공부하며 기존 소스를 자바8로 리펙토링 하려 했는데 무턱대고 적용하기전 확인이 필요하다.</p><p>Parallel를 이용한 코드의 성능을 높이기 위해선 기본형 long 을 직접 사용하는 “<em>LongStream.rangeClosed</em>“ 를 이용하면 성능을 높일수 있다.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">parallelRangedSum</span><span class="params">(<span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> LongStream.rangeClosed(<span class="number">1</span>, n).parallel().reduce(Long::sum).getAsLong();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>하지만 위 코드도 단순 반복문보다 빠르다고 장담 할 수는 없는데 이는 멀티코어간 데이터교환시 발생하는 비용때문이다. 코어간의 데이터 이동은 큰 작업이고 병렬처리를 할때에 코어간 데이터 교환보다 오래걸리는 작업을 병령처리로 나누어 작업하는게 효율적이다.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;자바 8의 Stream API에서 사용가능한 병렬처리 함수인 parallel를 이용할때 확인해야 할 점이 있다.&lt;/p&gt;
-&lt;p&gt;1부터 n 까지 더하는 작업을 단순 반복문 , Stream parallel 를 이용한 코드의 동작 시간을 확인해보자.&lt;/
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="https://osujin.github.io/categories/Java/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Intel Edison firmware Update 실패시 후속 조치방법</title>
-    <link href="https://osujin.github.io/2017/04/11/Intel-Edison-firmware-Update-%EC%8B%A4%ED%8C%A8%EC%8B%9C-%ED%9B%84%EC%86%8D-%EC%A1%B0%EC%B9%98%EB%B0%A9%EB%B2%95/"/>
-    <id>https://osujin.github.io/2017/04/11/Intel-Edison-firmware-Update-실패시-후속-조치방법/</id>
-    <published>2017-04-11T02:39:25.000Z</published>
-    <updated>2018-04-04T02:06:47.310Z</updated>
-    
-    <content type="html"><![CDATA[<p>Intel Edison 펌웨어를 업데이트하다 리눅스 커널이 망가져 반쪽의 기능밖에 못하는 상황이 되었다.</p><p>usb 연결로 boot img를 업로드하려해도 인식 조차안되는 상황..</p><p>그래서 아예 새로운 커널로 새로 로드를 한뒤 다시 펌웨어 업데이트를 하니 정상적으로 업데이트가 진행 되었다.</p><p>intel edison 공식 메뉴얼에서 약간 수정을 하면 되는데</p><p><a href="https://software.intel.com/en-us/flashing-firmware-on-your-intel-edison-board-mac-os-x" target="_blank" rel="noopener">Flashing the firmware on a system with Mac<em> OS X</em> (manual process)</a></p><p>위 사이트에서 Yocto* complete image 파일 대신</p><p><a href="https://emutex.com/packages/ubilinux-edison-150309.tar.gz" target="_blank" rel="noopener">ubilinux.tar.gz</a> 이 파일을 다운받아 압축을 풀고 flashall.sh 를 실행하면 된다.</p><p>쉘을 실행한뒤에 <strong>“Please plug and reboot the board”</strong> 이라는 문구가 나올때 edison board를 맥과 연결해줘야 접속이 된다.</p><p>새로운 boot loader가 업로드 되고 sucess가 뜨면 연결을 해지한뒤</p><p><a href="https://software.intel.com/edison-config/osx/latest" target="_blank" rel="noopener">Intel_Edison_Setup_Mac_v2016.2.013</a> 을 다운받아 최신 버전의 yocto linux 를 설치해주면 된다.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Intel Edison 펌웨어를 업데이트하다 리눅스 커널이 망가져 반쪽의 기능밖에 못하는 상황이 되었다.&lt;/p&gt;
-&lt;p&gt;usb 연결로 boot img를 업로드하려해도 인식 조차안되는 상황..&lt;/p&gt;
-&lt;p&gt;그래서 아예 새로운 커널로 새로 로드를 한뒤
-      
-    
-    </summary>
-    
-      <category term="IoT" scheme="https://osujin.github.io/categories/IoT/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>iftop 소스 설치</title>
-    <link href="https://osujin.github.io/2017/04/04/iftop-%EC%86%8C%EC%8A%A4-%EC%84%A4%EC%B9%98/"/>
-    <id>https://osujin.github.io/2017/04/04/iftop-소스-설치/</id>
-    <published>2017-04-04T02:06:52.000Z</published>
-    <updated>2018-04-04T06:10:06.601Z</updated>
-    
-    <content type="html"><![CDATA[<p>인터넷이 안되는 내부망에서 iftop을 설치가 필요할때 소스 설치를 하는 방법이다.</p><p>설치 환경은 centos 6.8 64bit 에서 진행하였다.</p><p>필요한 파일은</p><ul><li>iftop-0.17.tar.gz</li><li>libpcap-1.7.4.tar</li></ul><p>이고 root 권한으로 설치를 진행한다.</p><p>설치파일 : <a href="/image/2017/04/iftop-0.17.tar.gz">iftop-0.17.tar Download</a> , <a href="/image/2017/04/libpcap-1.7.4.tar">libpcap-1.7.4 Download</a></p><p>일단 libpcap-1.7.4.tar 파일을 먼저 설치해서 pcap 라이브러리를 설치해줘야 한다.</p><p>libpcap 라이브러리를 설치할때 flex , bison 이 필요하다고 에러가 나오는데 메뉴얼에 이 두개는 제외하고 설치하는 방법이 나와있다.</p><p><strong>libpcap 설치방법</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># tar xf libpcap-1.7.4.tar</span><br><span class="line"># cd libpcap-1.7.4</span><br><span class="line"># ./configure --without-flex --without-bison</span><br><span class="line"># make</span><br><span class="line"># make install</span><br></pre></td></tr></table></figure><p><strong>iftop 설치 방법</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># tar xf iftop-0.17.tar.gz</span><br><span class="line"># cd iftop-0.17</span><br><span class="line"># ./configure &amp;&amp; make</span><br></pre></td></tr></table></figure><p>추가적으로 최근에 개발된 iftop 1.0 버전을 설치하는 방법이다.</p><p>1&#46;0 정식 버전은 없고 현재 pre4 버전이 최신 버전인데 이버전을 설치하려면 ncurses 가 필요하다.</p><p>설치파일 : <a href="/file/ncurses-6.0.tar.gz">ncurses-6.0.tar Download</a> , <a href="/file/iftop-1.0pre4.tar.gz">iftop-1.0pre4.tar Download</a></p><p><strong>ncurses 설치방법</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># tar xf ncurses-6.0.tar.gz</span><br><span class="line"># cd ncurses-6.0</span><br><span class="line"># ./configure --with-normal --with-debug --enable-overwrite</span><br><span class="line"># make install.libs</span><br></pre></td></tr></table></figure><p><strong>iftop-1.0pre4 설치방법</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># tar xf iftop-1.0pre4.tar.gz   </span><br><span class="line"># cd iftop-1.0pre4   </span><br><span class="line"># ./configure &amp;&amp; install</span><br></pre></td></tr></table></figure><p><strong>Tip</strong></p><p>centos 계열에서 소스설치가 안될때는 rpm으로 설치가 가능한데</p><p>yum install yum-downloadonly 을 설치하여 rpm 다운로드 프로그램을 설치한뒤</p><p>yum install iftop –downloadonly –downloaddir=/home/user/Downloads</p><p>이런식으로 rpm 을 특정경로에 다운받아 둘 수 있다. 이를 사용하려면 다운받으려는 rpm 이 미설치된 상태어야 한다.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;인터넷이 안되는 내부망에서 iftop을 설치가 필요할때 소스 설치를 하는 방법이다.&lt;/p&gt;
-&lt;p&gt;설치 환경은 centos 6.8 64bit 에서 진행하였다.&lt;/p&gt;
-&lt;p&gt;필요한 파일은&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;iftop-0.17.tar.gz&lt;/li
-      
-    
-    </summary>
-    
-      <category term="기타" scheme="https://osujin.github.io/categories/%EA%B8%B0%ED%83%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ODL karaf 에서 impl 모듈만 빌드해서 다시 띄우는 방법</title>
-    <link href="https://osujin.github.io/2017/03/28/ODL-karaf-%EC%97%90%EC%84%9C-impl-%EB%AA%A8%EB%93%88%EB%A7%8C-%EB%B9%8C%EB%93%9C%ED%95%B4%EC%84%9C-%EB%8B%A4%EC%8B%9C-%EB%9D%84%EC%9A%B0%EB%8A%94-%EB%B0%A9%EB%B2%95/"/>
-    <id>https://osujin.github.io/2017/03/28/ODL-karaf-에서-impl-모듈만-빌드해서-다시-띄우는-방법/</id>
-    <published>2017-03-28T04:39:03.000Z</published>
-    <updated>2018-04-04T05:41:37.441Z</updated>
-    
-    <content type="html"><![CDATA[<p>ODL 개발시 impl 쪽을 수정할때마다 매번 프로젝트 전체를 빌드하고 다시 karaf를 띄우는게 시간이 오래걸려 확인해보니</p><p>karaf 내에서 각 bundle별로 죽였다 다시 띄울때 jar 파일만 교체해주면 전체를 빌드하지 않아도 손쉽게 적용이 가능하다.</p><ul><li>~/karaf/target/assembly/system/org/opendaylight/hello/hello-service/0.1.0-SNAPSHOT/hello-Service-0.1.0-SNAPSHOT.jar</li></ul><p>위와 같이 karaf 폴더안에 system 폴더까지 들어가보면 프로젝트의 groupId의 경로에 각종 모듈들의 jar 파일이 존재한다. 여기에 포함되어있는 jar 파일만 교체를 해주면 karaf 를 재기동 하지 않아도 수정된 bundle을 다시 띄울수 있다.</p><p>띄우는 방법은 우선 아래 명령어를 이용하여 자신이 수정한 모듈을 찾는다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">feature:list -i</span><br></pre></td></tr></table></figure><p>내가 수정하려는 bundle의 예는 다음과 같다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">odl-helloService-api            | 0.1.0-SNAPSHOT   | x         | odl-helloService-0.1.0-SNAPSHOT      | OpenDaylight :: helloService :: api</span><br><span class="line">odl-helloService                | 0.1.0-SNAPSHOT   | x         | odl-helloService-0.1.0-SNAPSHOT      | OpenDaylight :: helloService</span><br><span class="line">odl-helloService-rest           | 0.1.0-SNAPSHOT   | x         | odl-helloService-0.1.0-SNAPSHOT      | OpenDaylight :: helloService :: REST</span><br><span class="line">odl-helloService-ui             | 0.1.0-SNAPSHOT   | x         | odl-helloService-0.1.0-SNAPSHOT      | OpenDaylight :: helloService :: UI</span><br></pre></td></tr></table></figure><p>이제 수정하려는 모듈인 odl-helloService 을 uninstall 한다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">feature:uninstall odl-helloService</span><br></pre></td></tr></table></figure><p>그리고 위에 설명한것 처럼 수정된 jar 파일을 경로에 맞게 옮겨놓고 다시 아래 명령어로 feature를 install 하면 된다.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">feature:install odl-helloService</span><br></pre></td></tr></table></figure><p>옮겨진 jar 파일명은 당연히 기존 파일명과 동일하게 맞춰야한다.</p><p>위고하정이 정상적으로 수행이 되면 프로젝트 전체를 빌드하지 않고 특정 module만 재배포가 가능하다.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;ODL 개발시 impl 쪽을 수정할때마다 매번 프로젝트 전체를 빌드하고 다시 karaf를 띄우는게 시간이 오래걸려 확인해보니&lt;/p&gt;
-&lt;p&gt;karaf 내에서 각 bundle별로 죽였다 다시 띄울때 jar 파일만 교체해주면 전체를 빌드하지 않아도 손
-      
-    
-    </summary>
-    
-      <category term="OpenDayLight" scheme="https://osujin.github.io/categories/OpenDayLight/"/>
     
     
   </entry>
